@@ -136,5 +136,5 @@ which elements have already been used
 
 ### Using a Trie
 
-We can use the same solution as in [Word Search II](/200 - 299/212 - Word Search
-II.md)
+We can use the same solution as
+in [Word Search II](/200%20-%20299/212%20-%20Word%20Search%20II.md)
