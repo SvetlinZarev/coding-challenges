@@ -34,7 +34,6 @@ strs[i] consists of lowercase English letters.
 
 * Time: 8 ms
 * Memory: 4.7 MB
-*
 
 ```rust
 use std::collections::HashMap;
@@ -97,10 +96,10 @@ z -> 101
 Then we can calculate the "hash" of each string by mapping the character to its
 prime number and multiplying the result:
 
-```rust
+```
 let mut result = 1;
 for ch in characters.iter().copied(){
-result *= ch;
+    result *= ch;
 }
 ```
 
