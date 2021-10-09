@@ -10,8 +10,8 @@ Return the shortest such subarray and output its length.
 
 ##### Constraints
 
-* `1 <= nums.length <= 104`
-* `-105 <= nums[i] <= 105`
+* `1 <= nums.length <= 10^4`
+* `-10^5 <= nums[i] <= 10^5`
 
 #### Example
 
