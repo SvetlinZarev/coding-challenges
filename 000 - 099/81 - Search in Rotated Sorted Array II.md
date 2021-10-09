@@ -17,7 +17,7 @@ if target is in `nums`, or `false` if it is not in `nums`.
 You must decrease the overall operation steps as much as possible.
 
 **Follow up:** This problem is similar
-to [Search in Rotated Sorted Array](/000-099/33%20-%20Search%20in%20Rotated%20Sorted%20Array.md)
+to [Search in Rotated Sorted Array](/000%20-%20099/33%20-%20Search%20in%20Rotated%20Sorted%20Array.md)
 , but `nums` may contain duplicates.
 
 #### Constraints:
