@@ -2,11 +2,12 @@
 
 ## Problem
 
-Given an `m x n` board of characters and a list of strings words, return all words on the board.
+Given an `m x n` board of characters and a list of strings words, return all
+words on the board.
 
-Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are
-horizontally or vertically neighboring. The same letter cell may not be used more than once in a
-word.
+Each word must be constructed from letters of sequentially adjacent cells, where
+adjacent cells are horizontally or vertically neighboring. The same letter cell
+may not be used more than once in a word.
 
 Input:
 
@@ -26,12 +27,26 @@ Output:
 ["eat","oath"]
 ```
 
+#### Constraints:
+
+```
+m == board.length
+n == board[i].length
+1 <= m, n <= 12
+board[i][j] is a lowercase English letter.
+1 <= words.length <= 3 * 104
+1 <= words[i].length <= 10
+words[i] consists of lowercase English letters.
+All the strings of words are unique.
+```
+
 ## Solutions
 
 ### Using a Trie, storing all possible word combinations from the board
 
-My first attempt at solving the problem was to build a [trie] by doing a DFS on the board. This is
-the easiest approach to implement, but also the slowest and the most memory-demanding one
+My first attempt at solving the problem was to build a [trie] by doing a DFS on
+the board. This is the easiest approach to implement, but also the slowest and
+the most memory-demanding one
 
 * Time: 224 ms
 * Memory: 57.6 MB
@@ -148,19 +163,22 @@ fn dfs(
 
 ### Using a Trie, storing only the words we are looking for
 
-Although the previous solution passes the tests and is accepted by the judge, it can be greatly
-improved. If we build our [trie] by using only the input words, instead of all DFS generated words,
-then the trie will be much smaller and will require much less memory.
+Although the previous solution passes the tests and is accepted by the judge, it
+can be greatly improved. If we build our [trie] by using only the input words,
+instead of all DFS generated words, then the trie will be much smaller and will
+require much less memory.
 
-This will also allow us to check fewer neighbouring cells on the board, thus speeding the execution.
-The trick here is how to know when to terminate the DFS and how to retrieve the words we found.
+This will also allow us to check fewer neighbouring cells on the board, thus
+speeding the execution. The trick here is how to know when to terminate the DFS
+and how to retrieve the words we found.
 
-For the first problem - we'll just track in a variable how many words we've found by decreasing a
-counter. When it hits 0, then we need to stop searching.
+For the first problem - we'll just track in a variable how many words we've
+found by decreasing a counter. When it hits 0, then we need to stop searching.
 
-For the second problem, we'll just attach the words to the trie node, instead of marking it as a '
-word end'. That would allow us to quickly retrieve the word itself and also help us avoid dealing
-with duplicate words
+For the second problem, we'll just attach the words to the trie node, instead of
+marking it as a '
+word end'. That would allow us to quickly retrieve the word itself and also help
+us avoid dealing with duplicate words
 
 * Time: 112 ms
 * Memory: 2.1 MB
@@ -291,13 +309,13 @@ fn dfs(
 
 ##### Reducing the number of words to search for
 
-We can calculate the frequency (how many times a character is encountered) of the characters in the
-board. Then we can do the same for each input word. If the frequency of some word characters is
-greater than the frequency of the board characters, then this word cannot possibly be contained in
-the board.
+We can calculate the frequency (how many times a character is encountered) of
+the characters in the board. Then we can do the same for each input word. If the
+frequency of some word characters is greater than the frequency of the board
+characters, then this word cannot possibly be contained in the board.
 
-In that way we can reduce the number of nodes in the trie and the number of expected words, thus we
-might be able to stop doing DFS earlier.
+In that way we can reduce the number of nodes in the trie and the number of
+expected words, thus we might be able to stop doing DFS earlier.
 
 * Time: 28 ms
 * Memory: 2.1 MB
@@ -348,8 +366,9 @@ pub fn find_words(mut board: Vec<Vec<char>>, mut words: Vec<String>) -> Vec<Stri
 
 ##### Choosing a faster hash function
 
-Our trie uses a `HashMap` to store the child nodes. But Rust's hash map is known for its slow
-default hash function. If we use a faster one we can speed our solution even more:
+Our trie uses a `HashMap` to store the child nodes. But Rust's hash map is known
+for its slow default hash function. If we use a faster one we can speed our
+solution even more:
 
 * Time: 16 ms
 * Memory 2.1 MB
@@ -579,4 +598,5 @@ fn dfs(
 * [LeetCode] page
 
 [leetcode]: https://leetcode.com/problems/word-search-ii/
+
 [trie]: https://en.wikipedia.org/wiki/Trie
