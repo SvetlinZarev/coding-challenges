@@ -555,7 +555,10 @@ fn dfs(
         found += 1;
 
         *remaining -= 1;
-        if *remaining == 0 || trie.refs() == 0 {
+
+        // we check for ref-count of 1 instead of 0,
+        // because we have not yet decremented the counter!
+        if *remaining == 0 || trie.refs() == 1 {
             trie.decrement_refs(found);
             return found;
         }
