@@ -440,8 +440,8 @@ that character.
 
 If the reference count is zero, then we treat that node as if it didn't exist.
 
-Time: 8ms
-Memory: 2.1MB
+* Time: 8ms
+* Memory: 2.1MB
 
 
 ### Final Source Code
