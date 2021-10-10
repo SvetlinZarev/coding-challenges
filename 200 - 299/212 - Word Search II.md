@@ -427,62 +427,31 @@ struct Node {
 }
 ```
 
-### Final source code:
+#### Reducing the number of searches by soft-removing the found words from the trie
+
+If we've found a word, then we can remove it from the trie in order to reduce the 
+number of DFSes - in othre words - if we know that the current trie branch will not 
+yield a result, then it's meaningless to traverse it.
+
+In order to accomplish that, we can introduce a `reference count` in each trie node.
+We have to increment that counter each time we add a word that contains the 
+corresponding leter at that position and decrement it when we reomve a word containing
+that character.
+
+If the reference count is zero, then we treat that node as if it didn't exist.
+
+* Time: 8ms
+* Memory: 2.1MB
+
+
+### Final Source Code
 
 ```rust
-use std::collections::HashMap;
-use std::hash::{BuildHasher, Hasher};
-use std::marker::PhantomData;
-use std::ops::Not;
-
-
-pub struct FnvHasher(u64);
-
-impl Default for FnvHasher {
-    fn default() -> FnvHasher {
-        FnvHasher(0xcbf29ce484222325)
-    }
-}
-
-impl Hasher for FnvHasher {
-    fn finish(&self) -> u64 {
-        self.0
-    }
-
-    fn write(&mut self, bytes: &[u8]) {
-        let FnvHasher(mut hash) = *self;
-        for byte in bytes {
-            hash = hash ^ (*byte as u64);
-            hash = hash * 0x100000001b3;
-        }
-        *self = FnvHasher(hash);
-    }
-}
-
-pub struct HashBuilder<H> {
-    _phantom: PhantomData<H>,
-}
-
-impl<H: Hasher + Default> BuildHasher for HashBuilder<H> {
-    type Hasher = H;
-
-    fn build_hasher(&self) -> Self::Hasher {
-        H::default()
-    }
-}
-
-impl<H: Hasher + Default> Default for HashBuilder<H> {
-    fn default() -> Self {
-        HashBuilder {
-            _phantom: PhantomData,
-        }
-    }
-}
-
 #[derive(Default, Debug)]
 struct Node {
     ptr: HashMap<u8, Node, HashBuilder<FnvHasher>>,
     word: Option<String>,
+    refs: usize,
 }
 
 impl Node {
@@ -491,7 +460,11 @@ impl Node {
     }
 
     pub fn with_prefix(&mut self, ch: u8) -> Option<&mut Node> {
-        self.ptr.get_mut(&ch)
+        if self.refs == 0 {
+            return None;
+        }
+
+        self.ptr.get_mut(&ch).filter(|n| n.refs > 0)
     }
 
     pub fn insert(&mut self, word: String) {
@@ -499,13 +472,24 @@ impl Node {
 
         let mut node = self;
         for ch in w.iter().copied() {
-            node = node.ptr.entry(ch).or_default()
+            node.refs += 1;
+            node = node.ptr.entry(ch).or_default();
         }
+
+        node.refs += 1;
         node.word = Some(word);
     }
 
     pub fn take_word(&mut self) -> Option<String> {
         self.word.take()
+    }
+
+    pub fn decrement_refs(&mut self, times: usize) {
+        self.refs = self.refs.saturating_sub(times);
+    }
+
+    fn refs(&self) -> usize {
+        self.refs
     }
 }
 
@@ -540,7 +524,7 @@ pub fn find_words(mut board: Vec<Vec<char>>, mut words: Vec<String>) -> Vec<Stri
             if remaining == 0 {
                 break 'all;
             }
-            dfs(&mut board, &mut trie, &mut words, &mut remaining, r, c)
+            dfs(&mut board, &mut trie, &mut words, &mut remaining, r, c);
         }
     }
 
@@ -554,40 +538,52 @@ fn dfs(
     remaining: &mut usize,
     r: usize,
     c: usize,
-) {
+) -> usize {
     let ch = board[r][c] as u8;
     if ch == 0 || *remaining == 0 {
-        return;
+        return 0;
     }
 
     let trie = match trie.with_prefix(ch) {
-        None => return,
+        None => return 0,
         Some(trie) => trie,
     };
 
+    let mut found = 0;
     if let Some(word) = trie.take_word() {
         result.push(word);
+        found += 1;
 
         *remaining -= 1;
-        if *remaining == 0 {
-            return;
+
+        // we check for ref-count of 1 instead of 0,
+        // because we have not yet decremented the counter!
+        if *remaining == 0 || trie.refs() == 1 {
+            trie.decrement_refs(found);
+            return found;
         }
     }
 
     board[r][c] = 0 as char;
     if r > 0 {
-        dfs(board, trie, result, remaining, r - 1, c);
+        found += dfs(board, trie, result, remaining, r - 1, c);
     }
     if r < board.len() - 1 {
-        dfs(board, trie, result, remaining, r + 1, c);
+        found += dfs(board, trie, result, remaining, r + 1, c);
     }
     if c > 0 {
-        dfs(board, trie, result, remaining, r, c - 1);
+        found += dfs(board, trie, result, remaining, r, c - 1);
     }
     if c < board[r].len() - 1 {
-        dfs(board, trie, result, remaining, r, c + 1);
+        found += dfs(board, trie, result, remaining, r, c + 1);
     }
     board[r][c] = ch as char;
+
+    if found > 0 {
+        trie.decrement_refs(found);
+    }
+
+    found
 }
 ```
 
