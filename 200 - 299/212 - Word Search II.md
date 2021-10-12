@@ -430,12 +430,12 @@ struct Node {
 #### Reducing the number of searches by soft-removing the found words from the trie
 
 If we've found a word, then we can remove it from the trie in order to reduce the 
-number of DFSes - in othre words - if we know that the current trie branch will not 
+number of DFSes - in other words - if we know that the current trie branch will not 
 yield a result, then it's meaningless to traverse it.
 
 In order to accomplish that, we can introduce a `reference count` in each trie node.
 We have to increment that counter each time we add a word that contains the 
-corresponding leter at that position and decrement it when we reomve a word containing
+corresponding leter at that position and decrement it when we remove a word containing
 that character.
 
 If the reference count is zero, then we treat that node as if it didn't exist.
