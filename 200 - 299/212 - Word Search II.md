@@ -440,6 +440,8 @@ that character.
 
 If the reference count is zero, then we treat that node as if it didn't exist.
 
+That `reference count` will also liminate the need for the global `remaining` counter.
+
 * Time: 8ms
 * Memory: 2.1MB
 
@@ -447,11 +449,59 @@ If the reference count is zero, then we treat that node as if it didn't exist.
 ### Final Source Code
 
 ```rust
+use std::collections::HashMap;
+use std::hash::{BuildHasher, Hasher};
+use std::marker::PhantomData;
+use std::ops::Not;
+
+pub struct FnvHasher(u64);
+
+impl Default for FnvHasher {
+    fn default() -> FnvHasher {
+        FnvHasher(0xcbf29ce484222325)
+    }
+}
+
+impl Hasher for FnvHasher {
+    fn finish(&self) -> u64 {
+        self.0
+    }
+
+    fn write(&mut self, bytes: &[u8]) {
+        let FnvHasher(mut hash) = *self;
+        for byte in bytes {
+            hash = hash ^ (*byte as u64);
+            hash = hash * 0x100000001b3;
+        }
+        *self = FnvHasher(hash);
+    }
+}
+
+pub struct HashBuilder<H> {
+    _phantom: PhantomData<H>,
+}
+
+impl<H: Hasher + Default> BuildHasher for HashBuilder<H> {
+    type Hasher = H;
+
+    fn build_hasher(&self) -> Self::Hasher {
+        H::default()
+    }
+}
+
+impl<H: Hasher + Default> Default for HashBuilder<H> {
+    fn default() -> Self {
+        HashBuilder {
+            _phantom: PhantomData,
+        }
+    }
+}
+
 #[derive(Default, Debug)]
 struct Node {
+    refs: usize,
     ptr: HashMap<u8, Node, HashBuilder<FnvHasher>>,
     word: Option<String>,
-    refs: usize,
 }
 
 impl Node {
@@ -515,16 +565,15 @@ pub fn find_words(mut board: Vec<Vec<char>>, mut words: Vec<String>) -> Vec<Stri
     });
 
     let mut trie = Node::new();
-    let mut remaining = words.len();
 
     words.drain(..).for_each(|w| trie.insert(w));
 
     'all: for r in (0..board.len()).rev() {
         for c in (0..board[r].len()).rev() {
-            if remaining == 0 {
+            if trie.refs == 0 {
                 break 'all;
             }
-            dfs(&mut board, &mut trie, &mut words, &mut remaining, r, c);
+            dfs(&mut board, &mut trie, &mut words, r, c);
         }
     }
 
@@ -535,12 +584,11 @@ fn dfs(
     board: &mut Vec<Vec<char>>,
     trie: &mut Node,
     result: &mut Vec<String>,
-    remaining: &mut usize,
     r: usize,
     c: usize,
 ) -> usize {
     let ch = board[r][c] as u8;
-    if ch == 0 || *remaining == 0 {
+    if ch == 0 || trie.refs() == 0 {
         return 0;
     }
 
@@ -552,36 +600,37 @@ fn dfs(
     let mut found = 0;
     if let Some(word) = trie.take_word() {
         result.push(word);
+        trie.decrement_refs(1);
         found += 1;
 
-        *remaining -= 1;
-
-        // we check for ref-count of 1 instead of 0,
-        // because we have not yet decremented the counter!
-        if *remaining == 0 || trie.refs() == 1 {
-            trie.decrement_refs(found);
+        if trie.refs() == 0 {
             return found;
         }
     }
 
     board[r][c] = 0 as char;
     if r > 0 {
-        found += dfs(board, trie, result, remaining, r - 1, c);
+        let words = dfs(board, trie, result, r - 1, c);
+        found += words;
+        // subtract the number of found words inside each IF, because this may eliminate some DFSes
+        trie.decrement_refs(words); 
     }
     if r < board.len() - 1 {
-        found += dfs(board, trie, result, remaining, r + 1, c);
+        let words = dfs(board, trie, result, r + 1, c);
+        found += words;
+        trie.decrement_refs(words);
     }
     if c > 0 {
-        found += dfs(board, trie, result, remaining, r, c - 1);
+        let words = dfs(board, trie, result, r, c - 1);
+        found += words;
+        trie.decrement_refs(words);
     }
     if c < board[r].len() - 1 {
-        found += dfs(board, trie, result, remaining, r, c + 1);
+        let words = dfs(board, trie, result, r, c + 1);
+        found += words;
+        trie.decrement_refs(words);
     }
     board[r][c] = ch as char;
-
-    if found > 0 {
-        trie.decrement_refs(found);
-    }
 
     found
 }
