@@ -15,7 +15,7 @@ in the form of an array
 
 #### Constraints
 
-* `2 <= nums.length <= 104`
+* `2 <= nums.length <= 10^4`
 * `1 <= nums[i] <= 10^4`
 
 #### Examples
