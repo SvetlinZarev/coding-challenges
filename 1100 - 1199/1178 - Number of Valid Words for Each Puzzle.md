@@ -176,7 +176,7 @@ fn dfs(mut node: &Node, first: u8, word: &[u8]) -> i32 {
 
 Given that the lowercase ASCII is only 26 characters, we can fit each
 word/puzzle in a `u32`. Then checking if the word starts with the first letter
-of the puzzle ot if the puzzle contains all letters of the words is as trivial
+of the puzzle or if the puzzle contains all letters of the words is as trivial
 as a bitwise AND
 
 #### Implementation
