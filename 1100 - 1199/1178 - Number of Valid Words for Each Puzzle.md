@@ -16,7 +16,7 @@ word list words that is valid with respect to the puzzle `puzzles[i]`.
 
 #### Constraints
 
-* `words[i]` an`d puzzles[i]` consist of lowercase English letters.
+* `words[i]` and `puzzles[i]` consist of lowercase English letters.
 * Each `puzzles[i]` does not contain repeated characters.
 * `puzzles[i].length == 7`
 * `1 <= puzzles.length <= 10^4`
