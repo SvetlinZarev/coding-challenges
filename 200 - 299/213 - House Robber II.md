@@ -97,4 +97,4 @@ fn rob_slice(nums: &[i32]) -> i32 {
 
 * [House Robber]
 
-[House Robber]: /100-%20-199/198%20-%20House%20Robber.md
+[House Robber]: /100%20-%20199/198%20-%20House%20Robber.md
