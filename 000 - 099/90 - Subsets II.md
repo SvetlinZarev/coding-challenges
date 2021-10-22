@@ -50,3 +50,6 @@ pub fn subsets_with_dup(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
     result.drain().collect()
 }
 ```
+
+## Related Problems
+* [78. Subsets](/000%20-%20099/78%20-%20Subsets.md)
