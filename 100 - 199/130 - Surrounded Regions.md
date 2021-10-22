@@ -96,4 +96,4 @@ fn mark_connected_cells(board: &mut Vec<Vec<char>>, r: usize, c: usize) {
 
 ## Related problems
 
-* [200. Number of Islands](/200%20-%20-299/200%20-%20Number%20of%20Islands.md)
+* [200. Number of Islands](/200%20-%20299/200%20-%20Number%20of%20Islands.md)
