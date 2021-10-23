@@ -162,3 +162,10 @@ pub fn num_islands(mut grid: Vec<Vec<char>>) -> i32 {
     islands
 }
 ```
+
+
+## Related problems
+
+* [130. Surrounded Regions](/100%20-%20199/130%20-%20Surrounded%20Regions.md)
+* [1020. Number of Enclaves](/1000%20-%201099/1020%20-%20Number%20of%20Enclaves.md)
+* [1254. Number of Closed Islands](/1200%20-%201299/1254%20-%20Number%20of%20Closed%20Islands.md)
