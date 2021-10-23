@@ -95,3 +95,5 @@ fn mark_connected_cells(grid: &mut Vec<Vec<i32>>, r: usize, c: usize) {
 ## Related Problems
 
 * [130. Surrounded Regions](/100%20-%20199/130%20-%20Surrounded%20Regions.md)
+* [200. Number of Islands](/200%20-%20299/200%20-%20Number%20of%20Islands.md)
+* [1254. Number of Closed Islands](/1200%20-%201299/1254%20-%20Number%20of%20Closed%20Islands.md)

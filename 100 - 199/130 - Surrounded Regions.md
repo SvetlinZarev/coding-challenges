@@ -98,3 +98,4 @@ fn mark_connected_cells(board: &mut Vec<Vec<char>>, r: usize, c: usize) {
 
 * [200. Number of Islands](/200%20-%20299/200%20-%20Number%20of%20Islands.md)
 * [1020. Number of Enclaves](/1000%20-%201099/1020%20-%20Number%20of%20Enclaves.md)
+* [1254. Number of Closed Islands](/1200%20-%201299/1254%20-%20Number%20of%20Closed%20Islands.md)
