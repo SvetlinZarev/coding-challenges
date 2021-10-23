@@ -63,9 +63,9 @@ pub fn num_enclaves(mut grid: Vec<Vec<i32>>) -> i32 {
     }
 
     grid.iter()
-        .skip(1)
-        .take(grid.len() - 2)
-        .flat_map(|i| i.iter().skip(1).take(i.len() - 2))
+        .skip(1)// skip first row
+        .take(grid.len().saturating_sub(2)) // skip last row
+        .flat_map(|i| i.iter().skip(1).take(i.len().saturating_sub(2)))
         .filter(|&&x| x == LAND)
         .count() as i32
 }
