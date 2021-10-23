@@ -94,4 +94,4 @@ fn mark_connected_cells(grid: &mut Vec<Vec<i32>>, r: usize, c: usize) {
 
 ## Related Problems
 
-* [130. Surrounded Regions](/100%20-%20199/130%20-%20Surrounded Regions.md)
+* [130. Surrounded Regions](/100%20-%20199/130%20-%20Surrounded%20Regions.md)
