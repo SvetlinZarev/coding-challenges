@@ -84,3 +84,30 @@ pub fn min_path_sum(mut grid: Vec<Vec<i32>>) -> i32 {
     grid[grid.len() - 1][grid[0].len() - 1]
 }
 ```
+
+And we can remove the `if`-checks
+
+```rust
+pub fn min_path_sum(mut grid: Vec<Vec<i32>>) -> i32 {
+    // The first row is special, because it does not have
+    // upper cells, so we can skip the checks for that
+    for c in 1..grid[0].len() {
+        grid[0][c] += grid[0][c - 1];
+    }
+
+    // The first column is special , because it does not have
+    // cells to the left, so we can skip those checks
+    for r in 1..grid.len() {
+        grid[r][0] += grid[r - 1][0];
+    }
+
+    // handle the rest
+    for r in 1..grid.len() {
+        for c in 1..grid[r].len() {
+            grid[r][c] += grid[r - 1][c].min(grid[r][c - 1]);
+        }
+    }
+
+    grid[grid.len() - 1][grid[0].len() - 1]
+}
+```
