@@ -218,3 +218,6 @@ pub fn largest_rectangle_area(heights: Vec<i32>) -> i32 {
     max_area
 }
 ```
+
+## Related Problems
+* [85. Maximal Rectangle](85%20-%20Maximal%20Rectangle.md)
