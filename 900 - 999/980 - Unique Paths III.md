@@ -107,3 +107,8 @@ fn dfs(grid: &mut Vec<Vec<i32>>, paths: &mut i32, r: usize, c: usize, cells: usi
     grid[r][c] = current;
 }
 ```
+
+## Related Problems
+
+* [62. Unique Paths](/000%20-%20099/62%20-%20Unique%20Paths.md)
+* [63. Unique Paths II](/000%20-%20099/63%20-%20Unique%20Paths%20II.md)

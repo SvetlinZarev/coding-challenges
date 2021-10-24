@@ -58,3 +58,8 @@ pub fn unique_paths(m: i32, n: i32) -> i32 {
     grid[(m - 1) as usize][(n - 1) as usize]
 }
 ```
+
+## Related problems
+
+* [63. Unique Paths II](/000%20-%20099/63%20-%20Unique%20Paths%20II.md)
+* [980. Unique Paths III](/900%20-%20999/980%20-%20Unique%20Paths%20III.md)
