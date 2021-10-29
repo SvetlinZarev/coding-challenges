@@ -161,5 +161,6 @@ pub fn largest_rectangle_area(
 ## Related Problems
 
 * [84. Largest Rectangle in Histogram]
+* [221. Maximal Square](/200%20-%20299/221%20-%20Maximal%20Square.md)
 
 [84. Largest Rectangle in Histogram]: 84%20-%20Largest%20Rectangle%20in%20Histogram.md

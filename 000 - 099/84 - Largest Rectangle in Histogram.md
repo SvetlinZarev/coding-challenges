@@ -221,3 +221,4 @@ pub fn largest_rectangle_area(heights: Vec<i32>) -> i32 {
 
 ## Related Problems
 * [85. Maximal Rectangle](85%20-%20Maximal%20Rectangle.md)
+* [221. Maximal Square](/200%20-%20299/221%20-%20Maximal%20Square.md)
