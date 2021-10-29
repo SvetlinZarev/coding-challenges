@@ -43,3 +43,6 @@ pub fn max_sub_array(nums: Vec<i32>) -> i32 {
     best
 }
 ```
+
+## Related problems
+* [1749. Maximum Absolute Sum of Any Subarray](/1700%20-%201799/1749%20-%20Maximum%20Absolute%20Sum%20of%20Any%20Subarray.md)
