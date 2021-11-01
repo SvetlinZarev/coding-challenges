@@ -124,3 +124,7 @@ pub fn oranges_rotting(mut grid: Vec<Vec<i32>>) -> i32 {
     }
 }
 ```
+
+## Similar Problems
+
+* [286. Walls and Gates](/200%20-%20299/286%20-%20Walls%20and%20Gates.md)
