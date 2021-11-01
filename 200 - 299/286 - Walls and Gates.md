@@ -71,6 +71,9 @@ class Solution {
 }
 ```
 
+## Similar Problems
+
+* [994. Rotting Oranges](/900%20-%20999/994%20-%20Rotting%20Oranges.md)
 
 ## Resources:
 * At LeetCode (premium): [286. Walls and Gates](https://leetcode.com/problems/walls-and-gates)
