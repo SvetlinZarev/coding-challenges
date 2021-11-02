@@ -50,3 +50,7 @@ pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
     result
 }
 ```
+
+## Related Problems
+
+* [119. Pascal's Triangle II](119%20-%20Pascal%27s%20Triangle%20II.md)
