@@ -132,6 +132,46 @@ fn largest_square(heights: &[i32], widths: &mut [usize], stack: &mut Vec<usize>)
 }
 ```
 
+### DP
+
+With this approach we try to find the maximum side of the square by checking the 
+left, top and top-left cells. If any of those are `0`, then the current side can
+be at most 1. If all of them are X, then we found a square with a side of `X+1`:
+
+
+```rust
+pub fn maximal_square(matrix: Vec<Vec<char>>) -> i32 {
+    let mut dp = vec![vec![0; matrix[0].len()]; matrix.len()];
+
+    let mut max = 0;
+    for r in 0..matrix.len() {
+        for c in 0..matrix[r].len() {
+            if matrix[r][c] == '1' {
+                let mut top = 0;
+                if r > 0 {
+                    top = dp[r - 1][c];
+                }
+
+                let mut left = 0;
+                if c > 0 {
+                    left = dp[r][c - 1];
+                }
+
+                let mut top_left = 0;
+                if r > 0 && c > 0 {
+                    top_left = dp[r - 1][c - 1];
+                }
+
+                dp[r][c] = top.min(left).min(top_left) + 1;
+                max = max.max(dp[r][c]);
+            }
+        }
+    }
+
+    max
+}
+```
+
 ## Related problems
 * [84. Largest Rectangle in Histogram]
 * [85. Maximal Rectangle]
