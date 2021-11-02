@@ -47,3 +47,7 @@ pub fn get_row(row_index: i32) -> Vec<i32> {
     solution
 }
 ```
+
+## Related Problems
+
+* [118. Pascal's Triangle](118%20-%20Pascal%27s%20Triangle.md)
