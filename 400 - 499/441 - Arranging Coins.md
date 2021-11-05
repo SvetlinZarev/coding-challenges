@@ -47,7 +47,7 @@ pub fn arrange_coins(mut n: i32) -> i32 {
 
 ### Binary Search
 
-If we mirror the staircse, we get a rectanle:
+If we mirror the staircase, we get a rectangle:
 
 ```text
 OOO
