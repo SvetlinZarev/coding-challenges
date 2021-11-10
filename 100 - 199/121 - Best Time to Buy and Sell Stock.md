@@ -41,3 +41,7 @@ pub fn max_profit(prices: Vec<i32>) -> i32 {
     max_profit
 }
 ```
+
+## Related problems
+
+* [122. Best Time to Buy and Sell Stock II](/100%20-%20199/122%20-%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.md)
