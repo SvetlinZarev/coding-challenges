@@ -68,3 +68,22 @@ pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<
     dummy
 }
 ```
+
+Or without `.unwrap()`:
+
+```rust
+pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+    let mut head = head;
+    let mut ptr = &mut head;
+
+    loop {
+        match ptr {
+            None => break,
+            Some(node) if node.val == val => *ptr = node.next.take(),
+            Some(node) => ptr = &mut node.next,
+        }
+    }
+
+    head
+}
+```
