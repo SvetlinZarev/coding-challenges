@@ -33,3 +33,7 @@ pub fn single_number(nums: Vec<i32>) -> i32 {
     x
 }
 ```
+
+## Related problems
+
+* [268. Missing Number](/200%20-%20299/268%20-%20Missing%20Number.md)
