@@ -161,3 +161,4 @@ pub fn merge_k_lists(mut lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNo
 
 * [264. Ugly Number II](/200%20-%20299/264%20-%20Ugly%20Number%20II.md)
 * [313. Super Ugly Number](/300%20-%20399/313%20-%20Super%20Ugly%20Number.md)
+* [668. Kth Smallest Number in Multiplication Table](/600%20-%20699/668%20-%20Kth%20Smallest%20Number%20in%20Multiplication%20Table.md)
