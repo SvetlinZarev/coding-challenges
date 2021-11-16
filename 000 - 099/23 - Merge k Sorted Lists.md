@@ -98,7 +98,7 @@ impl Eq for NodeCmp {
 }
 ```
 
-### Merge the lists oneby one
+### Merge the lists one by one
 
 * Time complexity : O(N*K) where `K` is the number of linked lists and `N` is
   the number of nodes in the final list
@@ -156,3 +156,7 @@ pub fn merge_k_lists(mut lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNo
 }
 
 ```
+
+## Related problems
+
+* [264. Ugly Number II](200%20-%20299/264%20-%20Ugly%20Number%20II.md)
