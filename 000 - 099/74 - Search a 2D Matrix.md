@@ -65,3 +65,7 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
     matrix[lo.saturating_sub(1)].binary_search(&target).is_ok()
 }
 ```
+
+## Related problems
+
+* [240. Search a 2D Matrix II](/200%20-%20299/240%20-%20Search%20a%202D%20Matrix II.md)
