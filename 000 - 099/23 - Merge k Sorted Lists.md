@@ -160,3 +160,4 @@ pub fn merge_k_lists(mut lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNo
 ## Related problems
 
 * [264. Ugly Number II](/200%20-%20299/264%20-%20Ugly%20Number%20II.md)
+* [313. Super Ugly Number](/300%20-%20399/313%20-%20Super%20Ugly%20Number.md)
