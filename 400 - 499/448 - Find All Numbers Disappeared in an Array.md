@@ -77,3 +77,30 @@ pub fn find_disappeared_numbers(mut nums: Vec<i32>) -> Vec<i32> {
     result
 }
 ```
+
+### MArking the found numbers in-place
+
+The idea is similar to the one using a boolean array.
+But instead of using an additional array we mark each
+present element by changing the sign of the number at 
+that index to be negative. Then the indexes thaat point 
+to positive numbers are the missing values
+
+```rust
+pub fn find_disappeared_numbers(mut nums: Vec<i32>) -> Vec<i32> {
+    for idx in 0..nums.len() {
+        // if `number - 1` is present, mark that index location to be negative
+        let pos = (nums[idx].abs() - 1) as usize;
+        nums[pos] = -nums[pos].abs();
+    }
+
+    nums.iter()
+        .enumerate()
+        // the positive numbers mark the missing numbers
+        .filter(|&(_, &val)| val > 0)
+        // the missing numbers can be found by addin 1 to the index
+        .map(|(idx, _)| (idx + 1) as i32)
+        .collect()
+}
+```
+
