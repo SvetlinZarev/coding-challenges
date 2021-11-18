@@ -78,7 +78,7 @@ pub fn find_disappeared_numbers(mut nums: Vec<i32>) -> Vec<i32> {
 }
 ```
 
-### MArking the found numbers in-place
+### Marking the found numbers in-place
 
 The idea is similar to the one using a boolean array.
 But instead of using an additional array we mark each
