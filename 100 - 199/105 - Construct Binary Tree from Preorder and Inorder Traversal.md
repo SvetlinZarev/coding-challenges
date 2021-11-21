@@ -136,3 +136,7 @@ fn subtree(
     Some(Rc::new(RefCell::new(node)))
 }
 ```
+
+## Related Problems
+
+* [106. Construct Binary Tree from Inorder and Postorder Traversal](106%20-%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.md)
