@@ -72,7 +72,15 @@ pub fn delete_node(root: Option<Rc<RefCell<TreeNode>>>, key: i32) -> Option<Rc<R
                     };
                 }
 
-                // We have two children
+                // We have two children:
+                //
+                // The node has 2 children - In this case, in order to conserve the 
+                // BST properties, we need to replace the node with it's inorder 
+                // successor (The next node that comes in the inorder traversal) i.e; 
+                // we need to replace it with either :
+                //    1. The greatest value node in it's left subtree (or)
+                //    2. The smallest value node in it's right subtree
+                //    and return the root.
                 let mut temp = node.left.clone().unwrap();
                 loop {
                     let borrowed = temp.borrow();
