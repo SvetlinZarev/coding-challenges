@@ -98,3 +98,7 @@ pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
     solution
 }
 ```
+
+## Related Problems
+
+* [567. Permutation in String](500%20-%20599/567%20-%20Permutation%20in%20String.md)
