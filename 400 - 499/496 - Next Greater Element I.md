@@ -134,3 +134,7 @@ pub fn next_greater_element(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
     result
 }
 ```
+
+## Related problems
+
+* [503. Next Greater Element II](/500%20-%20599/503%20-%20Next%20Greater%20Element%20II.md)
