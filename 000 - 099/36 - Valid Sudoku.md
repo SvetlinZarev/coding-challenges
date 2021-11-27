@@ -107,3 +107,7 @@ pub fn is_valid_sudoku(board: Vec<Vec<char>>) -> bool {
     true
 }
 ```
+
+## Related problems
+
+*[37. Sudoku Solver](37%20-%20Sudoku%20Solver.md)
