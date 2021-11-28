@@ -86,3 +86,7 @@ fn backtrack(nums: &[i32], result: &mut Vec<Vec<i32>>, combination: &mut Vec<i32
         });
 }
 ```
+
+## Related Problems
+
+* [40. Combination Sum II](40%20-%20Combination%20Sum%20II.md)
