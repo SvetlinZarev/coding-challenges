@@ -126,3 +126,36 @@ fn match_sub_tree(a: &Rc<RefCell<TreeNode>>, b: &Rc<RefCell<TreeNode>>) -> bool 
     true
 }
 ```
+
+### Taking advantage of `#(derive(Eq))`
+
+The tree nodes have an `Eq` implementation, so instead of doing the DFS
+ourselves, we can take advantage of `Eq`:
+
+```rust
+
+pub fn is_subtree(
+    root: Option<Rc<RefCell<TreeNode>>>,
+    sub_root: Option<Rc<RefCell<TreeNode>>>,
+) -> bool {
+    helper(&root, &sub_root)
+}
+
+fn helper(root: &Option<Rc<RefCell<TreeNode>>>, sub_root: &Option<Rc<RefCell<TreeNode>>>) -> bool {
+    // Take advantage of the `Eq` derive
+    if root == sub_root {
+        return true;
+    }
+
+    if root.is_none() {
+        return false;
+    }
+
+    return match root.as_ref() {
+        None => false,
+        Some(inner) => {
+            helper(&inner.borrow().left, sub_root) || helper(&inner.borrow().right, sub_root)
+        }
+    };
+}
+```
