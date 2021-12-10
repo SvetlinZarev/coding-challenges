@@ -4,6 +4,12 @@
 
 Given a string `S`, find the length of the longest substring `T` that contains at most `k` distinct characters.
 
+
+#### Constraints
+
+* `S` contains only lowercase ASCII (`a` - `z`)
+* `k` >= 1
+
 #### Examples
 
 ```text
@@ -25,7 +31,7 @@ const ASCII_CHARACTERS: usize = (b'z' - b'a' + 1) as usize;
 
 fn length_of_longest_substring_k_distinct<S: AsRef<str>>(s: S, k: u32) -> usize {
     let s = s.as_ref().as_bytes();
-    if s.is_empty() {
+    if s.is_empty() || k == 0{
         return 0;
     }
 
