@@ -36,39 +36,42 @@ The substring with start index = 2 is "ab", which is an anagram of "ab".
 
 ```rust
 pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
+    // As we are working with ASCII lets use byte arrays so we can benefit from direct indexing
     let s = s.as_bytes();
     let p = p.as_bytes();
 
-    // number of distinct characters in `p`
+    // Count the number of unique characters in P
+    // Find the count (frequency) of each charcter in P
     let mut chars = 0;
-    
-    // frequency of the characters in `p`
     let mut f = [0; (b'z' - b'a' + 1) as usize];
-    for ch in p.iter().copied().map(|b| (b - b'a') as usize) {
+    for ch in p.iter().copied().map(|b| (b - b'a') as usize) { // map ASCII to 0-based numbers
         if f[ch] == 0 {
             chars += 1;
         }
         f[ch] += 1;
     }
 
+    // The two pointers that form our sliding window
     let mut from = 0;
     let mut to = 0;
-    
-    // how many of the distinct characters in `p` can be found
-    // in the window [from; to] of `s`
+
+    // Track how many times we've reached the expected frequency of the unique characters within the sliding window
     let mut matched = 0;
-    
-    // the frequency of the characters in the window [from; to]
+
+    // Track the frequency of each character within the sliding window
     let mut state = [0; (b'z' - b'a' + 1) as usize];
 
+    // Self explanatory ;)
     let mut solution = vec![];
 
+    // Expand the end of the sliding window until we've processed all characters in S
     while to < s.len() {
         let ch = (s[to] - b'a') as usize;
         to += 1;
 
-        // if the window contains a character that is no present
-        // in `p` then skip the current window and reset the counters
+        // If this character is not found in P, then move the begining of the sliding window
+        // to the next character, because there are no anagrams in it. And because the length of
+        //the sliding window becomes 0 we have to reset all counters
         if f[ch] == 0 {
             from = to;
             matched = 0;
@@ -76,20 +79,32 @@ pub fn find_anagrams(s: String, p: String) -> Vec<i32> {
             continue;
         }
 
+        // Increment the frequency of the current character
         state[ch] += 1;
+
+        // If we reached the expected frequency, then increase the "matched" counter
+        // If we've encountered this character too many times, then shrink the sliding window
+        // by moving its start towards its end untill the frequency of the current char becomes 
+        // equal to the expected frequency
         if f[ch] == state[ch] {
             matched += 1;
         } else {
             while f[ch] < state[ch] {
                 let fch = (s[from] - b'a') as usize;
+
+                // By shrinking the window, we may decrease the frequency of some other characters, so 
+                // we have to make sure that we decrease the "matched" counter if needed
                 if state[fch] == f[fch] {
                     matched -= 1;
                 }
+
                 state[fch] -= 1;
                 from += 1;
             }
         }
 
+        // if the sliding window contains the correct frequencies of all characters in P, 
+        // then add its start to solutions vector
         if matched == chars {
             solution.push(from as i32);
         }
