@@ -46,17 +46,18 @@ pub fn min_eating_speed(piles: Vec<i32>, h: i32) -> i32 {
     let mut lo = 1;
     let mut hi = piles.iter().copied().max().unwrap();
 
-    while lo <= hi {
+    while lo < hi {
         let speed = (hi - lo) / 2 + lo;
         if possible(&piles, speed, h) {
-            hi = speed - 1;
+            // now `hi` contains the slowest acceptable speed so far
+            hi = speed;
         } else {
             // we failed to eat all bananas, => we need to eat faster
             lo = speed + 1;
         }
     }
 
-    lo
+    hi
 }
 
 fn possible(piles: &[i32], speed: i32, limit: i32) -> bool {
