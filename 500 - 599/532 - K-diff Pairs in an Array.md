@@ -42,6 +42,8 @@ Explanation: There is one 0-diff pair in the array, (1, 1).
 
 ## Solution
 
+### O(n) solution with HashMap
+
 ```rust
 use std::collections::HashMap;
 
@@ -68,6 +70,56 @@ pub fn find_pairs(nums: Vec<i32>, k: i32) -> i32 {
             }
         }
     });
+
+    count
+}
+```
+
+### O(n log n) solution using sorting (similar to 2-sum)
+
+```rust
+use std::cmp::Ordering;
+
+pub fn find_pairs(mut nums: Vec<i32>, k: i32) -> i32 {
+    if nums.len() < 2 {
+        return 0;
+    }
+    nums.sort_unstable();
+
+    let mut count = 0;
+    let mut a = 0;
+    let mut b = 1;
+
+    while b < nums.len() && a < b {
+        match (nums[b] - nums[a]).cmp(&k) {
+            Ordering::Equal => {
+                count += 1;
+
+                let prev = nums[a];
+                while nums[a] == prev && a < b {
+                    a += 1;
+                }
+
+                let mut prev = nums[b];
+                while b < nums.len() && nums[b] == prev {
+                    b += 1;
+                }
+            }
+
+            Ordering::Less => {
+                b += 1;
+            }
+
+            Ordering::Greater => {
+                if a + 1 < b {
+                    a += 1;
+                } else {
+                    a += 1;
+                    b += 1;
+                }
+            }
+        }
+    }
 
     count
 }
