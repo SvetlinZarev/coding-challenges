@@ -106,3 +106,7 @@ pub fn find_maximum_xor(nums: Vec<i32>) -> i32 {
     best
 }
 ```
+
+## Related Problems
+
+* [1707. Maximum XOR With an Element From Array](/1707%20-%201799/1707%20-%20Maximum%20XOR%20With%20an%20Element%20From%20Array.md)
