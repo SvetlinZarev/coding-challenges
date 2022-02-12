@@ -69,6 +69,10 @@ pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<St
         }
     }
 
+    if !contains_end_word {
+        return NO_PATH_FOUND;
+    }
+
     if !contains_begin_word {
         word_list.push(begin_word);
         let last_element_idx = word_list.len() - 1;
@@ -90,7 +94,7 @@ pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<St
     let mut visited = vec![false; word_list.len()];
     let mut queue = VecDeque::new();
     // dist=1, because we count the words, not the transitions:
-    // "cat" -> "bat" => 2, words, 1, transitions
+    // "cat" -> "bat" => 2 words, 1 transition
     queue.push_back((START_WORD_IDX, 1));
 
     while let Some((idx, dist)) = queue.pop_front() {
