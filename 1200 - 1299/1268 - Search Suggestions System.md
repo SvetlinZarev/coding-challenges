@@ -50,6 +50,28 @@ Output: [["baggage","bags","banner"],["baggage","bags","banner"],["baggage","bag
 
 ## Solutions
 
+### Naive solution
+
+```rust
+pub fn suggested_products(mut products: Vec<String>, search_word: String) -> Vec<Vec<String>> {
+    products.sort_unstable();
+
+    let mut suggestions = Vec::with_capacity(search_word.len());
+    for prefix_len in 1..=search_word.len() {
+        let (prefix, _) = search_word.split_at(prefix_len);
+
+        let suggestion = products
+            .iter()
+            .filter(|&w| w.starts_with(prefix))
+            .take(3)
+            .map(|w| w.clone())
+            .collect();
+        suggestions.push(suggestion);
+    }
+    suggestions
+}
+```
+
 ### Using binary search
 
 ```rust
