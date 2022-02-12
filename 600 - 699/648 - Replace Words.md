@@ -122,13 +122,8 @@ impl<'l> Node<'l> {
             remainng = &remainng[1..];
 
             match node.values.entry(ch) {
-                Entry::Occupied(e) => {
-                    node = e.into_mut();
-                }
-
-                Entry::Vacant(e) => {
-                    node = e.insert(Node::default());
-                }
+                Entry::Occupied(e) => node = e.into_mut(),
+                Entry::Vacant(e) => node = e.insert(Node::default()),
             }
         }
 
@@ -141,12 +136,9 @@ impl<'l> Node<'l> {
 
         while current.root.is_none() && !word.is_empty() {
             let ch = word[0];
-            word = &word[1..];
 
-            match current.values.get(&ch) {
-                None => return None,
-                Some(next) => current = next,
-            }
+            word = &word[1..];
+            current = current.values.get(&ch)?;
         }
 
         current.root.clone()
