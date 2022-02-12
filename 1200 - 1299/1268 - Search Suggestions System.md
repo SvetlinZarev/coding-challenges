@@ -58,11 +58,9 @@ pub fn suggested_products(mut products: Vec<String>, search_word: String) -> Vec
 
     let mut suggestions = Vec::with_capacity(search_word.len());
     for prefix_len in 1..=search_word.len() {
-        let (prefix, _) = search_word.split_at(prefix_len);
-
         let suggestion = products
             .iter()
-            .filter(|&w| w.starts_with(prefix))
+            .filter(|&w| w.starts_with(&search_word[..prefix_len]))
             .take(3)
             .map(|w| w.clone())
             .collect();
@@ -82,7 +80,7 @@ pub fn suggested_products(mut products: Vec<String>, search_word: String) -> Vec
 
     let mut suggestions = Vec::with_capacity(search_word.len());
     for prefix_len in 1..=search_word.len() {
-        let (prefix, _) = search_word.split_at(prefix_len);
+        let prefix = &search_word[..prefix_len];
 
         let mut lo = 0;
         let mut hi = products.len() - 1;
@@ -217,7 +215,7 @@ pub fn suggested_products(products: Vec<String>, search_word: String) -> Vec<Vec
 
     let mut suggestions = vec![];
     for prefix_len in 1..=search_word.len() {
-        let (prefix, _) = search_word.split_at(prefix_len);
+        let prefix = &search_word[..prefix_len];
         let words = trie.with_prefix(prefix, 3);
         suggestions.push(words);
     }
