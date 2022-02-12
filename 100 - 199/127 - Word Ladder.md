@@ -136,3 +136,7 @@ fn is_adjacent(a: &str, b: &str) -> bool {
     diffs == 1
 }
 ```
+
+## Related problems
+
+* [433. Minimum Genetic Mutation](/400%20-%20499/433%20-%20Minimum%20Genetic%20Mutation.md)
