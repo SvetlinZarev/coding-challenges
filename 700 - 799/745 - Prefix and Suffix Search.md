@@ -144,3 +144,96 @@ impl WordFilter {
     }
 }
 ```
+
+### Trie of suffix-wrapped words
+
+```rust
+use std::collections::HashMap;
+use std::num::NonZeroUsize;
+
+const NO_SUCH_WORD: i32 = -1;
+
+#[derive(Default)]
+struct Node {
+    values: HashMap<u8, Node>,
+    index: Option<NonZeroUsize>,
+}
+
+impl Node {
+    pub fn insert(&mut self, word: &str, index: Option<usize>) -> &mut Node {
+        let mut node = self;
+        for &ch in word.as_bytes() {
+            node = node.values.entry(ch).or_default();
+        }
+
+        if let Some(index) = index {
+            node.index = NonZeroUsize::new(index + 1);
+        }
+
+        node
+    }
+
+    pub fn find(&self, term: &str) -> Option<&Node> {
+        let mut node = self;
+        for ch in term.as_bytes() {
+            node = node.values.get(ch)?;
+        }
+        Some(node)
+    }
+
+    pub fn collect(&self) -> Vec<usize> {
+        let mut result = vec![];
+        collect(self, &mut result);
+        result
+    }
+}
+
+fn collect(node: &Node, dst: &mut Vec<usize>) {
+    if let Some(idx) = node.index.clone() {
+        dst.push(idx.get() - 1);
+    }
+
+    for next in node.values.values() {
+        collect(next, dst);
+    }
+}
+
+struct WordFilter {
+    trie: Node,
+}
+
+impl WordFilter {
+    fn new(words: Vec<String>) -> Self {
+        let mut trie = Node::default();
+
+        for (idx, word) in words.into_iter().enumerate() {
+            for sfx_len in 1..=word.len() {
+                let suffix = &word[word.len() - sfx_len..];
+                let mut next = trie.insert(suffix, None);
+                next = next.insert("#", None);
+                next.insert(&word, Some(idx));
+            }
+        }
+
+        Self { trie }
+    }
+
+    fn f(&self, prefix: String, suffix: String) -> i32 {
+        if let Some(node) = self.trie.find(&suffix) {
+            if let Some(node) = node.find("#") {
+                if let Some(node) = node.find(&prefix) {
+                    return node
+                        .collect()
+                        .iter()
+                        .copied()
+                        .map(|x| x as i32)
+                        .max()
+                        .unwrap_or(NO_SUCH_WORD);
+                }
+            }
+        }
+
+        NO_SUCH_WORD
+    }
+}
+```
