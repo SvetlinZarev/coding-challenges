@@ -104,3 +104,7 @@ impl Node {
     }
 }
 ```
+
+## Related Problems
+
+* [745. Prefix and Suffix Search](/700%20-%20799/745%20-%20Prefix%20and%20Suffix%20Search.md)

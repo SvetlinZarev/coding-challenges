@@ -237,3 +237,7 @@ impl WordFilter {
     }
 }
 ```
+
+## Related Problems
+
+* [211. Design Add and Search Words Data Structure](/200%20-%20299/211%20-%20Design%20Add%20and%20Search%20Words%20Data%20Structure.md)
