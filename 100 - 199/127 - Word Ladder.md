@@ -139,4 +139,5 @@ fn is_adjacent(a: &str, b: &str) -> bool {
 
 ## Related problems
 
+* [126. Word Ladder II](/100%20-%20199/126%20-%20Word%20Ladder%20II.md)
 * [433. Minimum Genetic Mutation](/400%20-%20499/433%20-%20Minimum%20Genetic%20Mutation.md)
