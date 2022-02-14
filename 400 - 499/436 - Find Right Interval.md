@@ -74,6 +74,7 @@ pub fn find_right_interval(intervals: Vec<Vec<i32>>) -> Vec<i32> {
 ```
 
 Or with a fewer lines of code:
+
 ```rust
 pub fn find_right_interval(intervals: Vec<Vec<i32>>) -> Vec<i32> {
     let mut intervals = intervals.into_iter().enumerate().collect::<Vec<_>>();
@@ -88,6 +89,29 @@ pub fn find_right_interval(intervals: Vec<Vec<i32>>) -> Vec<i32> {
 
         if idx < intervals.len() {
             solution[*sln] = intervals[idx].0 as i32;
+        }
+    }
+
+    solution
+}
+```
+
+### Using a BTreeMap
+
+```rust
+use std::collections::BTreeMap;
+
+pub fn find_right_interval(intervals: Vec<Vec<i32>>) -> Vec<i32> {
+    let mut solution = vec![-1; intervals.len()];
+    let mut map = BTreeMap::new();
+
+    for (idx, interval) in intervals.iter().enumerate() {
+        map.insert(interval[0], idx as i32);
+    }
+
+    for (idx, interval) in intervals.iter().enumerate() {
+        if let Some((_, &pos)) = map.range((interval[1]..)).next() {
+            solution[idx] = pos;
         }
     }
 
