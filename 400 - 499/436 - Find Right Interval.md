@@ -72,3 +72,25 @@ pub fn find_right_interval(intervals: Vec<Vec<i32>>) -> Vec<i32> {
     solution
 }
 ```
+
+Or with a fewer lines of code:
+```rust
+pub fn find_right_interval(intervals: Vec<Vec<i32>>) -> Vec<i32> {
+    let mut intervals = intervals.into_iter().enumerate().collect::<Vec<_>>();
+    intervals.sort_by(|(_, a), (_, b)| a[0].cmp(&b[0]));
+
+    let mut solution = vec![-1; intervals.len()];
+
+    for (sln, left) in intervals.iter() {
+        let idx = intervals
+            .binary_search_by(|(_, right)| right[0].cmp(&left[1]))
+            .unwrap_or_else(|e| e);
+
+        if idx < intervals.len() {
+            solution[*sln] = intervals[idx].0 as i32;
+        }
+    }
+
+    solution
+}
+```
