@@ -4,7 +4,7 @@
 
 Given the head of a linked list, rotate the list to the right by `k` places.
 
-![example](/100%20-%20199/resources/61/rotate1.jpg)
+![example](/000%20-%20099/resources/61/rotate1.jpg)
 
 #### Constraints
 
