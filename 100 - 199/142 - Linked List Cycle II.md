@@ -108,6 +108,18 @@ class Solution {
       the start of the cycle, that is the answer.
 
 ```java
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+
 class Solution {
     public ListNode detectCycle(ListNode head) {
         var fast = head;
