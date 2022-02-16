@@ -152,3 +152,4 @@ class Solution {
 ## Related Problems
 
 * [141. Linked List Cycle](/100%20-%20199/141%20-%20Linked%20List%20Cycle.md)
+* [287. Find the Duplicate Number](/200%20-%20299/287%20-%20Find%20the%20Duplicate%20Number.md)

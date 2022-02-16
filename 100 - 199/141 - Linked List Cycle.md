@@ -63,3 +63,4 @@ func hasCycle(head *ListNode) bool {
 ## Related Problems
 
 * [142. Linked List Cycle II](/100%20-%20199/142%20-%20Linked%20List%20Cycle%20II.md)
+* * [287. Find the Duplicate Number](/200%20-%20299/287%20-%20Find%20the%20Duplicate%20Number.md)
