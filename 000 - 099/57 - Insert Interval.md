@@ -37,22 +37,22 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 ## Solution
 
 ```rust
-pub fn insert(intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i32>> {
-    // This is the only interval, nothing to do
+pub fn insert(mut intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i32>> {
     if intervals.is_empty() {
+        // This is the only interval, nothing to do
         return vec![new_interval];
     }
 
-    // Find out the position where it must be inserted in order to 
+    // Find out the position where it must be inserted in order to
     // preserve the sorting by "start-i"
     let insert_pos = intervals
         .binary_search_by(|ivl| ivl[0].cmp(&new_interval[0]))
         .unwrap_or_else(|e| e);
 
     let mut sln = vec![];
-    
+
     // Move the elements that does not need to be merged/processed
-    sln.extend_from_slice(&intervals[..insert_pos]);
+    sln.extend(intervals.drain(..insert_pos));
 
     // Either push or merge the new interval with the last one
     if let Some(last) = sln.last_mut() {
@@ -66,7 +66,7 @@ pub fn insert(intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i32>>
     }
 
     // Either merge ot move the remaining intervals
-    for ivl in intervals.into_iter().skip(insert_pos) {
+    for ivl in intervals.into_iter() {
         let last = sln.len() - 1;
 
         if sln[last][1] >= ivl[0] {
