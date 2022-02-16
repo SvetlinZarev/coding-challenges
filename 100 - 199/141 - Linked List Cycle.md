@@ -59,3 +59,7 @@ func hasCycle(head *ListNode) bool {
     return false
 }
 ```
+
+## Related Problems
+
+* [142. Linked List Cycle II](/100%20-%20199/142%20-%20142%20-%20Linked%20List%20Cycle%20II.md)
