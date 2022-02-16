@@ -65,7 +65,7 @@ pub fn insert(mut intervals: Vec<Vec<i32>>, new_interval: Vec<i32>) -> Vec<Vec<i
         sln.push(new_interval);
     }
 
-    // Either merge ot move the remaining intervals
+    // Either merge or move the remaining intervals
     for ivl in intervals.into_iter() {
         let last = sln.len() - 1;
 
