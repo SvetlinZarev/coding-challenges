@@ -53,3 +53,8 @@ pub fn intersect(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
     result
 }
 ```
+
+
+## Related Problems
+
+* [349. Intersection of Two Arrays](349%20-%20Intersection%20of%20Two%20Arrays.md)
