@@ -105,7 +105,7 @@ pub fn minimum_deviation(nums: Vec<i32>) -> i32 {
 }
 ```
 
-### using BTreeMap
+### Using BTreeMap
 
 Currently, the features `first()`/`last()` (aka `min()`/`max()`) are unstable,
 so one has to use iterators + `remove()` which is slow.
