@@ -65,3 +65,29 @@ pub fn remove_covered_intervals(mut intervals: Vec<Vec<i32>>) -> i32 {
     count
 }
 ```
+
+The sorting step can be optimized, so we need to sort only once:
+
+```rust
+use std::cmp::Ordering;
+
+pub fn remove_covered_intervals(mut intervals: Vec<Vec<i32>>) -> i32 {
+    intervals.sort_unstable_by(|a, b| match a[0].cmp(&b[0]) {
+        Ordering::Less => Ordering::Less,
+        Ordering::Greater => Ordering::Greater,
+        Ordering::Equal => b[1].cmp(&a[1]),
+    });
+
+    let mut end = 0;
+    let mut count = 0;
+
+    for ivl in intervals.iter() {
+        if end < ivl[1] {
+            end = ivl[1];
+            count += 1;
+        }
+    }
+
+    count
+}
+```
