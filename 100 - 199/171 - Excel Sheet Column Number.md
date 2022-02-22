@@ -53,3 +53,7 @@ pub fn title_to_number(column_title: String) -> i32 {
     number
 }
 ```
+
+## Related Problems
+
+* [168. Excel Sheet Column Title](168%20-%20Excel%20Sheet%20Column%20Title.md)
