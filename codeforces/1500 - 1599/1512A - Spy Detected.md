@@ -1,4 +1,4 @@
-#[1512A - Spy Detected!](https://codeforces.com/problemset/problem/1512/A)
+# [1512A - Spy Detected!](https://codeforces.com/problemset/problem/1512/A)
 
 ## Problem
 
