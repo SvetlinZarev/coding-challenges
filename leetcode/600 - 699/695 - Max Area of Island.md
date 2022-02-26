@@ -35,7 +35,9 @@ Explanation: The answer is not 11, because the island must be connected 4-direct
 * `1 <= m, n <= 50`
 * `grid[i][j] is either 0 or 1`
 
-## Solution
+## Solutions
+
+### A bit complex solution
 
 ```rust
 use std::collections::VecDeque;
@@ -135,5 +137,57 @@ pub fn max_area_of_island(grid: Vec<Vec<i32>>) -> i32 {
 
 fn pos(r: usize, c: usize, side: usize) -> usize {
     r * side + c
+}
+```
+
+### A simplified solution:
+
+```rust
+const SEA: i32 = 0;
+const LAND: i32 = 1;
+
+pub fn max_area_of_island(mut grid: Vec<Vec<i32>>) -> i32 {
+    let mut max_area = 0;
+    for r in 0..grid.len() {
+        for c in 0..grid[r].len() {
+            if grid[r][c] == LAND {
+                max_area = max_area.max(mark_conneted(&mut grid, r, c));
+            }
+        }
+    }
+
+    max_area
+}
+
+fn mark_conneted(grid: &mut Vec<Vec<i32>>, r: usize, c: usize) -> i32 {
+    let mut stack = vec![];
+    stack.push((r, c));
+
+    let mut area = 0;
+    while let Some((r, c)) = stack.pop() {
+        if grid[r][c] != LAND {
+            continue;
+        }
+        grid[r][c] = SEA;
+        area += 1;
+
+        if r > 0 && grid[r - 1][c] == LAND {
+            stack.push((r - 1, c));
+        }
+
+        if c > 0 && grid[r][c - 1] == LAND {
+            stack.push((r, c - 1));
+        }
+
+        if c < grid[r].len() - 1 && grid[r][c + 1] == LAND {
+            stack.push((r, c + 1));
+        }
+
+        if r < grid.len() - 1 && grid[r + 1][c] == LAND {
+            stack.push((r + 1, c));
+        }
+    }
+
+    area
 }
 ```
