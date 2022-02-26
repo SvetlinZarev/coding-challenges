@@ -151,7 +151,7 @@ pub fn max_area_of_island(mut grid: Vec<Vec<i32>>) -> i32 {
     for r in 0..grid.len() {
         for c in 0..grid[r].len() {
             if grid[r][c] == LAND {
-                max_area = max_area.max(mark_conneted(&mut grid, r, c));
+                max_area = max_area.max(mark_connected(&mut grid, r, c));
             }
         }
     }
@@ -159,7 +159,7 @@ pub fn max_area_of_island(mut grid: Vec<Vec<i32>>) -> i32 {
     max_area
 }
 
-fn mark_conneted(grid: &mut Vec<Vec<i32>>, r: usize, c: usize) -> i32 {
+fn mark_connected(grid: &mut Vec<Vec<i32>>, r: usize, c: usize) -> i32 {
     let mut stack = vec![];
     stack.push((r, c));
 
