@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given an `m x n` 2D binary grid `grid` which represents a map of `1`s (land)
 and `0`s (water), return the number of islands.
 
@@ -9,7 +11,16 @@ An island is surrounded by water and is formed by connecting adjacent lands
 horizontally or vertically. You may assume all four edges of the grid are all
 surrounded by water.
 
-#### Examples
+
+### Constraints
+
+* `m == grid.length`
+* `n == grid[i].length`
+* `1 <= m, n <= 300`
+* `grid[i][j] is '0' or '1'`
+
+
+### Examples
 
 ```text
 Input: grid = [
@@ -30,13 +41,6 @@ Input: grid = [
 ]
 Output: 3
 ```
-
-#### Constraints
-
-* `m == grid.length`
-* `n == grid[i].length`
-* `1 <= m, n <= 300`
-* `grid[i][j] is '0' or '1'`
 
 ## Solutions
 
@@ -163,9 +167,58 @@ pub fn num_islands(mut grid: Vec<Vec<char>>) -> i32 {
 }
 ```
 
+### Simplified Solution
+
+```rust
+const SEA: char = '0';
+const LAND: char = '1';
+
+pub fn num_islands(mut grid: Vec<Vec<char>>) -> i32 {
+    let mut islands = 0;
+    for r in 0..grid.len() {
+        for c in 0..grid[r].len() {
+            if grid[r][c] == LAND {
+                islands += 1;
+                mark_connected(&mut grid, r, c);
+            }
+        }
+    }
+
+    islands
+}
+
+fn mark_connected(grid: &mut Vec<Vec<char>>, r: usize, c: usize) {
+    let mut stack = vec![];
+    stack.push((r, c));
+
+    while let Some((r, c)) = stack.pop() {
+        if grid[r][c] != LAND {
+            continue;
+        }
+        grid[r][c] = SEA;
+
+        if r > 0 && grid[r - 1][c] == LAND {
+            stack.push((r - 1, c));
+        }
+
+        if c > 0 && grid[r][c - 1] == LAND {
+            stack.push((r, c - 1));
+        }
+
+        if c < grid[r].len() - 1 && grid[r][c + 1] == LAND {
+            stack.push((r, c + 1));
+        }
+
+        if r < grid.len() - 1 && grid[r + 1][c] == LAND {
+            stack.push((r + 1, c));
+        }
+    }
+}
+```
 
 ## Related problems
 
 * [130. Surrounded Regions](/leetcode/100%20-%20199/130%20-%20Surrounded%20Regions.md)
+* [695. Max Area of Island](/leetcode/600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
 * [1020. Number of Enclaves](/leetcode/1000%20-%201099/1020%20-%20Number%20of%20Enclaves.md)
 * [1254. Number of Closed Islands](/leetcode/1200%20-%201299/1254%20-%20Number%20of%20Closed%20Islands.md)
