@@ -45,15 +45,7 @@ pub fn hammingWeight(n: u32) -> i32 {
 }
 ```
 
-### Process only the 1 bits
-
-This algorithm removes the last 1 bit and thus runs proportionally to the number
-of 1 bits set.
-
-**Intuition:** in order to set a bit to `1`, for instance `100`, one must have
-previously set all previous bits to `1` - `011`. Thus, when one subtracts one
-from an int such as `1100` he gets `1011`, and the bitwise AND will yield `1000`
-, i.e. we've just removed the least significant `1` bit
+Or just loop until there are no more ones:
 
 ```rust
 pub fn hammingWeight(n: u32) -> i32 {
@@ -67,3 +59,27 @@ pub fn hammingWeight(n: u32) -> i32 {
     bits as i32
 }
 ```
+
+### Process only the 1 bits
+
+This algorithm removes the last 1 bit and thus runs proportionally to the number
+of 1 bits set.
+
+**Intuition:** in order to set a bit to `1`, for instance `100`, one must have
+previously set all previous bits to `1` - i.e. -  `011`. Thus, when one
+subtracts one from an int such as `1100` he gets `1011`, and the bitwise AND
+will yield `1000` , i.e. we've just removed the least significant `1` bit:
+
+```rust
+    pub fn hammingWeight(n: u32) -> i32 {
+    let mut n = n;
+    let mut bits = 0;
+
+    while n > 0 {
+        n = n & (n - 1);
+        bits += 1;
+    }
+    bits as i32
+}
+```
+
