@@ -11,14 +11,12 @@ An island is surrounded by water and is formed by connecting adjacent lands
 horizontally or vertically. You may assume all four edges of the grid are all
 surrounded by water.
 
-
 ### Constraints
 
 * `m == grid.length`
 * `n == grid[i].length`
 * `1 <= m, n <= 300`
 * `grid[i][j] is '0' or '1'`
-
 
 ### Examples
 
@@ -222,3 +220,4 @@ fn mark_connected(grid: &mut Vec<Vec<char>>, r: usize, c: usize) {
 * [695. Max Area of Island](/leetcode/600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
 * [1020. Number of Enclaves](/leetcode/1000%20-%201099/1020%20-%20Number%20of%20Enclaves.md)
 * [1254. Number of Closed Islands](/leetcode/1200%20-%201299/1254%20-%20Number%20of%20Closed%20Islands.md)
+* [1905. Count Sub Islands](/leetcode/1900%20-%201999/1905%20-%20Count%20Sub%20Islands.md)
