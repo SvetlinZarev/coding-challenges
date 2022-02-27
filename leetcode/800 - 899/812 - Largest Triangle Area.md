@@ -75,3 +75,6 @@ fn area(a: f64, b: f64, c: f64) -> f64 {
 * [Heron's formula](https://en.wikipedia.org/wiki/Heron%27s_formula)
 * [Euclidean distance](https://en.wikipedia.org/wiki/Euclidean_distance)
 
+## Related Problems
+
+* [976. Largest Perimeter Triangle](/leetcode/900%20-%20999/976%20-%20Largest%20Perimeter%20Triangle.md)
