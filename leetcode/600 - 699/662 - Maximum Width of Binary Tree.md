@@ -86,7 +86,7 @@ pub fn width_of_binary_tree(root: Option<Rc<RefCell<TreeNode>>>) -> i32 {
     let mut width = 0;
 
     while !queue.is_empty() {
-        // SAFETY: we've already checked that there are element in the queue in the `while !queue.is_empty()` loop
+        // SAFETY: we've already checked that there are elements in the queue in the `while !queue.is_empty()` loop
         let leftmost_node = unsafe { queue.front().map(|x| x.1).unwrap_unchecked() };
         let rightmost_node = unsafe { queue.back().map(|x| x.1).unwrap_unchecked() };
         width = width.max(rightmost_node - leftmost_node + 1);
