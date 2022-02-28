@@ -250,6 +250,82 @@ fn is_adjacent(a: &str, b: &str) -> bool {
 }
 ```
 
+### Alternative (faster!) implementation of Bi-Directional BFS
+
+It turns out that building the graph by using an O(n^2) algorithm, as in the
+previous two implementations is very slow. For instance in a wordlist with 5000
+words it takes around 4s to build the graph and less than 500 microseconds to
+run the BFS. So this implementation exploits the fact that the ladder length is
+very short, thus it's pretty cheap to run `is_adjacent()` inside the hot loop.
+
+For example both previous implementations take around 150ms on LeetCode, while
+this one takes around 20ms, which is 7-8 times faster.
+
+```rust
+use std::collections::HashSet;
+
+pub fn ladder_length(begin_word: String, end_word: String, word_list: Vec<String>) -> i32 {
+    if word_list.iter().find(|&w| end_word.eq(w)).is_none() {
+        return 0;
+    }
+
+    let mut visited = HashSet::new();
+    let mut left = HashSet::new();
+    let mut right = HashSet::new();
+    let mut next = HashSet::new();
+
+    left.insert(begin_word.as_str());
+    right.insert(end_word.as_str());
+    visited.insert(begin_word.as_str());
+    visited.insert(end_word.as_str());
+
+    let mut len = 1;
+    while !left.is_empty() && !right.is_empty() {
+        if left.len() > right.len() {
+            std::mem::swap(&mut left, &mut right);
+        }
+
+        for w in left.drain() {
+            for n in word_list.iter().map(|s| s.as_str()) {
+                if is_adjacent(w, n) {
+                    if right.contains(n) {
+                        return len + 1;
+                    }
+
+                    if visited.insert(n) {
+                        next.insert(n);
+                    }
+                }
+            }
+        }
+
+        std::mem::swap(&mut left, &mut next);
+        len += 1;
+    }
+
+    0
+}
+
+fn is_adjacent(a: &str, b: &str) -> bool {
+    let a = a.as_bytes();
+    let b = b.as_bytes();
+    assert_eq!(a.len(), b.len());
+
+    let mut diffs = 0;
+    for idx in 0..a.len() {
+        if a[idx] != b[idx] {
+            diffs += 1;
+        }
+
+        if diffs > 1 {
+            break;
+        }
+    }
+
+    diffs == 1
+}
+```
+
 ## Related problems
 
 * [126. Word Ladder II](126%20-%20Word%20Ladder%20II.md)
