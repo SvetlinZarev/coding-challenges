@@ -140,6 +140,116 @@ fn is_adjacent(a: &str, b: &str) -> bool {
 }
 ```
 
+### Bidirectional search
+
+```rust
+use std::collections::HashSet;
+
+const NO_PATH_FOUND: i32 = 0;
+
+pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<String>) -> i32 {
+    let mut start = None;
+    let mut end = None;
+
+    // make sure that the word list contains the begin/end words
+    // then find their indexes
+    for (idx, word) in word_list.iter().enumerate() {
+        if begin_word.eq(word) {
+            start = Some(idx);
+        }
+
+        if end_word.eq(word) {
+            end = Some(idx);
+        }
+
+        if start.is_some() && end.is_some() {
+            break;
+        }
+    }
+
+    if end.is_none() {
+        return NO_PATH_FOUND;
+    }
+
+    if start.is_none() {
+        word_list.push(begin_word);
+        start = Some(word_list.len() - 1);
+    }
+
+    let start = start.unwrap();
+    let end = end.unwrap();
+
+    // Build the adjacency lists
+    let mut graph = vec![vec![]; word_list.len()];
+    for i in 0..word_list.len() {
+        for j in i + 1..word_list.len() {
+            if is_adjacent(&word_list[i], &word_list[j]) {
+                graph[i].push(j);
+                graph[j].push(i);
+            }
+        }
+    }
+
+    // Run a bidirectional BFS search
+    let mut visited = vec![false; word_list.len()];
+    visited[start] = true;
+    visited[end] = true;
+
+    let mut left = HashSet::new();
+    left.insert(start);
+
+    let mut right = HashSet::new();
+    right.insert(end);
+
+    let mut neighbours = HashSet::new();
+
+    let mut len = 1;
+    while !left.is_empty() && !right.is_empty() {
+        // make sure that "left" contains fewer elements
+        if left.len() > right.len() {
+            std::mem::swap(&mut left, &mut right);
+        }
+
+        for word in left.drain() {
+            for neighbour in graph[word].iter().copied() {
+                if right.contains(&neighbour) {
+                    return len + 1;
+                }
+
+                if !visited[neighbour] {
+                    visited[neighbour] = true;
+                    neighbours.insert(neighbour);
+                }
+            }
+        }
+
+        std::mem::swap(&mut left, &mut neighbours);
+        len += 1;
+    }
+
+    NO_PATH_FOUND
+}
+
+fn is_adjacent(a: &str, b: &str) -> bool {
+    let a = a.as_bytes();
+    let b = b.as_bytes();
+    assert_eq!(a.len(), b.len());
+
+    let mut diffs = 0;
+    for idx in 0..a.len() {
+        if a[idx] != b[idx] {
+            diffs += 1;
+        }
+
+        if diffs > 1 {
+            break;
+        }
+    }
+
+    diffs == 1
+}
+```
+
 ## Related problems
 
 * [126. Word Ladder II](126%20-%20Word%20Ladder%20II.md)
