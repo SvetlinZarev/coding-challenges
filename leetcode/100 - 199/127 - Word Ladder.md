@@ -47,37 +47,39 @@ Explanation: The endWord "cog" is not in wordList, therefore there is no valid t
 ```rust
 use std::collections::VecDeque;
 
-const START_WORD_IDX: usize = 0;
 const NO_PATH_FOUND: i32 = 0;
 
 pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<String>) -> i32 {
-    // Make sure that that the begin word is contained
-    // in the `word_list` and that it's the first element
-    let mut contains_begin_word = false;
-    let mut contains_end_word = false;
+    let mut start = None;
+    let mut end = None;
 
-    for idx in 0..word_list.len() {
-        if word_list[idx] == begin_word {
-            word_list.swap(START_WORD_IDX, idx);
-            contains_begin_word = true;
-        } else if word_list[idx] == end_word {
-            contains_end_word = true;
+    // make sure that the word list contains the begin/end words
+    // then find their indexes
+    for (idx, word) in word_list.iter().enumerate() {
+        if begin_word.eq(word) {
+            start = Some(idx);
         }
 
-        if contains_begin_word & contains_end_word {
+        if end_word.eq(word) {
+            end = Some(idx);
+        }
+
+        if start.is_some() && end.is_some() {
             break;
         }
     }
 
-    if !contains_end_word {
+    if end.is_none() {
         return NO_PATH_FOUND;
     }
 
-    if !contains_begin_word {
+    if start.is_none() {
         word_list.push(begin_word);
-        let last_element_idx = word_list.len() - 1;
-        word_list.swap(START_WORD_IDX, last_element_idx);
+        start = Some(word_list.len() - 1);
     }
+
+    let start = start.unwrap();
+    let end = end.unwrap();
 
     // Build the adjacency lists
     let mut graph = vec![vec![]; word_list.len()];
@@ -93,16 +95,17 @@ pub fn ladder_length(begin_word: String, end_word: String, mut word_list: Vec<St
     // Run a BFS search
     let mut visited = vec![false; word_list.len()];
     let mut queue = VecDeque::new();
+
     // dist=1, because we count the words, not the transitions:
     // "cat" -> "bat" => 2 words, 1 transition
-    queue.push_back((START_WORD_IDX, 1));
+    queue.push_back((start, 1));
 
     while let Some((idx, dist)) = queue.pop_front() {
         if visited[idx] {
             continue;
         }
 
-        if word_list[idx] == end_word {
+        if idx == end {
             return dist;
         }
 
