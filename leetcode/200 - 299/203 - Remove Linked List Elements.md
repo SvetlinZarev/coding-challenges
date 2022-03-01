@@ -2,19 +2,18 @@
 
 ## Problem
 
-Given the `head` of a linked list and an integer `val`, remove all
-the nodes of the linked list that has `Node.val == val`, and return
-the new `head`.
+### Description
 
+Given the `head` of a linked list and an integer `val`, remove all the nodes of
+the linked list that has `Node.val == val`, and return the new `head`.
 
-#### Constraints
+### Constraints
 
 * The number of nodes in the list is in the range `[0, 10^4]`
 * `1 <= Node.val <= 50`
 * `0 <= val <= 50`
 
-
-#### Examples
+### Examples
 
 ```text
 Input: head = [1,2,6,3,4,5,6], val = 6
@@ -31,7 +30,7 @@ Input: head = [7,7,7,7], val = 7
 Output: []
 ```
 
-## Solution
+## Solutions
 
 ```rust
 // Definition for singly-linked list.
@@ -50,8 +49,11 @@ Output: []
 //     }
 //   }
 // }
+```
 
+### Solution with the old compiler version @leetcode (rust 1.48)
 
+```rust
 pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
     let mut dummy = None;
     let mut tail = &mut dummy;
@@ -69,7 +71,26 @@ pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<
 }
 ```
 
-Or without `.unwrap()`:
+### Alternative version without unwrap (rust >= 1.53)
+
+```rust
+pub fn remove_elements(mut head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
+    let mut list = None;
+    let mut tail = &mut list;
+
+    while let Some(mut node) = head.take() {
+        head = node.next.take();
+
+        if node.val != val {
+            tail = &mut tail.insert(node).next;
+        }
+    }
+
+    list
+}
+```
+
+### Alternative implementation without `.unwrap()`:
 
 ```rust
 pub fn remove_elements(head: Option<Box<ListNode>>, val: i32) -> Option<Box<ListNode>> {
