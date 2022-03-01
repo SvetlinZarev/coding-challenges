@@ -103,3 +103,12 @@ fn mark(grid: &mut Vec<Vec<u8>>, heights: &Vec<Vec<i32>>, r: usize, c: usize, bi
     }
 }
 ```
+
+## Related Problems
+
+* [130. Surrounded Regions](/leetcode/100%20-%20199/130%20-%20Surrounded%20Regions.md)
+* [200. Number of Islands](/leetcode/200%20-%20299/200%20-%20Number%20of%20Islands.md)
+* [695. Max Area of Island](/leetcode/600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
+* [1020. Number of Enclaves](/leetcode/1000%20-%201099/1020%20-%20Number%20of%20Enclaves.md)
+* [1254. Number of Closed Islands](/leetcode/1200%20-%201299/1254%20-%20Number%20of%20Closed%20Islands.md)
+* [1905. Count Sub Islands](/leetcode/1900%20-%201999/1905%20-%20Count%20Sub%20Islands.md)
