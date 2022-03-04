@@ -99,6 +99,43 @@ Output: `0`
 
 Output: `3`
 
+## Utils
+
+### Board generator
+
+```rust
+use rand::Rng;
+// rand = "0.8.5"
+use std::collections::HashSet;
+use std::fs::File;
+use std::io::BufWriter;
+use std::io::Write;
+
+const CELLS: usize = 10_000;
+const ROWS: i32 = 10_000;
+const COLS: i32 = 10_000;
+
+fn main() {
+    let mut cells = HashSet::new();
+    let mut rand = rand::thread_rng();
+
+    cells.insert((1, 1));
+    while cells.len() < CELLS {
+        let r = rand.gen_range(1..=ROWS);
+        let c = rand.gen_range(1..=COLS);
+        cells.insert((r, c));
+    }
+
+    let file = File::create("board.txt").unwrap();
+    let mut out = BufWriter::new(file);
+
+    writeln!(out, "{} {} {}", ROWS, COLS, CELLS).unwrap();
+    for (r, c) in cells {
+        writeln!(out, "{} {}", r, c).unwrap();
+    }
+}
+```
+
 ## Solutions
 
 ### Dijkstra + HashSet (memory exceeded)
