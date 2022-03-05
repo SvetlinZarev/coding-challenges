@@ -104,36 +104,74 @@ Output: `3`
 ### Board generator
 
 ```rust
-use rand::Rng;
-// rand = "0.8.5"
 use std::collections::HashSet;
-use std::fs::File;
-use std::io::BufWriter;
 use std::io::Write;
 
-const CELLS: usize = 10_000;
-const ROWS: i32 = 10_000;
-const COLS: i32 = 10_000;
+use rand::Rng; // rand 0.8.5
+
+const CELLS: u16 = 1000;
+const ROWS: u16 = 1000;
+const COLS: u16 = 1000;
 
 fn main() {
-    let mut cells = HashSet::new();
+    let args = std::env::args().collect::<Vec<String>>();
+
+    let rows = args
+        .get(1)
+        .map(|x| x.parse::<u16>().unwrap())
+        .unwrap_or(ROWS);
+
+    let cols = args
+        .get(2)
+        .map(|x| x.parse::<u16>().unwrap())
+        .unwrap_or(COLS);
+
+    let cells = args
+        .get(3)
+        .map(|x| x.parse::<u16>().unwrap())
+        .unwrap_or(CELLS);
+
+    let mut grid = HashSet::new();
     let mut rand = rand::thread_rng();
 
-    cells.insert((1, 1));
-    while cells.len() < CELLS {
-        let r = rand.gen_range(1..=ROWS);
-        let c = rand.gen_range(1..=COLS);
-        cells.insert((r, c));
+    grid.insert((1, 1));
+    while grid.len() < cells as usize {
+        let r = rand.gen_range(1..=rows);
+        let c = rand.gen_range(1..=cols);
+        grid.insert((r, c));
     }
 
-    let file = File::create("board.txt").unwrap();
-    let mut out = BufWriter::new(file);
+    let out = std::io::stdout();
+    let mut out = out.lock();
 
-    writeln!(out, "{} {} {}", ROWS, COLS, CELLS).unwrap();
-    for (r, c) in cells {
+    writeln!(out, "{} {} {}", rows, cols, cells).unwrap();
+    for (r, c) in grid {
         writeln!(out, "{} {}", r, c).unwrap();
     }
 }
+```
+
+### Script to compare the two solutions
+
+```shell
+#!/bin/bash
+
+for i in {1..10}
+do
+   echo "Iteration $i"
+   INPUT=$(~/board 4 4 4)
+   FIRST=$(echo "${INPUT}" | ~/first)
+   SECOND=$(echo "${INPUT}" | ~/second)
+
+   if [[ $FIRST != $SECOND ]]; then
+     echo "First: $SECOND"
+     echo "Second: $FIRST"
+     echo "${INPUT}" > ~/dif-$i.txt
+   else
+     echo "Answer: $FIRST"
+   fi
+  echo "---"
+done
 ```
 
 ## Solutions
@@ -310,31 +348,29 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
-### Dijkstra + inline marking of visited nodes (time limit exceeded)
+### Dijkstra + virtual nodes
 
-Instead of a `HashSet` here we use each cell of the frid as a bitfield in which
-we store whether we have already visited it or not.
+Because of the memory & time constraints it's impractical to consider every
+single cell as a valid candidate. Instead, we consider only the "lit" cells.
+
+In order to be able to navigate between the lit cells, without traversing the "
+dark" cells, we assume that all cells located in neighbouring rows & columns
+within a distance of `+or-2 & +or-1` are connected with a cost of 1. All direct
+neighbours are connected with a cost of 0;
 
 ```rust
 use std::cmp::Ordering;
-use std::collections::BinaryHeap;
+use std::collections::{BinaryHeap, HashMap, HashSet};
 use std::error::Error;
 use std::io::BufRead;
 use std::io::Write;
+use std::ops::Add;
 
-const SHIFT_LAMP_VISITED: u32 = 1;
-const SHIFT_LIGHT_ROW: u32 = 2;
-const SHIFT_LIGHT_COL: u32 = 3;
+const VISITED: u8 = 0xFF;
+const LIGHT: u8 = 0x01;
 
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
-enum Light {
-    Off,
-    Col(u16),
-    Row(u16),
-}
-
-#[derive(Debug)]
-struct State(i16, u16, u16, Light);
+#[derive(Debug, Copy, Clone)]
+struct State(i16, u16, u16);
 
 impl PartialEq for State {
     fn eq(&self, other: &Self) -> bool {
@@ -357,21 +393,21 @@ impl Ord for State {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    let mut buffer = String::with_capacity(16);
+
     let stdin = std::io::stdin();
     let mut stdin = stdin.lock();
 
     let stdout = std::io::stdout();
     let mut stdout = stdout.lock();
 
-    let mut buffer = String::with_capacity(16);
-
     stdin.read_line(&mut buffer)?;
     let mut nmk = buffer.split_ascii_whitespace();
-    let n = nmk
+    let rows = nmk //n
         .next()
         .ok_or(format!("invalid input (n): {:?}", buffer))?
         .parse::<usize>()?;
-    let m = nmk
+    let cols = nmk //m
         .next()
         .ok_or(format!("invalid input (m): {:?}", buffer))?
         .parse::<usize>()?;
@@ -381,8 +417,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         .parse::<usize>()?;
     drop(nmk);
 
-    let mut grid = vec![vec![0u8; m]; n];
-    grid[0][0] = 1;
+    let mut grid = vec![vec![0u8; cols]; rows];
+    let mut vrow = HashMap::new();
+    let mut vcol = HashMap::new();
 
     buffer.clear();
     while stdin.read_line(&mut buffer)? > 0 {
@@ -397,103 +434,88 @@ fn main() -> Result<(), Box<dyn Error>> {
             .next()
             .ok_or("invalid input: missing row")?
             .parse::<usize>()?;
-        if r == 0 || r > n {
-            return Err(format!("invalid row: {}, N={}", r, n).into());
+        if r == 0 || r > rows {
+            return Err(format!("invalid row: {}, N={}", r, rows).into());
         }
 
         let c = rc
             .next()
             .ok_or("invalid input: missing col")?
             .parse::<usize>()?;
-        if c == 0 || c > m {
-            return Err(format!("invalid col: {}, M={}", c, m).into());
+        if c == 0 || c > cols {
+            return Err(format!("invalid col: {}, M={}", c, cols).into());
         }
 
         grid[r - 1][c - 1] = 1;
+        vrow.entry(r - 1).or_insert(HashSet::new()).insert(c - 1);
+        vcol.entry(c - 1).or_insert(HashSet::new()).insert(r - 1);
         buffer.clear();
     }
 
+    // add the target cell as a virtual node
+    vrow.entry(rows - 1).or_default().insert(cols - 1);
+    vcol.entry(cols - 1).or_default().insert(rows - 1);
+
     let mut answer = -1;
     let mut pq = BinaryHeap::new();
-    pq.push(State(0, 0, 0, Light::Off));
+    pq.push(State(0, 0, 0));
 
-    while let Some(State(cost, r, c, l)) = pq.pop() {
-        let ru = r as usize;
-        let cu = c as usize;
+    while let Some(State(cost, r, c)) = pq.pop() {
+        let row = r as usize;
+        let col = c as usize;
 
-        if grid[ru][cu] & 1 != 0 {
-            // we are on an always lit cell
-            if grid[ru][cu] & 1 << SHIFT_LAMP_VISITED != 0 {
-                continue;
-            }
-            grid[ru][cu] |= 1 << SHIFT_LAMP_VISITED;
-        } else {
-            match l {
-                Light::Off => unreachable!(),
-                Light::Col(_) => {
-                    if grid[ru][cu] & 1 << SHIFT_LIGHT_COL != 0 {
-                        continue;
-                    }
-                    grid[ru][cu] |= 1 << SHIFT_LIGHT_COL;
-                }
-                Light::Row(_) => {
-                    if grid[ru][cu] & 1 << SHIFT_LIGHT_ROW != 0 {
-                        continue;
-                    }
-                    grid[ru][cu] |= 1 << SHIFT_LIGHT_ROW;
-                }
-            }
-        }
-
-        if ru == n - 1 && cu == m - 1 {
+        if row == rows - 1 && col == cols - 1 {
             answer = cost;
             break;
         }
 
-        // above
-        if r > 0 {
-            if grid[ru - 1][cu] & 1 != 0 || l == Light::Col(c) || l == Light::Row(r - 1) {
-                pq.push(State(cost, r - 1, c, l));
-            } else {
-                if grid[ru][cu] & 1 != 0 {
-                    pq.push(State(cost + 1, r - 1, c, Light::Row(r - 1)));
-                    pq.push(State(cost + 1, r - 1, c, Light::Col(c)));
+        if grid[row][col] == VISITED {
+            continue;
+        }
+        grid[row][col] = VISITED;
+        if let Some(rx) = vrow.get_mut(&row) {
+            rx.remove(&col);
+        }
+        if let Some(cx) = vcol.get_mut(&col) {
+            cx.remove(&row);
+        }
+
+        // direct neighbours
+        if row > 0 && grid[row - 1][col] == LIGHT {
+            pq.push(State(cost, r - 1, c));
+        }
+        if col > 0 && grid[row][col - 1] == LIGHT {
+            pq.push(State(cost, r, c - 1));
+        }
+        if col < cols - 1 && grid[row][col + 1] == LIGHT {
+            pq.push(State(cost, r, c + 1));
+        }
+        if row < rows - 1 && grid[row + 1][col] == LIGHT {
+            pq.push(State(cost, r + 1, c));
+        }
+
+        // Neighbours with "distance <= 2", connected via virtual nodes by row
+        for vr in row.saturating_sub(2)..=row.add(2).min(rows - 1) {
+            if let Some(nodes) = vrow.get(&vr) {
+                for vc in nodes.iter().copied() {
+                    if vr == rows - 1 && vc == cols - 1 && vr - row > 1 && grid[vr][vc] != LIGHT {
+                        continue;
+                    }
+
+                    pq.push(State(cost + 1, vr as u16, vc as u16));
                 }
             }
         }
 
-        // left
-        if c > 0 {
-            if grid[ru][cu - 1] & 1 != 0 || l == Light::Col(c - 1) || l == Light::Row(r) {
-                pq.push(State(cost, r, c - 1, l));
-            } else {
-                if grid[ru][cu] & 1 != 0 {
-                    pq.push(State(cost + 1, r, c - 1, Light::Row(r)));
-                    pq.push(State(cost + 1, r, c - 1, Light::Col(c - 1)));
-                }
-            }
-        }
+        // Neighbours with "distance <= 2", connected via virtual nodes by column
+        for vc in col.saturating_sub(2)..=col.add(2).min(cols - 1) {
+            if let Some(nodes) = vcol.get(&vc) {
+                for vr in nodes.iter().copied() {
+                    if vr == rows - 1 && vc == cols - 1 && vc - col > 1 && grid[vr][vc] != LIGHT {
+                        continue;
+                    }
 
-        // right
-        if cu < m - 1 {
-            if grid[ru][cu + 1] & 1 != 0 || l == Light::Col(c + 1) || l == Light::Row(r) {
-                pq.push(State(cost, r, c + 1, l));
-            } else {
-                if grid[ru][cu] & 1 != 0 {
-                    pq.push(State(cost + 1, r, c + 1, Light::Row(r)));
-                    pq.push(State(cost + 1, r, c + 1, Light::Col(c + 1)));
-                }
-            }
-        }
-
-        // below
-        if ru < n - 1 {
-            if grid[ru + 1][cu] & 1 != 0 || l == Light::Col(c) || l == Light::Row(r + 1) {
-                pq.push(State(cost, r + 1, c, l));
-            } else {
-                if grid[ru][cu] & 1 != 0 {
-                    pq.push(State(cost + 1, r + 1, c, Light::Row(r + 1)));
-                    pq.push(State(cost + 1, r + 1, c, Light::Col(c)));
+                    pq.push(State(cost + 1, vr as u16, vc as u16));
                 }
             }
         }
@@ -504,39 +526,26 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 ```
 
-### Dijkstra + inline marking of visited nodes (time limit exceeded)
+### Dijkstra + virtual nodes #2
 
-This is an alternative implementation of the previous version which strives to
-push as few elements in the queue as possible
+We can reduce the memory usage and increase the execution speed by removing the
+virtual nodes, once we've pushed them to the queue. Thus there will be much
+fewer nodes to process.
 
 ```rust
 use std::cmp::Ordering;
-use std::collections::BinaryHeap;
+use std::collections::hash_map::Entry;
+use std::collections::{BinaryHeap, HashMap, HashSet};
 use std::error::Error;
 use std::io::BufRead;
 use std::io::Write;
+use std::ops::Add;
 
-const SHIFT_LAMP_VISITED: u32 = 1;
-const SHIFT_LIGHT_ROW: u32 = 2;
-const SHIFT_LIGHT_COL: u32 = 3;
-
-#[derive(Debug, Copy, Clone, Eq, PartialEq)]
-enum N {
-    Up,
-    Down,
-    Left,
-    Right,
-}
-
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
-enum Light {
-    Off,
-    Col(u16),
-    Row(u16),
-}
+const VISITED: u8 = 0xFF;
+const LIGHT: u8 = 0x01;
 
 #[derive(Debug, Copy, Clone)]
-struct State(i16, u16, u16, Light);
+struct State(i16, u16, u16);
 
 impl PartialEq for State {
     fn eq(&self, other: &Self) -> bool {
@@ -559,21 +568,21 @@ impl Ord for State {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    let mut buffer = String::with_capacity(16);
+
     let stdin = std::io::stdin();
     let mut stdin = stdin.lock();
 
     let stdout = std::io::stdout();
     let mut stdout = stdout.lock();
 
-    let mut buffer = String::with_capacity(16);
-
     stdin.read_line(&mut buffer)?;
     let mut nmk = buffer.split_ascii_whitespace();
-    let n = nmk
+    let rows = nmk //n
         .next()
         .ok_or(format!("invalid input (n): {:?}", buffer))?
         .parse::<usize>()?;
-    let m = nmk
+    let cols = nmk //m
         .next()
         .ok_or(format!("invalid input (m): {:?}", buffer))?
         .parse::<usize>()?;
@@ -583,8 +592,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         .parse::<usize>()?;
     drop(nmk);
 
-    let mut grid = vec![vec![0u8; m]; n];
-    grid[0][0] = 1;
+    let mut grid = vec![vec![0u8; cols]; rows];
+    let mut vrow = HashMap::new();
+    let mut vcol = HashMap::new();
 
     buffer.clear();
     while stdin.read_line(&mut buffer)? > 0 {
@@ -599,137 +609,119 @@ fn main() -> Result<(), Box<dyn Error>> {
             .next()
             .ok_or("invalid input: missing row")?
             .parse::<usize>()?;
-        if r == 0 || r > n {
-            return Err(format!("invalid row: {}, N={}", r, n).into());
+        if r == 0 || r > rows {
+            return Err(format!("invalid row: {}, N={}", r, rows).into());
         }
 
         let c = rc
             .next()
             .ok_or("invalid input: missing col")?
             .parse::<usize>()?;
-        if c == 0 || c > m {
-            return Err(format!("invalid col: {}, M={}", c, m).into());
+        if c == 0 || c > cols {
+            return Err(format!("invalid col: {}, M={}", c, cols).into());
         }
 
         grid[r - 1][c - 1] = 1;
+        vrow.entry(r - 1).or_insert(HashSet::new()).insert(c - 1);
+        vcol.entry(c - 1).or_insert(HashSet::new()).insert(r - 1);
         buffer.clear();
     }
 
+    // add the target cell as a virtual node
+    vrow.entry(rows - 1).or_default().insert(cols - 1);
+    vcol.entry(cols - 1).or_default().insert(rows - 1);
+
     let mut answer = -1;
     let mut pq = BinaryHeap::new();
-    pq.push(State(0, 0, 0, Light::Off));
+    pq.push(State(0, 0, 0));
 
-    while let Some(state @ State(cost, r, c, l)) = pq.pop() {
-        let ru = r as usize;
-        let cu = c as usize;
+    while let Some(State(cost, r, c)) = pq.pop() {
+        let row = r as usize;
+        let col = c as usize;
 
-        if grid[ru][cu] & 1 != 0 {
-            // we are on an always lit cell
-            if grid[ru][cu] & 1 << SHIFT_LAMP_VISITED != 0 {
-                continue;
-            }
-            grid[ru][cu] |= 1 << SHIFT_LAMP_VISITED;
-        } else {
-            match l {
-                Light::Off => unreachable!(),
-                Light::Col(_) => {
-                    if grid[ru][cu] & 1 << SHIFT_LIGHT_COL != 0 {
-                        continue;
-                    }
-                    grid[ru][cu] |= 1 << SHIFT_LIGHT_COL;
-                }
-                Light::Row(_) => {
-                    if grid[ru][cu] & 1 << SHIFT_LIGHT_ROW != 0 {
-                        continue;
-                    }
-                    grid[ru][cu] |= 1 << SHIFT_LIGHT_ROW;
-                }
-            }
-        }
-
-        if ru == n - 1 && cu == m - 1 {
+        if row == rows - 1 && col == cols - 1 {
             answer = cost;
             break;
         }
 
-        on_cell(&mut grid, &mut pq, state, N::Up);
-        on_cell(&mut grid, &mut pq, state, N::Left);
-        on_cell(&mut grid, &mut pq, state, N::Right);
-        on_cell(&mut grid, &mut pq, state, N::Down);
+        if grid[row][col] == VISITED {
+            continue;
+        }
+        grid[row][col] = VISITED;
+        if let Some(rx) = vrow.get_mut(&row) {
+            rx.remove(&col);
+        }
+        if let Some(cx) = vcol.get_mut(&col) {
+            cx.remove(&row);
+        }
+
+        // direct neighbours
+        if row > 0 && grid[row - 1][col] == LIGHT {
+            pq.push(State(cost, r - 1, c));
+        }
+        if col > 0 && grid[row][col - 1] == LIGHT {
+            pq.push(State(cost, r, c - 1));
+        }
+        if col < cols - 1 && grid[row][col + 1] == LIGHT {
+            pq.push(State(cost, r, c + 1));
+        }
+        if row < rows - 1 && grid[row + 1][col] == LIGHT {
+            pq.push(State(cost, r + 1, c));
+        }
+
+        // Neighbours with "distance <= 2", connected via virtual nodes by row
+        for r in row.saturating_sub(2)..=row.add(2).min(rows - 1) {
+            match vrow.entry(r) {
+                Entry::Vacant(_) => continue,
+                Entry::Occupied(mut e) => {
+                    for c in e.get().iter().copied() {
+                        // we can add the target cell only if it is lit or if it's
+                        // within a distance of 1 of the current row/col
+                        if r == rows - 1 && c == cols - 1 && r - row > 1 && grid[r][c] != LIGHT {
+                            continue;
+                        }
+
+                        pq.push(State(cost + 1, r as u16, c as u16));
+                    }
+
+                    // Do not remove the target cell, in case it is not lit
+                    if r != rows - 1 {
+                        e.remove();
+                    } else {
+                        e.get_mut().retain(|&x_col| cols - 1 == x_col);
+                    }
+                }
+            }
+        }
+
+        // Neighbours with "distance <= 2", connected via virtual nodes by column
+        for c in col.saturating_sub(2)..=col.add(2).min(cols - 1) {
+            match vcol.entry(c) {
+                Entry::Vacant(_) => continue,
+
+                Entry::Occupied(mut e) => {
+                    for r in e.get().iter().copied() {
+                        // we can add the target cell only if it is lit or if it's
+                        // within a distance of 1 of the current row/col
+                        if r == rows - 1 && c == cols - 1 && c - col > 1 && grid[r][c] != LIGHT {
+                            continue;
+                        }
+
+                        pq.push(State(cost + 1, r as u16, c as u16));
+                    }
+
+                    // Do not remove the target cell, in case it is not lit
+                    if c != cols - 1 {
+                        e.remove();
+                    } else {
+                        e.get_mut().retain(|&x_row| rows - 1 == x_row);
+                    }
+                }
+            }
+        }
     }
 
     writeln!(stdout, "{}", answer)?;
     Ok(())
-}
-
-fn on_cell(grid: &mut Vec<Vec<u8>>, pq: &mut BinaryHeap<State>, state: State, dir: N) {
-    let mut r = state.1 as usize;
-    let mut c = state.2 as usize;
-
-    let coming_from_lamp = grid[r][c] & 1 != 0;
-
-    match dir {
-        N::Up => {
-            if r == 0 {
-                return;
-            }
-
-            r -= 1;
-        }
-        N::Down => {
-            if r >= grid.len() - 1 {
-                return;
-            }
-
-            r += 1;
-        }
-        N::Left => {
-            if c == 0 {
-                return;
-            }
-
-            c -= 1;
-        }
-        N::Right => {
-            if c >= grid[r].len() - 1 {
-                return;
-            }
-
-            c += 1;
-        }
-    }
-
-    if grid[r][c] & 1 != 0 {
-        if grid[r][c] & 1 << SHIFT_LAMP_VISITED == 0 {
-            pq.push(State(state.0, r as u16, c as u16, state.3));
-        }
-
-        return;
-    }
-
-    if state.3 == Light::Col(c as u16) && state.2 == c as u16 {
-        if grid[r][c] & 1 << SHIFT_LIGHT_COL == 0 {
-            pq.push(State(state.0, r as u16, c as u16, state.3));
-        }
-    }
-
-    if state.3 == Light::Row(r as u16) && state.1 == r as u16 {
-        if grid[r][c] & 1 << SHIFT_LIGHT_ROW == 0 {
-            pq.push(State(state.0, r as u16, c as u16, state.3));
-        }
-    }
-
-    if coming_from_lamp {
-        if grid[r][c] & 1 << SHIFT_LIGHT_COL == 0 {
-            if state.3 != Light::Col(c as u16) || state.2 != c as u16 {
-                pq.push(State(state.0 + 1, r as u16, c as u16, Light::Col(c as u16)));
-            }
-        }
-        if grid[r][c] & 1 << SHIFT_LIGHT_ROW == 0 {
-            if state.3 != Light::Row(r as u16) || state.1 != r as u16 {
-                pq.push(State(state.0 + 1, r as u16, c as u16, Light::Row(r as u16)));
-            }
-        }
-    }
 }
 ```
