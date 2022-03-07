@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given an array of non-negative integers `nums`, you are initially positioned at
 the first index of the array.
 
@@ -11,12 +13,12 @@ Your goal is to reach the last index in the minimum number of jumps.
 
 You can assume that you can always reach the last index.
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 10^4`
 * `0 <= nums[i] <= 1000`
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [2,3,1,1,4]
@@ -48,3 +50,8 @@ pub fn jump(nums: Vec<i32>) -> i32 {
     jumps
 }
 ```
+
+## Related Problems
+
+* [55. Jump Game](55%20-%20Jump%20Game.md)
+* [1306. Jump Game III](/leetcode/1300%20-%201399/1306%20-%20Jump%20Game%20III.md)

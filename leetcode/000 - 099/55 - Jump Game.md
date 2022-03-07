@@ -2,18 +2,20 @@
 
 ## Problem
 
+### Description
+
 You are given an integer array `nums`. You are initially positioned at the
 array's first index, and each element in the array represents your maximum jump
 length at that position.
 
 Return `true` if you can reach the last index, or `false` otherwise.
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 10^4`
 * `0 <= nums[i] <= 10^5`
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [2,3,1,1,4]
@@ -60,3 +62,8 @@ pub fn can_jump(nums: Vec<i32>) -> bool {
     max >= nums.len() - 1
 }
 ```
+
+## Related Problems
+
+* [45. Jump Game II](45%20-%20Jump%20Game%20II.md)
+* [1306. Jump Game III](/leetcode/1300%20-%201399/1306%20-%20Jump%20Game%20III.md)
