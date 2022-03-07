@@ -128,3 +128,7 @@ pub fn minimum_jumps(forbidden: Vec<i32>, f: i32, b: i32, dst: i32) -> i32 {
     NO_PATH_FOUND
 }
 ```
+
+## Related Problems
+
+* [1306. Jump Game III](/leetcode/1300%20-%201399/1306%20-%20Jump%20Game%20III.md)

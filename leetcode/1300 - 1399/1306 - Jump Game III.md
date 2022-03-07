@@ -117,3 +117,4 @@ pub fn can_reach(mut arr: Vec<i32>, start: usize) -> bool {
 
 * [55. Jump Game](/leetcode/000%20-%20099/55%20-%20Jump%20Game.md)
 * [45. Jump Game II](/leetcode/000%20-%20099/45%20-%20Jump%20Game%20II.md)
+* [1654. Minimum Jumps to Reach Home](/leetcode/1600%20-%201699/1654%20-%20Minimum%20Jumps%20to%20Reach%20Home.md)
