@@ -51,68 +51,68 @@ we search for a path in the directed graph.
 use std::collections::HashSet;
 
 pub fn can_measure_water(a_cap: i32, b_cap: i32, t: i32) -> bool {
-  if t > a_cap + b_cap {
-    return false;
-  }
-
-  let mut visited = HashSet::new();
-  let mut stack = vec![(0, 0), (a_cap, 0), (0, b_cap), (a_cap, b_cap)];
-
-  while let Some((a, b)) = stack.pop() {
-    if a == t || b == t || (a + b) == t {
-      return true;
+    if t > a_cap + b_cap {
+        return false;
     }
 
-    if !visited.insert((a, b)) {
-      continue;
+    let mut visited = HashSet::new();
+    let mut stack = vec![(0, 0), (a_cap, 0), (0, b_cap), (a_cap, b_cap)];
+
+    while let Some((a, b)) = stack.pop() {
+        if a == t || b == t || (a + b) == t {
+            return true;
+        }
+
+        if !visited.insert((a, b)) {
+            continue;
+        }
+
+        // pour a to b
+        let b_free = b_cap - b;
+        if b_free != 0 && a != 0 {
+            let transferred = a.min(b_free);
+            let a1 = a - transferred;
+            let b1 = b + transferred;
+
+            stack.push((a1, b1));
+            if a1 > 0 {
+                // empty the second jug
+                stack.push((a1, 0));
+                // fill the second jug
+                stack.push((a1, b_cap))
+            }
+            if b1 != b_cap {
+                // empty the first jug
+                stack.push((0, b1));
+                //fill the first jug
+                stack.push((a_cap, b1))
+            }
+        }
+
+        // pour b to a
+        let a_free = a_cap - a;
+        if a_free != 0 && b != 0 {
+            let transferred = b.min(a_free);
+            let a1 = a + transferred;
+            let b1 = b - transferred;
+
+            stack.push((a1, b1));
+            if b1 > 0 {
+                // empty the first jug
+                stack.push((0, b1));
+                //fill the first jug
+                stack.push((a_cap, b1));
+            }
+            if a1 != a_cap {
+                // empty the second jug
+                stack.push((a1, 0));
+                // fill the second jug
+                stack.push((a1, b_cap));
+            }
+        }
     }
 
-    // pour a to b
-    let b_free = b_cap - b;
-    if b_free != 0 && a != 0 {
-      let transferred = a.min(b_free);
-      let a1 = a - transferred;
-      let b1 = b + transferred;
-
-      stack.push((a1, b1));
-      if a1 > 0 {
-        // empty the second jug
-        stack.push((a1, 0));
-        // fill the second jug
-        stack.push((a1, b_cap))
-      }
-      if b1 != b_cap {
-        // empty the first jug
-        stack.push((0, b1));
-        //fill the first jug
-        stack.push((a_cap, b1))
-      }
-    }
-
-    // pour b to a
-    let a_free = a_cap - a;
-    if a_free != 0 && b != 0 {
-      let transferred = b.min(a_free);
-      let a1 = a + transferred;
-      let b1 = b - transferred;
-
-      stack.push((a1, b1));
-      if b1 > 0 {
-        // empty the first jug
-        stack.push((0, b1));
-        //fill the first jug
-        stack.push((a_cap, b1));
-      }
-      if a1 != a_cap {
-        // empty the second jug
-        stack.push((a1, 0));
-        // fill the second jug
-        stack.push((a1, b_cap));
-      }
-    }
-  }
-
-  false
+    false
 }
 ```
 
@@ -132,3 +132,7 @@ pub fn can_measure_water(a_cap: i32, b_cap: i32, t: i32) -> bool {
 ## Resources
 
 * ["Die Hard" problem](https://www.math.tamu.edu/~dallen/hollywood/diehard/diehard.htm)
+
+## Related Problems
+
+* [752. Open the Lock](/leetcode/700%20-%20799/752%20-%20Open%20the%20Lock.md)
