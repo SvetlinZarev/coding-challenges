@@ -148,6 +148,116 @@ const fn to_number(x: [u8; 4]) -> u32 {
 }
 ```
 
+### Bidirectional search
+
+```rust
+use std::collections::HashSet;
+
+const NO_SOLUTION: i32 = -1;
+const START: usize = 0;
+
+pub fn open_lock(deadends: Vec<String>, target: String) -> i32 {
+    let mut visited = vec![false; 10_000];
+
+    // The dead-ends are no-different that already visited nodes - i.e. we cannot visit them again
+    deadends
+        .iter()
+        .map(|x| x.as_bytes())
+        .map(|x| {
+            (x[0] - b'0') as u32 * 1000
+                + (x[1] - b'0') as u32 * 100
+                + (x[2] - b'0') as u32 * 10
+                + (x[3] - b'0') as u32 * 1
+        })
+        .for_each(|dead_end| {
+            visited[dead_end as usize] = true;
+        });
+
+    let target = target
+        .as_bytes()
+        .iter()
+        .copied()
+        .rev()
+        .enumerate()
+        .fold(0u32, |acc, (idx, val)| {
+            acc + ((val - b'0') as u32) * 10u32.pow(idx as u32)
+        });
+
+    if visited[START] || visited[target as usize] {
+        return NO_SOLUTION;
+    }
+
+    if target as usize == START {
+        return 0;
+    }
+
+    let mut left = HashSet::new();
+    let mut right = HashSet::new();
+    let mut next = HashSet::new();
+
+    left.insert(START as u32);
+    visited[START] = true;
+
+    right.insert(target);
+    visited[target as usize] = true;
+
+    let mut turns = 0;
+    while !left.is_empty() && !right.is_empty() {
+        if left.len() >= right.len() {
+            std::mem::swap(&mut left, &mut right);
+        };
+
+        for value in left.drain() {
+            let value = to_array(value);
+
+            // rotate each wheel forward/backward
+            for forward in [true, false] {
+                for idx in 0..value.len() {
+                    let mut rotation = value.clone();
+                    if forward {
+                        rotation[idx] = (rotation[idx] + 1) % 10;
+                    } else {
+                        if rotation[idx] == 0 {
+                            rotation[idx] = 9;
+                        } else {
+                            rotation[idx] -= 1;
+                        }
+                    }
+
+                    let number = to_number(rotation);
+                    if right.contains(&number) {
+                        return turns + 1;
+                    }
+
+                    if !visited[number as usize] {
+                        visited[number as usize] = true;
+                        next.insert(number);
+                    }
+                }
+            }
+        }
+
+        std::mem::swap(&mut left, &mut next);
+        turns += 1;
+    }
+
+    NO_SOLUTION
+}
+
+const fn to_number(x: [u8; 4]) -> u32 {
+    x[0] as u32 * 1000 + x[1] as u32 * 100 + x[2] as u32 * 10 + x[3] as u32
+}
+
+const fn to_array(x: u32) -> [u8; 4] {
+    [
+        ((x / 1000) % 10) as u8,
+        ((x / 100) % 10) as u8,
+        ((x / 10) % 10) as u8,
+        (x % 10) as u8,
+    ]
+}
+```
+
 ## Related Problems
 
 * [365. Water and Jug Problem](/leetcode/300%20-%20399/365%20-%20Water%20and%20Jug%20Problem.md)
