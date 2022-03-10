@@ -1,58 +1,42 @@
-# [785. Is Graph Bipartite](https://leetcode.com/problems/is-graph-bipartite/)
+# [886. Possible Bipartition](https://leetcode.com/problems/possible-bipartition/)
 
 ## Problem
 
 ### Description
 
-There is an undirected graph with `n` nodes, where each node is numbered
-between `0` and `n - 1`. You are given a 2D array `graph`, where `graph[u]` is
-an array of nodes that node `u` is adjacent to. More formally, for each `v`
-in `graph[u]`, there is an undirected edge between node `u` and node `v`. The
-graph has the following properties:
+We want to split a group of `n` people (labeled from `1` to `n`) into two groups
+of any size. Each person may dislike some other people, and they should not go
+into the same group.
 
-* There are no self-edges (`graph[u]` does not contain `u`).
-* There are no parallel edges (`graph[u]` does not contain duplicate values).
-* If `v` is in `graph[u]`, then `u` is in `graph[v]` (the graph is undirected).
-* The graph may not be connected, meaning there may be two nodes `u` and `v`
-  such that there is no path between them.
-
-A graph is bipartite if the nodes can be partitioned into two independent
-sets `A` and `B` such that every edge in the graph connects a node in set `A`
-and a node in set `B`.
-
-Return `true` if and only if it is bipartite.
+Given the integer `n` and the array `dislikes` where `dislikes[i] = [ai, bi]`
+indicates that the person labeled `ai` does not like the person labeled `bi`,
+return `true` if it is possible to split everyone into two groups in this way.
 
 ### Constraints
 
-* `graph.length == n`
-* `1 <= n <= 100`
-* `0 <= graph[u].length < n`
-* `0 <= graph[u][i] <= n - 1`
-* `graph[u]` does not contain `u`.
-* All the values of `graph[u]` are unique.
-* If `graph[u]` contains `v`, then `graph[v]` contains `u`.
+* `1 <= n <= 2000`
+* `0 <= dislikes.length <= 10^4`
+* `dislikes[i].length == 2`
+* `1 <= dislikes[i][j] <= n`
+* `ai < bi`
+* All the pairs of `dislikes` are unique.
 
 ### Examples
 
-#### Example 1
-
-![image](resources/785/ex1.jpg)
-
 ```text
-Input: graph = [[1,2,3],[0,2],[0,1,3],[0,2]]
-Output: false
-Explanation: There is no way to partition the nodes into two independent sets 
-such that every edge connects a node in one and a node in the other.
+Input: n = 4, dislikes = [[1,2],[1,3],[2,4]]
+Output: true
+Explanation: group1 [1,4] and group2 [2,3].
 ```
 
-#### Example 2
-
-![image](resources/785/ex2.jpg)
+```text
+Input: n = 3, dislikes = [[1,2],[1,3],[2,3]]
+Output: false
+```
 
 ```text
-Input: graph = [[1,3],[0,2],[1,3],[0,2]]
-Output: true
-Explanation: We can partition the nodes into two sets: {0, 2} and {1, 3}.
+Input: n = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]
+Output: false
 ```
 
 ## Solutions
@@ -85,6 +69,16 @@ impl Color {
     }
 }
 
+pub fn possible_bipartition(n: i32, dislikes: Vec<Vec<i32>>) -> bool {
+    let mut graph = vec![vec![]; n as usize];
+    for edge in dislikes.into_iter() {
+        graph[edge[0] as usize - 1].push(edge[1] - 1);
+        graph[edge[1] as usize - 1].push(edge[0] - 1);
+    }
+
+    is_bipartite(graph)
+}
+
 pub fn is_bipartite(graph: Vec<Vec<i32>>) -> bool {
     let mut color = vec![None; graph.len()];
     for node in 0..graph.len() {
@@ -104,7 +98,7 @@ fn color_nodes_dfs(
 ) -> bool {
     if let Some(current) = color[node] {
         return match prev {
-            // None, means that we have already processed this node 
+            // None, means that we have already processed this node
             // in another iteration of the cycle in `is_bipartite`
             None => true,
             // If both colors are equal, we have detected a cycle of odd length,
@@ -113,9 +107,10 @@ fn color_nodes_dfs(
         };
     }
 
-    // We have not visited this node, so color it either using the opposite of 
+    // We have not visited this node, so color it either using the opposite of
     // the previous node's color if any, or use the default value
-    let current = *color[node].insert(match prev { // note: insert returns a pointer to the inserted value!
+    let current = *color[node].insert(match prev {
+        // note: insert returns a pointer to the inserted value!
         None => Color::SetA,
         Some(c) => c.opposite(),
     });
@@ -134,4 +129,4 @@ fn color_nodes_dfs(
 
 ## Related Problems
 
-* [886. Possible Bipartition](/leetcode/800%20-%20899/886%20-%20Possible%20Bipartition.md)
+* [785. Is Graph Bipartite](/leetcode/700%20-%20799/785%20-%20Is%20Graph%20Bipartite.md)
