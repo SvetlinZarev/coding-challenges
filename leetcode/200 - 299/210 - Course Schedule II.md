@@ -91,6 +91,65 @@ pub fn find_order(num_courses: usize, prerequisites: Vec<Vec<i32>>) -> Vec<i32> 
 }
 ```
 
+### DFS
+
+```rust
+#[derive(Copy, Clone, Eq, PartialEq)]
+enum Marker {
+    Unvisited,
+    Undecided,
+    Processed,
+}
+
+pub fn find_order(num_courses: usize, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
+    // build the graph from the given edges
+    let mut graph = vec![vec![]; num_courses];
+    for edge in prerequisites.into_iter() {
+        graph[edge[1] as usize].push(edge[0] as usize);
+    }
+
+    // because the graph may not be connected we have to go over all nodes
+    let mut topological_order = vec![];
+    let mut visited = vec![Marker::Unvisited; num_courses];
+    for node in 0..num_courses {
+        if has_cycle(&graph, &mut visited, &mut topological_order, node) {
+            return vec![];
+        }
+    }
+
+    topological_order.reverse();
+    topological_order
+}
+
+fn has_cycle(
+    graph: &[Vec<usize>],
+    visited: &mut [Marker],
+    ordered: &mut Vec<i32>,
+    node: usize,
+) -> bool {
+    match visited[node] {
+        // We are in a cycle
+        Marker::Undecided => return true,
+        // We have already processed that subtree and it does not contain a cycle
+        Marker::Processed => return false,
+        // Check if the current subtree is part of a cycle. We set this state
+        // only on unvisited nodes. If we visit them again - then we are in a
+        // cycle, otherwise we mark them as "Processed"
+        Marker::Unvisited => visited[node] = Marker::Undecided,
+    }
+
+    for &next in graph[node].iter() {
+        if has_cycle(graph, visited, ordered, next) {
+            return true;
+        }
+    }
+
+    visited[node] = Marker::Processed;
+    ordered.push(node as i32);
+    false
+}
+```
+
 ## Related Problems
 
 *[207. Course Schedule](207%20-%20Course%20Schedule.md)
