@@ -140,3 +140,7 @@ pub fn can_finish(num_courses: usize, prerequisites: Vec<Vec<i32>>) -> bool {
     true
 }
 ```
+
+## Related Problems
+
+* [210. Course Schedule II](210%20-%20Course%20Schedule%20II.md)
