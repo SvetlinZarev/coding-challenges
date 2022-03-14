@@ -41,7 +41,7 @@ should also have finished course 1. So it is impossible.
 
 ## Solutions
 
-### Cycle detection
+### Cycle detection (DFS)
 
 **Intuition:** If there is a cycle, (for instance, in order to take course 1,
 one has to take course 2, but to take course 2, one has to take course 1) it's
@@ -93,5 +93,50 @@ fn has_cycle(graph: &[Vec<usize>], visited: &mut [Marker], node: usize) -> bool 
 
     visited[node] = Marker::Processed;
     false
+}
+```
+
+### Topological sort (Kahn's algorithm)
+
+```rust
+pub fn can_finish(num_courses: usize, prerequisites: Vec<Vec<i32>>) -> bool {
+    let mut graph = vec![vec![]; num_courses];
+    let mut indegree = vec![0; num_courses];
+
+    // build the graph from the given edges and find out the nodes' indegree
+    for edge in prerequisites.into_iter() {
+        graph[edge[0] as usize].push(edge[1] as usize);
+        indegree[edge[1] as usize] += 1;
+    }
+
+    // find all nodes without incoming edges
+    let mut safe = vec![];
+    for (node, &degree) in indegree.iter().enumerate() {
+        if degree == 0 {
+            safe.push(node);
+        }
+    }
+
+    // The nodes with indegree of 0 come before the other nodes.
+    while let Some(node) = safe.pop() {
+        for &next in graph[node].iter() {
+            // reduce the indegree of each neighbour
+            // if after that operation it has an indegree of 0, then we can push it on the queue/stack
+            indegree[next] -= 1;
+            if indegree[next] == 0 {
+                safe.push(next);
+            }
+        }
+    }
+
+    // If there are any nodes left with indegree != 0, then there is a
+    // cycle and the graph cannot be topologically sorted
+    for degree in indegree.into_iter() {
+        if degree != 0 {
+            return false;
+        }
+    }
+
+    true
 }
 ```
