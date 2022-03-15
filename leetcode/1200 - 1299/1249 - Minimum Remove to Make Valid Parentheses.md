@@ -48,7 +48,7 @@ Output: "()ab"
 
 ## Solutions
 
-### Using forward/reverse iteration
+### 2-Pass: Using forward/reverse iteration
 
 ```rust
 const SKIP_CHAR: char = '\u{0000}';
@@ -79,5 +79,42 @@ pub fn min_remove_to_make_valid<S: AsRef<str>>(s: S) -> String {
     }
 
     chars.into_iter().filter(|x| *x != SKIP_CHAR).collect()
+}
+```
+
+### 1-Pass: using a stack to track the positions of the opening brackets
+
+```rust
+const SKIP_CHAR: u8 = b'\0';
+const BRACKET_OPENING: u8 = b'(';
+const BRACKET_CLOSING: u8 = b')';
+
+pub fn min_remove_to_make_valid(mut s: String) -> String {
+    // SAFETY: we are working only with ASCII characters, thus it's safe to delete those byte by byte
+    let chars = unsafe { s.as_mut_vec() };
+
+    let mut brackets = vec![];
+    for (idx, ch) in chars.iter_mut().enumerate() {
+        match *ch {
+            BRACKET_OPENING => {
+                brackets.push(idx);
+            }
+            BRACKET_CLOSING if brackets.is_empty() => {
+                *ch = SKIP_CHAR;
+            }
+            BRACKET_CLOSING => {
+                brackets.pop();
+            }
+            _ => {}
+        }
+    }
+
+    // mark for removal all opening brackets without a closing bracket
+    for idx in brackets {
+        chars[idx] = SKIP_CHAR;
+    }
+
+    chars.retain(|ch| *ch != SKIP_CHAR);
+    s
 }
 ```
