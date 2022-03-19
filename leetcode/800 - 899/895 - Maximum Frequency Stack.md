@@ -110,3 +110,64 @@ impl FreqStack {
     }
 }
 ```
+
+### Using two HashMaps
+
+* We track the frequency of each element in the hash map `<element, frequency>`
+* We track the most frequent element in a separate field (`maxf`)
+* We track the order of the elements in a vector/stack, which is contained in
+  the second hash map
+*
+
+```rust
+use std::collections::hash_map::Entry;
+use std::collections::HashMap;
+
+#[derive(Default)]
+struct FreqStack {
+    freq: HashMap<i32, u32>,
+    ordr: HashMap<u32, Vec<i32>>,
+    maxf: u32,
+}
+
+impl FreqStack {
+    fn new() -> Self {
+        Default::default()
+    }
+
+    fn push(&mut self, val: i32) {
+        let count = *self.freq.entry(val).and_modify(|x| *x += 1).or_insert(1);
+        self.ordr.entry(count).or_default().push(val);
+        self.maxf = self.maxf.max(count);
+    }
+
+    fn pop(&mut self) -> i32 {
+        let highest_freq = self.maxf;
+
+        let values = self.ordr.get_mut(&highest_freq).unwrap();
+        let element = values.pop().unwrap();
+
+        if values.is_empty() {
+            self.ordr.remove(&highest_freq);
+            // There are no more elements with that frequency. We can decrease it by 1,
+            // because in order to get to a frequency of N, we must first had a frequency
+            // of `N-1`
+            self.maxf -= 1;
+        }
+
+        match self.freq.entry(element) {
+            Entry::Vacant(_) => unreachable!(),
+            Entry::Occupied(mut e) => {
+                let value = e.get_mut();
+                if *value > 1 {
+                    *value -= 1;
+                } else {
+                    e.remove();
+                }
+            }
+        }
+
+        element
+    }
+}
+```
