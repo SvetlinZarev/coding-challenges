@@ -113,11 +113,16 @@ impl FreqStack {
 
 ### Using two HashMaps
 
+We can do better by eliminating the `log N` operation for finding the most
+frequent element, by the making the observation that in order to have some
+element with frequency `N` we must first have it with a frequency of `N-1`, thus
+tracking the elements with the highest frequency is reduced to just incrementing
+and decrementing a counter
+
 * We track the frequency of each element in the hash map `<element, frequency>`
 * We track the most frequent element in a separate field (`maxf`)
 * We track the order of the elements in a vector/stack, which is contained in
   the second hash map
-*
 
 ```rust
 use std::collections::hash_map::Entry;
