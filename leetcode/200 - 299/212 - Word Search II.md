@@ -2,12 +2,16 @@
 
 ## Problem
 
+### Description
+
 Given an `m x n` board of characters and a list of strings words, return all
 words on the board.
 
 Each word must be constructed from letters of sequentially adjacent cells, where
 adjacent cells are horizontally or vertically neighboring. The same letter cell
 may not be used more than once in a word.
+
+### Examples
 
 Input:
 
@@ -27,7 +31,7 @@ Output:
 ["eat","oath"]
 ```
 
-#### Constraints:
+### Constraints:
 
 * `m == board.length`
 * `n == board[i].length`
@@ -37,7 +41,6 @@ Output:
 * `1 <= words[i].length <= 10`
 * `words[i]` consists of lowercase English letters.
 * All the strings of words are unique.
-
 
 ## Solutions
 
@@ -429,22 +432,22 @@ struct Node {
 
 #### Reducing the number of searches by soft-removing the found words from the trie
 
-If we've found a word, then we can remove it from the trie in order to reduce the 
-number of DFSes - in other words - if we know that the current trie branch will not 
-yield a result, then it's meaningless to traverse it.
+If we've found a word, then we can remove it from the trie in order to reduce
+the number of DFSes - in other words - if we know that the current trie branch
+will not yield a result, then it's meaningless to traverse it.
 
-In order to accomplish that, we can introduce a `reference count` in each trie node.
-We have to increment that counter each time we add a word that contains the 
-corresponding leter at that position and decrement it when we remove a word containing
-that character.
+In order to accomplish that, we can introduce a `reference count` in each trie
+node. We have to increment that counter each time we add a word that contains
+the corresponding leter at that position and decrement it when we remove a word
+containing that character.
 
 If the reference count is zero, then we treat that node as if it didn't exist.
 
-That `reference count` will also liminate the need for the global `remaining` counter.
+That `reference count` will also liminate the need for the global `remaining`
+counter.
 
 * Time: 8ms
 * Memory: 2.1MB
-
 
 ### Final Source Code
 
@@ -613,7 +616,7 @@ fn dfs(
         let words = dfs(board, trie, result, r - 1, c);
         found += words;
         // subtract the number of found words inside each IF, because this may eliminate some DFSes
-        trie.decrement_refs(words); 
+        trie.decrement_refs(words);
     }
     if r < board.len() - 1 {
         let words = dfs(board, trie, result, r + 1, c);
@@ -639,7 +642,11 @@ fn dfs(
 ## Links and resources
 
 * [Trie] on Wikipedia
-* [LeetCode] page
+
+## Related Problems
+
+* [208. Implement Trie (Prefix Tree)](208%20-%20Implement%20Trie%20(Prefix%20Tree).md)
+* [79. Word Search](/leetcode/000%20-%20099/79%20-%20Word%20Search.md)
 
 [leetcode]: https://leetcode.com/problems/word-search-ii/
 

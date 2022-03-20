@@ -138,3 +138,7 @@ which elements have already been used
 
 We can use the same solution as
 in [Word Search II](/200%20-%20299/212%20-%20Word%20Search%20II.md)
+
+## Related Problems
+
+* [212. Word Search II](/leetcode/200%20-%20299/212%20-%20Word%20Search%20II.md)
