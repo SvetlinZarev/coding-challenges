@@ -2,15 +2,17 @@
 
 ## Problem
 
+### Description
+
 Given two binary strings `a` and `b`, return their sum as a binary string.
 
-#### Constraints
+### Constraints
 
 * `1 <= a.length, b.length <= 10^4`
 * `a` and `b` consist only of `0` or `1` characters.
 * Each string does not contain leading zeros except for the zero itself.
 
-#### Examples
+### Examples
 
 ```text
 Input: a = "11", b = "1"
@@ -59,3 +61,9 @@ pub fn add_binary(a: String, b: String) -> String {
     String::from_utf8(longer).unwrap()
 }
 ```
+
+## Related Problems
+
+* [66. Plus One](/leetcode/000%20-%20099/66%20-%20Plus%20One.md)
+* [415. Add Strings](/leetcode/400%20-%20499/415%20-%20Add%20Strings.md)
+* [989. Add to Array-Form of Integer](/leetcode/900%20-%20999/989%20-%20Add%20to%20Array-Form%20of%20Integer.md)

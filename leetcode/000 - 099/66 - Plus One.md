@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 You are given a large integer represented as an integer array `digits`, where
 each `digits[i]` is the `i`th digit of the integer. The digits are ordered from
 most significant to least significant in left-to-right order. The large integer
@@ -9,13 +11,13 @@ does not contain any leading `0`'s.
 
 Increment the large integer by one and return the resulting array of digits.
 
-#### Constraints
+### Constraints
 
 * `1 <= digits.length <= 100`
 * `0 <= digits[i] <= 9`
 * `digits` does not contain any leading `0`'s.
 
-#### Examples
+### Examples
 
 ```text
 Input: digits = [1,2,3]
@@ -64,3 +66,9 @@ pub fn plus_one(mut digits: Vec<i32>) -> Vec<i32> {
     digits
 }
 ```
+
+## Related Problems
+
+* [67. Add Binary](/leetcode/000%20-%20099/67%20-%20Add%20Binary.md)
+* [415. Add Strings](/leetcode/400%20-%20499/415%20-%20Add%20Strings.md)
+* [989. Add to Array-Form of Integer](/leetcode/900%20-%20999/989%20-%20Add%20to%20Array-Form%20of%20Integer.md)
