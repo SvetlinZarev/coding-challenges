@@ -129,3 +129,7 @@ pub fn partition_labels<S: AsRef<[u8]>>(s: S) -> Vec<i32> {
     answer
 }
 ```
+
+## Related Problems
+
+* [56. Merge Intervals](/leetcode/000%20-%20099/56%20-%20Merge%20Intervals.md)
