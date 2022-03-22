@@ -48,11 +48,12 @@ to put the highest possible character at the current index.
 
 ## Solutions
 
-### Greedy
+### Greedy (slow & complex solution)
 
 ```rust
 pub fn get_smallest_string(n: usize, k: usize) -> String {
     assert!(n > 0);
+    assert(k >= n);
 
     let mut answer = vec![];
     let mut remaining = k;
@@ -63,6 +64,7 @@ pub fn get_smallest_string(n: usize, k: usize) -> String {
         answer.push(b'a' + value as u8 - 1);
     }
 
+    // fill-in the missing characters
     let mut pos = answer.len() - 1;
     while answer.len() < n {
         while answer[pos] <= b'a' && pos > 0 {
@@ -81,6 +83,31 @@ pub fn get_smallest_string(n: usize, k: usize) -> String {
     }
 
     answer.reverse();
+    String::from_utf8(answer).unwrap()
+}
+```
+
+### Greedy (simple & fast)
+
+```rust
+pub fn get_smallest_string(n: usize, k: usize) -> String {
+    assert!(n > 0);
+    assert!(k >= n);
+
+    let mut answer = vec![0u8; n];
+
+    // Because we need exactly N characters, we can subtract 
+    // all the 1s (i.e. "a"); Thus, we won't need to fill them
+    // by going backwards and subtracting from the previous 
+    // characters as in the previous solution
+    let mut remaining = k - n;
+    for ch in answer.iter_mut().rev() { // iterate backwards
+        let current = remaining.min((b'z' - b'a') as usize);
+        remaining -= current;
+
+        *ch = b'a' + current as u8;
+    }
+
     String::from_utf8(answer).unwrap()
 }
 ```
