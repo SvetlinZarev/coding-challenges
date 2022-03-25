@@ -137,3 +137,7 @@ fn find_second_digit_to_swap(digits: &[u32], first_idx: usize) -> usize {
         .0
 }
 ```
+
+## Related Problems
+
+* [31. Next Permutation](/leetcode/000%20-%20099/31%20-%20Next%20Permutation.md)
