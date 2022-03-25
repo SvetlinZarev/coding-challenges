@@ -45,7 +45,7 @@ Output: 3086
 
 ## Solutions
 
-### Greedy
+### Greedy #1
 
 ```rust
 pub fn two_city_sched_cost(mut costs: Vec<Vec<i32>>) -> i32 {
@@ -80,5 +80,62 @@ pub fn two_city_sched_cost(mut costs: Vec<Vec<i32>>) -> i32 {
     }
 
     total
+}
+```
+
+### Greedy #2
+
+Since we want to divide the people in two equal groups we can sort the arrays by
+the gains to flay a person to city A over city B. Then the first half of the
+array will contain the pe people who should go to A, and the other half - the
+people who should go to B
+
+```rust
+pub fn two_city_sched_cost(mut costs: Vec<Vec<i32>>) -> i32 {
+    assert_eq!(costs.len() % 2, 0);
+
+    costs.sort_by(|a, b| {
+        let diff_a = a[0] - a[1];
+        let diff_b = b[0] - b[1];
+        diff_a.cmp(&diff_b)
+    });
+
+    let mut total = 0;
+
+    for idx in 0..costs.len() / 2 {
+        total += costs[idx][0];
+    }
+    for idx in costs.len() / 2..costs.len() {
+        total += costs[idx][1];
+    }
+
+    total
+}
+```
+
+## DP (O(n^2))
+
+```rust
+pub fn two_city_sched_cost(mut costs: Vec<Vec<i32>>) -> i32 {
+    assert_eq!(costs.len() % 2, 0);
+    let n = costs.len() / 2;
+
+    let mut dp = vec![vec![0; n + 1]; n + 1];
+    for idx in 1..=n {
+        dp[idx][0] = dp[idx - 1][0] + costs[idx - 1][0]
+    }
+    for idx in 1..=n {
+        dp[0][idx] = dp[0][idx - 1] + costs[idx - 1][1];
+    }
+
+    for i in 1..=n {
+        for j in 1..=n {
+            let a = dp[i - 1][j] + costs[i + j - 1][0];
+            let b = dp[i][j - 1] + costs[i + j - 1][1];
+            dp[i][j] = a.min(b);
+        }
+    }
+
+    dp[n][n]
 }
 ```
