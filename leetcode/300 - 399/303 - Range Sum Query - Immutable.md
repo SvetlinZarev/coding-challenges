@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given an integer array `nums`, handle multiple queries of the following type:
 
 * Calculate the sum of the elements of `nums` between indices `left` and `right`
@@ -14,14 +16,14 @@ Implement the `NumArray` class:
   between indices `left` and `right` inclusive (
   i.e. `nums[left] + nums[left + 1] + ... + nums[right]`).
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 10^4`
 * `-10^5 <= nums[i] <= 10^5`
 * `0 <= left <= right < nums.length`
-* At most 10^4 calls will be made to `sumRange`.
+* At most `10^4` calls will be made to `sumRange`.
 
-#### Examples
+### Examples
 
 ```text
 Input
@@ -68,3 +70,7 @@ impl NumArray {
     }
 }
 ```
+
+## Related Problems
+
+* [304. Range Sum Query 2D - Immutable](304%20-%20Range%20Sum%20Query%202D%20-%20Immutable.md)
