@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 You are given the head of a singly linked-list. The list can be represented as:
 
 ```text
@@ -17,7 +19,12 @@ L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
 You may not modify the values in the list's nodes. Only nodes themselves may be
 changed.
 
-#### Examples
+### Constraints
+
+* The number of nodes in the list is in the range `[1, 5 * 104]`.
+* `1 <= Node.val <= 1000`
+
+### Examples
 
 ```text
 Input: head = [1,2,3,4]
