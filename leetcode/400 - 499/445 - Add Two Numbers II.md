@@ -46,6 +46,25 @@ Output: [0]
 2. Sum the two lists
 3. Reverse the result in order to get the most significant digits first
 
+#### LeetCode API
+
+```rust
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
+    }
+}
+```
+
+#### Solution
+
 ```rust
 
 pub fn add_two_numbers(
