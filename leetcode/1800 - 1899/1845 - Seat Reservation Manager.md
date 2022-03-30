@@ -61,14 +61,18 @@ seatManager.unreserve(5); // Unreserve seat 5, so now the available seats are [5
     * Another option is to implement `reserve()` via `vec.pop()` which would
       give us `O(1)` time complexity, but then the `unreserve()` method would
       take `O(n)` time
+* We can store all free seats in a priority queue (`BinaryHeap`):
+    * It will still consume a lot of memory
+    * We will have `O(1)` `unreserve()` and `O(log n)` `reserve()`
 * We can store the numbers in a tree
     * It will still consume a lot of memory
     * But it will give us `O(log n)` implementations of `reserve()`
       and `unreserve()`
-* A better option is to store ranges instead of individual seats
+* A better option (memory wise) is to store ranges instead of individual seats
     * It will use less memory
     * We can split & merge the ranges in order to avoid fragmentation and thus
       reduce the memory usage
+    * We won't be able to easily merge ranges in the vec/priority-queues
 
 ### Using a BTreeSet storing ranges
 
@@ -127,6 +131,40 @@ impl SeatManager {
     }
 }
 ```
+
+### Using a BinaryHeap
+
+```rust
+use std::cmp::Reverse;
+use std::collections::BinaryHeap;
+
+struct SeatManager {
+    free: BinaryHeap<Reverse<i32>>,
+}
+
+impl SeatManager {
+    fn new(n: i32) -> Self {
+        assert!(n > 0);
+        Self {
+            free: BinaryHeap::from((1..=n).into_iter().map(|x| Reverse(x)).collect::<Vec<_>>()),
+        }
+    }
+
+    fn reserve(&mut self) -> i32 {
+        self.free.pop().unwrap().0
+    }
+
+    fn unreserve(&mut self, seat_number: i32) {
+        self.free.push(Reverse(seat_number));
+    }
+}
+```
+
+At the end both solutions take similar amount of time & memory in the judge. The
+`BinaryHeap` solution is simpler, but the `BTreeSet` solution is more
+extensible, i.e. it can be made to `reserve()` any seat, not just the smallest
+one while maintaining its low time complexity. Something not possible for the PQ
+solution
 
 ## Related Problems
 
