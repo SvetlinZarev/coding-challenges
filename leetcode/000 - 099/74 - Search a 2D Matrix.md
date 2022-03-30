@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Write an efficient algorithm that searches for a value in an `m x n` matrix.
 This matrix has the following properties:
 
@@ -9,14 +11,14 @@ This matrix has the following properties:
 * The first integer of each row is greater than the last integer of the previous
   row.
 
-#### Constraints:
+### Constraints:
 
 * `m == matrix.length`
 * `n == matrix[i].length`
 * `1 <= m, n <= 100`
 * `-10^4 <= matrix[i][j], target <= 10^4`
 
-#### Examples
+### Examples
 
 ```text
 matrix = [
@@ -63,6 +65,46 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
     }
 
     matrix[lo.saturating_sub(1)].binary_search(&target).is_ok()
+}
+```
+
+### With a single binary search
+
+We can treat the matrix as one larger & sorted array,
+because `matrix[r][c] = array[r*cols + c]`. Then we can convert from matrix to
+list coordinates and vice versa for the binary search using the formulas:
+
+* `list_idx = row*columns + column`
+* ```
+  row = list_idx / columns; 
+  col = list_idx % columns`
+  ```
+
+```rust
+pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
+    if matrix.is_empty() {
+        return false;
+    }
+
+    let rows = matrix.len();
+    let cols = matrix[0].len();
+
+    let mut lo = 0;
+    let mut hi = rows * cols - 1;
+
+    while lo < hi {
+        let mid = (hi - lo) / 2 + lo;
+        let row = mid / cols;
+        let col = mid % cols;
+
+        if matrix[row][col] < target {
+            lo = mid + 1;
+        } else {
+            hi = mid;
+        }
+    }
+
+    return matrix[hi / cols][hi % cols] == target;
 }
 ```
 
