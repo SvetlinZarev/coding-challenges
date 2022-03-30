@@ -88,7 +88,7 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
         } else if target > matrix[h][w] { // all elements on the right are larger
             w += 1;
         } else if target < matrix[h][w] { // all elements above are smaller
-            if h == 0 { // there are no smaler elements
+            if h == 0 { // there are no smaller elements
                 break;
             }
             h -= 1;
