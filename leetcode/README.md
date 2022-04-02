@@ -29,6 +29,10 @@
 * [752. Open the Lock](700%20-%20799/752%20-%20Open%20the%20Lock.md)
 * [1306. Jump Game III](1300%20-%201399/1306%20-%20Jump%20Game%20III.md)
 
+### Stack
+
+* [173. Binary Search Tree Iterator](/leetcode/100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
+
 ### Monotonic Stack
 
 * [84. Largest Rectangle in Histogram](000%20-%20099/84%20-%20Largest%20Rectangle%20in%20Histogram.md)
