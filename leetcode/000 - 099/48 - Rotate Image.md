@@ -80,3 +80,7 @@ pub fn rotate(matrix: &mut Vec<Vec<i32>>) {
     }
 }
 ```
+
+## Related Problems
+
+* [1886. Determine Whether Matrix Can Be Obtained By Rotation](/leetcode/1800%20-%201899/1886%20-%20Determine%20Whether%20Matrix%20Can%20Be%20Obtained%20By%20Rotation.md)
