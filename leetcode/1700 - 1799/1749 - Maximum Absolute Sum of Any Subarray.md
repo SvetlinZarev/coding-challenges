@@ -40,7 +40,7 @@ We need to do two iterations - one to find the maximum sum and one to find the
 minimum sum. The answer is the larger absolute value of the min/max sum:
 
 ```rust
-ub fn max_absolute_sum(nums: Vec<i32>) -> i32 {
+pub fn max_absolute_sum(nums: Vec<i32>) -> i32 {
     //find the maximum sum
     let mut sum = 0;
     let mut maximum = i32::MIN;
