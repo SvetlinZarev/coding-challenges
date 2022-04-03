@@ -5,6 +5,7 @@
 ### Binary Search
 
 * [74. Search a 2D Matrix](000%20-%20099/74%20-%20Search%20a%202D%20Matrix.md)
+* [852. Peak Index in a Mountain Array](800%20-%20899/852%20-%20Peak%20Index%20in%20a%20Mountain%20Array.md)
 
 ### Priority Queue
 
