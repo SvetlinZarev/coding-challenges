@@ -6,6 +6,7 @@
 
 * [74. Search a 2D Matrix](000%20-%20099/74%20-%20Search%20a%202D%20Matrix.md)
 * [852. Peak Index in a Mountain Array](800%20-%20899/852%20-%20Peak%20Index%20in%20a%20Mountain%20Array.md)
+* [69. Sqrt(x)](000%20-%20099/69%20-%20Sqrt(x).md)
 
 ### Priority Queue
 
@@ -21,6 +22,11 @@
 
 * [212. Word Search II](200%20-%20299/212%20-%20Word%20Search%20II.md)
 
+### Prefix Sum
+
+* [303. Range Sum Query - Immutable](300%20-%20399/303%20-%20Range%20Sum%20Query%20-%20Immutable.md)
+* [304. Range Sum Query 2D - Immutable](300%20-%20399/304%20-%20Range%20Sum%20Query%202D%20-%20Immutable.md)
+
 ### BFS / DFS
 
 * [127. Word Ladder](100%20-%20199/127%20-%20Word%20Ladder.md)
@@ -32,12 +38,17 @@
 
 ### Stack
 
-* [173. Binary Search Tree Iterator](/leetcode/100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
+* [173. Binary Search Tree Iterator](100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
 
 ### Monotonic Stack
 
 * [84. Largest Rectangle in Histogram](000%20-%20099/84%20-%20Largest%20Rectangle%20in%20Histogram.md)
 * [496. Next Greater Element I](400%20-%20499/496%20-%20Next%20Greater%20Element%20I.md)
+
+### Floyd's algorithm
+
+* [142. Linked List Cycle II](100%20-%20199/142%20-%20Linked%20List%20Cycle%20II.md)
+* [287. Find the Duplicate Number](200%20-%20299/287%20-%20Find%20the%20Duplicate%20Number.md)
 
 ## Algorithms on graphs
 
