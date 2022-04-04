@@ -4,9 +4,9 @@
 
 ### Binary Search
 
+* [69. Sqrt(x)](000%20-%20099/69%20-%20Sqrt(x).md)
 * [74. Search a 2D Matrix](000%20-%20099/74%20-%20Search%20a%202D%20Matrix.md)
 * [852. Peak Index in a Mountain Array](800%20-%20899/852%20-%20Peak%20Index%20in%20a%20Mountain%20Array.md)
-* [69. Sqrt(x)](000%20-%20099/69%20-%20Sqrt(x).md)
 
 ### Priority Queue
 

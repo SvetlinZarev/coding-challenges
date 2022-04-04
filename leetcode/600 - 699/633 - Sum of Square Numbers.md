@@ -2,14 +2,16 @@
 
 ## Problem
 
+### Description
+
 Given a non-negative integer `c`, decide whether there are two integers `a`
 and `b` such that `a^2 + b^2 = c`.
 
-#### Constraints
+### Constraints
 
 * `0 <= c <= 2^31 - 1`
 
-#### Examples
+### Examples
 
 ````text
 Input: c = 5
@@ -37,7 +39,7 @@ Input: c = 1
 Output: true
 ```
 
-## Solution
+## Solutions
 
 ### Using Binary Search
 
@@ -81,3 +83,8 @@ pub fn judge_square_sum(c: i32) -> bool {
     false
 }
 ```
+
+## Related Problems
+
+* [69. Sqrt(x)](/leetcode/000%20-%20099/69%20-%20Sqrt(x).md)
+* [367. Valid Perfect Square](/leetcode/300%20-%20399/367%20-%20Valid%20Perfect%20Square.md)
