@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given a 1-indexed array of integers numbers that is already sorted in
 non-decreasing order, find two numbers such that they add up to a specific
 target number. Let these two numbers be `numbers[index1]` and `numbers[index2]`
@@ -13,14 +15,14 @@ array `[index1, index2]` of length 2.
 The tests are generated such that there is exactly one solution. You may not use
 the same element twice.
 
-#### Constraints
+### Constraints
 
 * `2 <= numbers.length <= 3 * 1^04`
 * `-1000 <= numbers[i] <= 1000`
 * `-1000 <= target <= 1000`
 * `numbers` is sorted in non-decreasing order.
 
-#### Examples
+### Examples
 
 ```text
 Input: numbers = [2,7,11,15], target = 9
@@ -63,3 +65,8 @@ pub fn two_sum(numbers: Vec<i32>, target: i32) -> Vec<i32> {
     vec![a as i32 + 1, b as i32 + 1]
 }
 ```
+
+## Related Problems
+
+* [15. 3Sum](/leetcode/000%20-%20099/15%20-%203Sum.md)
+* [923. 3Sum With Multiplicity](/leetcode/900%20-%20999/923%20-%203Sum%20With%20Multiplicity.md)
