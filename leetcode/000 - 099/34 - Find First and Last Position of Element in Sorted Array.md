@@ -1,6 +1,8 @@
-    # [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+# [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 
 ## Problem
+
+### Description
 
 Given an array of integers `nums` sorted in ascending order, find the starting
 and ending position of a given target value.
@@ -9,7 +11,14 @@ If target is not found in the array, return `[-1, -1]`.
 
 You must write an algorithm with `O(log n)` runtime complexity.
 
-#### Examples
+### Constraints
+
+* `0 <= nums.length <= 10^5`
+* `-10^9 <= nums[i] <= 10^9`
+* `nums` is a non-decreasing array.
+* `-10^9 <= target <= 10^9`
+
+### Examples
 
 ```text
 Input: nums = [5,7,7,8,8,10], target = 8
@@ -21,10 +30,17 @@ Input: nums = [5,7,7,8,8,10], target = 6
 Output: [-1,-1]
 ```
 
-## Solution
+## Solutions
+
+### With two binary searches
+
+We have two versions of the binary search algorithm:
+
+* one that returns the first occurrence
+* one that returns the last occurrence
 
 ```rust
-use std::cmp::Ordering;
+use std::convert::TryInto;
 
 pub fn search_range(nums: Vec<i32>, target: i32) -> Vec<i32> {
     let mut sol = vec![-1, -1];
@@ -34,70 +50,55 @@ pub fn search_range(nums: Vec<i32>, target: i32) -> Vec<i32> {
 
     match start(&nums, target) {
         None => return sol,
-        Some(idx) => sol[0] = idx,
+        Some(idx) => sol[0] = idx.try_into().unwrap(),
     }
 
     if let Some(idx) = end(&nums, target) {
-        sol[1] = idx;
+        sol[1] = idx.try_into().unwrap();
     }
 
     sol
 }
 
-fn start(nums: &[i32], target: i32) -> Option<i32> {
+fn start(nums: &[i32], target: i32) -> Option<usize> {
     let mut lo = 0;
     let mut hi = nums.len() - 1;
-    let mut res = None;
 
-    while lo <= hi {
+    while lo < hi {
         let mid = (hi - lo) / 2 + lo;
-        match target.cmp(&nums[mid]) {
-            Ordering::Less => {
-                if mid == 0 {
-                    break;
-                }
-                hi = mid - 1
-            }
-            Ordering::Equal => {
-                res = Some(mid as i32);
-                if mid == 0 {
-                    break;
-                }
-                hi = mid - 1;
-            }
-            Ordering::Greater => {
-                lo = mid + 1;
-            }
+
+        if nums[mid] >= target {
+            hi = mid;
+        } else {
+            lo = mid + 1;
         }
     }
 
-    res
+    if nums[hi] == target {
+        return Some(hi);
+    }
+    None
 }
 
-fn end(nums: &[i32], target: i32) -> Option<i32> {
+fn end(nums: &[i32], target: i32) -> Option<usize> {
     let mut lo = 0;
     let mut hi = nums.len() - 1;
-    let mut res = None;
 
     while lo <= hi {
         let mid = (hi - lo) / 2 + lo;
-        match target.cmp(&nums[mid]) {
-            Ordering::Less => {
-                if mid == 0 {
-                    break;
-                }
-                hi = mid - 1
-            }
-            Ordering::Equal => {
-                res = Some(mid as i32);
-                lo = mid + 1;
-            }
-            Ordering::Greater => {
-                lo = mid + 1;
-            }
+
+        if nums[mid] <= target {
+            lo = mid + 1;
+        } else if mid > 0 {
+            hi = mid - 1;
+        } else {
+            break;
         }
     }
 
-    res
+    if nums[hi] == target {
+        return Some(hi);
+    }
+    None
 }
 ```

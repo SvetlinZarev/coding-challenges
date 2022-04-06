@@ -2,7 +2,7 @@
 
 ## Problem
 
-Easy
+### Description
 
 You are a product manager and currently leading a team to develop a new product.
 Unfortunately, the latest version of your product fails the quality check. Since
@@ -16,11 +16,11 @@ You are given an API bool `isBadVersion(version)` which returns
 whether `version` is bad. Implement a function to find the first bad version.
 You should minimize the number of calls to the API.
 
-#### Constraints
+### Constraints
 
 * `1 <= bad <= n <= 2^31 - 1`
 
-#### Examples
+### Examples
 
 ```text
 Input: n = 5, bad = 4
@@ -37,35 +37,31 @@ Input: n = 1, bad = 1
 Output: 1
 ```
 
-## Solution
+## Solutions
+
+### Binary search
 
 ```rust
 // The API isBadVersion is defined for you.
 // isBadVersion(versions:i32)-> bool;
 // to call it use self.isBadVersion(versions)
 
-
 impl Solution {
     pub fn first_bad_version(&self, n: i32) -> i32 {
         let mut lo = 0;
         let mut hi = n;
 
-        let mut last_bad = i32::MAX;
-        while hi >= lo {
+        while lo < hi {
             let mid = (hi - lo) / 2 + lo;
-            if Solution::isBadVersion(self, mid) {
-                last_bad = last_bad.min(mid);
-                if mid <= 0 {
-                    break;
-                }
 
-                hi = mid - 1;
+            if self.isBadVersion(mid) {
+                hi = mid;
             } else {
                 lo = mid + 1;
             }
         }
 
-        last_bad
+        hi
     }
 }
 ```
