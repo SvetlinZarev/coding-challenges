@@ -2,14 +2,16 @@
 
 ## Problem
 
+### Description
+
 Given the `head` of a singly linked list, reverse the list, and return the
 reversed list.
 
-#### Constraints
+### Constraints
 
 * The number of nodes in the list is the range `[0, 5000]`.
 
-#### Examples
+### Examples
 
 ```text
 Input: head = [1,2,3,4,5]
@@ -58,5 +60,23 @@ pub fn reverse_list(list: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 
     head.next.take()
 }
-
 ```
+
+Or a bit shorter implementation:
+
+```rust
+pub fn reverse_list(mut list: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    let mut reversed = ListNode::new(0);
+
+    while let Some(mut node) = list.take() {
+        std::mem::swap(&mut node.next, &mut reversed.next);
+        list = reversed.next.replace(node);
+    }
+
+    reversed.next.take()
+}
+```
+
+## Related Problems
+
+* [92. Reverse Linked List II](/leetcode/000%20-%20099/92%20-%20Reverse%20Linked%20List%20II.md)

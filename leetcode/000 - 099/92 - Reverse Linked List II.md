@@ -2,18 +2,20 @@
 
 ## Problem
 
+### Description
+
 Given the head of a singly linked list and two integers `left` and `right`
 where `left <= right`, reverse the nodes of the list from position `left` to
 position `right`, and return the reversed list.
 
-#### Constraints
+### Constraints
 
 * The number of nodes in the list is `n`.
 * `1 <= n <= 500`
 * `-500 <= Node.val <= 500`
 * `1 <= left <= right <= n`
 
-#### Examples
+### Examples
 
 ```text
 Input: head = [1,2,3,4,5], left = 2, right = 4
@@ -58,7 +60,11 @@ pub fn reverse_between(
 
     // append the remaining nodes 
     *tail = head;
-    
+
     list.next.take()
 }
 ```
+
+## Related problems
+
+* [206. Reverse Linked List](/leetcode/200%20-%20299/206%20-%20Reverse%20Linked%20List.md)
