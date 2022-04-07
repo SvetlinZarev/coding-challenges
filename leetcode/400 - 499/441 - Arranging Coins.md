@@ -2,20 +2,21 @@
 
 ## Problem
 
-You have `n` coins and you want to build a staircase with these coins. The staircase 
-consists of `k` rows where the `i`th row has exactly `i` coins. The last row of the 
-staircase may be incomplete.
+### Description
 
-Given the integer `n`, return the number of complete rows of the staircase you will build.
+You have `n` coins and you want to build a staircase with these coins. The
+staircase consists of `k` rows where the `i`th row has exactly `i` coins. The
+last row of the staircase may be incomplete.
 
+Given the integer `n`, return the number of complete rows of the staircase you
+will build.
 
-#### Constraints
+### Constraints
 
 * `1 <= n <= 2^31 - 1`
 
+### Examples
 
-#### Examples
-  
 ```text
 Input: n = 5
 Output: 2
@@ -56,11 +57,11 @@ XXO
 XXX
 ```
 
-In other words, if we have X rows of the staircase, we will have `X * (X + 1)` 
+In other words, if we have X rows of the staircase, we will have `X * (X + 1)`
 area of the rectangle. This means that in order to make a complete staircase
 with `X` rows, we will need `X * (X + 1) / 2` coins.
 
-Thus, we can run a binary search using the formula above. We stop the search 
+Thus, we can run a binary search using the formula above. We stop the search
 when we find the biggest number that is less than `N`:
 
 ```rust
@@ -84,7 +85,7 @@ pub fn arrange_coins(mut n: i32) -> i32 {
             return mid as i32;
         }
 
-        if coins > n as usize{
+        if coins > n as usize {
             if mid == 0 {
                 break;
             }
