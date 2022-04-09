@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 You are given an array of strings `nums` and an integer `k`. Each string
 in `nums` represents an integer without leading zeros.
 
@@ -11,14 +13,14 @@ Return the string that represents the `k`th largest integer in `nums`.
 is `["1","2","2"]`, `2` is the first largest integer, `2` is the second-largest
 integer, and `1` is the third-largest integer.
 
-#### Constraints
+### Constraints
 
 * `1 <= k <= nums.length <= 10^4`
 * `1 <= nums[i].length <= 100`
 * `nums[i]` consists of only digits.
 * `nums[i]` will not have any leading zeros.
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = ["3","6","7","10"], k = 4
@@ -53,7 +55,9 @@ The 2nd largest integer in nums is "0".
   have found the first digit that differs, the one with the larger digit is the
   larger number.
 
-## Solution
+## Solutions
+
+### Using a priority queue
 
 ```rust
 use std::cmp::{Ordering, Reverse};
@@ -103,3 +107,6 @@ pub fn kth_largest_number(nums: Vec<String>, k: i32) -> String {
 ## Related Questions
 
 * [215. Kth Largest Element in an Array](/leetcode/200%20-%20299/215%20-%20Kth%20Largest%20Element%20in%20an%20Array.md)
+* [347. Top K Frequent Elements](/leetcode/300%20-%20399/347%20-%20Top%20K%20Frequent%20Elements.md)
+* [703. Kth Largest Element in a Stream](/leetcode/700%20-%20799/703%20-%20Kth%20Largest%20Element%20in%20a%20Stream.md)
+* [973. K Closest Points to Origin](/leetcode/900%20-%20999/973%20-%20K%20Closest%20Points%20to%20Origin.md)

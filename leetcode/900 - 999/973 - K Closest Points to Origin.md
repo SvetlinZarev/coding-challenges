@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given an array of points where `points[i] = [xi, yi]` represents a point on
 the `X-Y` plane and an integer `k`, return the `k` closest points to the
 origin `(0, 0)`.
@@ -12,12 +14,12 @@ i.e., `√(x1 - x2)^2 + (y1 - y2)^2`).
 You may return the answer in any order. The answer is guaranteed to be unique (
 except for the order that it is in).
 
-#### Constraints
+### Constraints
 
 * `1 <= k <= points.length <= 10^4`
 * `-10^4 < xi, yi < 10^4`
 
-#### Examples
+### Examples
 
 ```text
 Input: points = [[1,3],[-2,2]], k = 1
@@ -37,7 +39,9 @@ Output: [[3,3],[-2,4]]
 Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 ```
 
-## Solution
+## Solutions
+
+### Using a priority queue
 
 ```rust
 use std::cmp::Ordering;
@@ -99,3 +103,11 @@ pub fn k_closest(points: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
     heap.into_iter().map(|p| p.point).collect()
 }
 ```
+
+## Related Problems
+
+* [215. Kth Largest Element in an Array](/leetcode/200%20-%20299/215%20-%20Kth%20Largest%20Element%20in%20an%20Array.md)
+* [347. Top K Frequent Elements](/leetcode/300%20-%20399/347%20-%20Top%20K%20Frequent%20Elements.md)
+* [703. Kth Largest Element in a Stream](/leetcode/700%20-%20799/703%20-%20Kth%20Largest%20Element%20in%20a%20Stream.md)
+* [1985. Find the Kth Largest Integer in the Array](/leetcode/1900%20-%201999/1985%20-%20Find%20the%20Kth%20Largest%20Integer%20in%20the%20Array.md)
+
