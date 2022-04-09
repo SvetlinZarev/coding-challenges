@@ -102,3 +102,5 @@ pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
 ## Related problems
 
 * [74. Search a 2D Matrix](/leetcode/000%20-%20099/74%20-%20Search%20a%202D%20Matrix.md)
+* [1351. Count Negative Numbers in a Sorted Matrix](/leetcode/1300%20-%201399/1351%20-%20Count%20Negative%20Numbers%20in%20a%20Sorted%20Matrix.md)
+
