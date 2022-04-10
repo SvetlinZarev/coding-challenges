@@ -81,19 +81,19 @@ pub fn k_weakest_rows(mat: Vec<Vec<i32>>, k: i32) -> Vec<i32> {
     let mut pq = BinaryHeap::with_capacity(k as usize);
 
     for (idx, row) in mat.into_iter().enumerate() {
-        // We can use `.take_while()` instead of `.filter()` because the proplem statement
+        // We can use `.take_while()` instead of `.filter()` because the problem statement
         // guarantees us that there will not be any 1s after a 0. Thus we can do fewer
         // loops by stopping early
         let count = row.into_iter().take_while(|&x| x == 1).count();
 
-        // One option is to always push and if the length i smore than `k`, then pop,
+        // One option is to always push() and if the length is more than `k`, then pop(),
         // but we can take advantage of tha fact that `.peek()` is O(1) and thus do
         // fewer O(log N) `.pop()` operations by popping only if the current element
         // is smaller than the PQ's largest one.
         if pq.len() < k as usize {
             pq.push((count, idx));
         } else {
-            // SAFETY: we will always have exact;y `k` elements in the PQ
+            // SAFETY: we will always have exactly `k` elements in the PQ
             let &(max_count, max_count_idx) = unsafe { pq.peek().unwrap_unchecked() };
             if count < max_count || (count == max_count && idx < max_count_idx) {
                 pq.pop();
@@ -102,10 +102,10 @@ pub fn k_weakest_rows(mat: Vec<Vec<i32>>, k: i32) -> Vec<i32> {
         }
     }
 
-    // Iterate in reverse order, because we are poping the largest elements first
+    // Iterate in reverse order, because we are popping the largest elements first
     let mut answer = vec![0; k as usize];
     for x in answer.iter_mut().rev() {
-        // SAFETY: we will always have exact;y `k` elements in the PQ
+        // SAFETY: we will always have exactly `k` elements in the PQ
         *x = unsafe { pq.pop().unwrap_unchecked() }.1 as i32;
     }
 
@@ -130,14 +130,14 @@ pub fn k_weakest_rows(mat: Vec<Vec<i32>>, k: i32) -> Vec<i32> {
         // search to find the first index of a 0. That's our 1s count
         let count = count_ones(&row);
 
-        // One option is to always push and if the length i smore than `k`, then pop,
+        // One option is to always push() and if the length is more than `k`, then pop(),
         // but we can take advantage of tha fact that `.peek()` is O(1) and thus do
         // fewer O(log N) `.pop()` operations by popping only if the current element
         // is smaller than the PQ's largest one.
         if pq.len() < k as usize {
             pq.push((count, idx));
         } else {
-            // SAFETY: we will always have exact;y `k` elements in the PQ
+            // SAFETY: we will always have exactly `k` elements in the PQ
             let &max_tuple = unsafe { pq.peek().unwrap_unchecked() };
 
             // Because we did not deconstruct our "max" tuple, we can just do a 
@@ -152,7 +152,7 @@ pub fn k_weakest_rows(mat: Vec<Vec<i32>>, k: i32) -> Vec<i32> {
         }
     }
 
-    // Iterate in reverse order, because we are poping the largest elements first
+    // Iterate in reverse order, because we are popping the largest elements first
     let mut answer = vec![0; k as usize];
     for x in answer.iter_mut().rev() {
         // SAFETY: we will always have exact;y `k` elements in the PQ
