@@ -2,16 +2,18 @@
 
 ## Problem
 
+### Description
+
 Given an array, rotate the array to the right by `k` steps, where `k` is
 non-negative.
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 10^5`
 * `-2^31 <= nums[i] <= 2^31 - 1`
 * `0 <= k <= 10^5`
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [1,2,3,4,5,6,7], k = 3
@@ -30,7 +32,7 @@ rotate 1 steps to the right: [99,-1,-100,3]
 rotate 2 steps to the right: [3,99,-1,-100]
 ```
 
-## Solution
+## Solutions
 
 ### Long & complex solution
 
@@ -94,3 +96,7 @@ pub fn rotate(nums: &mut Vec<i32>, k: i32) {
     nums[k..].reverse();
 }
 ```
+
+## Related Problems
+
+* [1260. Shift 2D Grid](/leetcode/1200%20-%201299/1260%20-%20Shift%202D%20Grid.md)
