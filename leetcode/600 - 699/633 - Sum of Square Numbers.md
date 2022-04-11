@@ -84,6 +84,31 @@ pub fn judge_square_sum(c: i32) -> bool {
 }
 ```
 
+### Two pointers
+
+```rust
+use std::cmp::Ordering;
+
+pub fn judge_square_sum(c: i32) -> bool {
+    // use `i64` in order to avoid overflows
+    // or use `.checked_xxx()` operations
+    let mut a = 0i64;
+    let mut b = (c as f64).sqrt() as i64;
+
+    while a <= b {
+        let square = a * a + b * b;
+
+        match square.cmp(&(c as i64)) {
+            Ordering::Equal => return true,
+            Ordering::Less => a += 1,
+            Ordering::Greater => b -= 1,
+        }
+    }
+
+    false
+}
+```
+
 ## Related Problems
 
 * [69. Sqrt(x)](/leetcode/000%20-%20099/69%20-%20Sqrt(x).md)
