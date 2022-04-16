@@ -60,3 +60,4 @@ pub fn my_sqrt(x: i32) -> i32 {
 
 * [367. Valid Perfect Square](/leetcode/300%20-%20399/367%20-%20Valid%20Perfect%20Square.md)
 * [633. Sum of Square Numbers](/leetcode/600%20-%20699/633%20-%20Sum%20of%20Square%20Numbers.md)
+* [875. Koko Eating Bananas](/leetcode/800%20-%20899/875%20-%20Koko%20Eating%20Bananas.md)

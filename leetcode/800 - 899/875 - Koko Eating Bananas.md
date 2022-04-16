@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Koko loves to eat bananas. There are `n` piles of bananas, the `ith` pile has
 `piles[i]` bananas. The guards have gone and will come back in `h` hours.
 
@@ -16,13 +18,13 @@ the guards return.
 Return the minimum integer `k` such that she can eat all the bananas within `h`
 hours.
 
-#### Constraints
+### Constraints
 
 * `1 <= piles.length <= 10^4`
 * `piles.length <= h <= 10^9`
 * `1 <= piles[i] <= 10^9`
 
-#### Examples
+### Examples
 
 ```text
 Input: piles = [3,6,7,11], h = 8
@@ -39,7 +41,9 @@ Input: piles = [30,11,23,4,20], h = 6
 Output: 23
 ```
 
-## Solution
+## Solutions
+
+### Binary Search
 
 ```rust
 pub fn min_eating_speed(piles: Vec<i32>, h: i32) -> i32 {
@@ -69,3 +73,21 @@ fn possible(piles: &[i32], speed: i32, limit: i32) -> bool {
     elapsed <= limit
 }
 ```
+
+## Related Problems
+
+There is a pattern among many binary-search questions on leetcode:
+
+```text
+fn binary_search(array) -> X:
+    left, right = 0, len(array)
+    while left < right:
+        mid = left + (right - left) / 2
+        if condition(mid):
+            right = mid
+        else:
+            left = mid + 1
+    return left
+```
+
+* [69. Sqrt(x)](/leetcode/000%20-%20099/69%20-%20Sqrt(x).md)
