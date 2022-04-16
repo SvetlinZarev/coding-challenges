@@ -2,8 +2,32 @@
 
 ## Problem
 
+### Description
+
 Given the root of a binary tree, return the postorder traversal of its nodes'
 values.
+
+### Constraints
+
+* The number of nodes in the tree is in the range `[0, 100]`.
+* `-100 <= Node.val <= 100`
+
+### Examples
+
+```text
+Input: root = [1,null,2,3]
+Output: [3,2,1]
+```
+
+```text
+Input: root = []
+Output: []
+```
+
+```text
+Input: root = [1]
+Output: [1]
+```
 
 ## Solution
 
@@ -44,3 +68,8 @@ fn postorder(root: Option<Rc<RefCell<TreeNode>>>, nodes: &mut Vec<i32>) {
     }
 }
 ```
+
+## Related Problems
+
+* [94. Binary Tree Inorder Traversal](/leetcode/000%20-%20099/94%20-%20Binary%20Tree%20Inorder%20Traversal.md)
+* [144. Binary Tree Preorder Traversal](144%20-%20Binary%20Tree%20Preorder%20Traversal.md)

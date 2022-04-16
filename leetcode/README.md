@@ -21,9 +21,12 @@
 
 ### Trees
 
+* [94. Binary Tree Inorder Traversal](000%20-%20099/94%20-%20Binary%20Tree%20Inorder%20Traversal.md)
+* [144. Binary Tree Preorder Traversal](100%20-%20199/144%20-%20Binary%20Tree%20Preorder%20Traversal.md)
+* [145. Binary Tree Postorder Traversal](100%20-%20199/145%20-%20Binary%20Tree%20Postorder%20Traversal.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
 
-### Prefix Trie
+### Prefix Tree (Trie)
 
 * [212. Word Search II](200%20-%20299/212%20-%20Word%20Search%20II.md)
 
@@ -31,8 +34,9 @@
 
 * [303. Range Sum Query - Immutable](300%20-%20399/303%20-%20Range%20Sum%20Query%20-%20Immutable.md)
 * [304. Range Sum Query 2D - Immutable](300%20-%20399/304%20-%20Range%20Sum%20Query%202D%20-%20Immutable.md)
+* [538. Convert BST to Greater Tree](500%20-%20599/538%20-%20Convert%20BST%20to%20Greater%20Tree.md)
 
-### BFS / DFS
+### BFS / DFS (on a graph/matrix)
 
 * [127. Word Ladder](100%20-%20199/127%20-%20Word%20Ladder.md)
 * [200. Number of Islands](200%20-%20299/200%20-%20Number%20of%20Islands.md)
