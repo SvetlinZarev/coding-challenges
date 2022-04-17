@@ -115,3 +115,7 @@ impl BSTIterator {
     }
 }
 ```
+
+## Related Problems
+
+* [897. Increasing Order Search Tree](/leetcode/800%20-%20899/897%20-%20Increasing%20Order%20Search%20Tree.md)

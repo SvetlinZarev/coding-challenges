@@ -25,6 +25,7 @@
 * [94. Binary Tree Inorder Traversal](000%20-%20099/94%20-%20Binary%20Tree%20Inorder%20Traversal.md)
 * [144. Binary Tree Preorder Traversal](100%20-%20199/144%20-%20Binary%20Tree%20Preorder%20Traversal.md)
 * [145. Binary Tree Postorder Traversal](100%20-%20199/145%20-%20Binary%20Tree%20Postorder%20Traversal.md)
+* [173. Binary Search Tree Iterator](/leetcode/100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
 
 ### Prefix Tree (Trie)
