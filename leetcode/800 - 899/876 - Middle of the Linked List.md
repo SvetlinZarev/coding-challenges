@@ -2,12 +2,19 @@
 
 ## Problem
 
+### Description
+
 Given the head of a singly linked list, return the middle node of the linked
 list.
 
 If there are two middle nodes, return the second middle node.
 
-#### Examples
+### Constraints
+
+* The number of nodes in the list is in the range `[1, 100]`.
+* `1 <= Node.val <= 100`
+
+### Examples
 
 ```text
 Input: head = [1,2,*3*,4,5]
@@ -69,3 +76,7 @@ pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 Iterate over the list once to find out the number of nodes. Then iterate the
 list for a second time and cut it in half. This would avoid the problem of
 cloning the list.
+
+## Related Problems
+
+* [234. Palindrome Linked List](/leetcode/200%20-%20299/234%20-%20Palindrome%20Linked%20List.md)
