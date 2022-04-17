@@ -91,3 +91,4 @@ fn binary_search(array) -> X:
 ```
 
 * [69. Sqrt(x)](/leetcode/000%20-%20099/69%20-%20Sqrt(x).md)
+* [1283. Find the Smallest Divisor Given a Threshold](/leetcode/1200%20-%201299/1283%20-%20Find%20the%20Smallest%20Divisor%20Given%20a%20Threshold.md)
