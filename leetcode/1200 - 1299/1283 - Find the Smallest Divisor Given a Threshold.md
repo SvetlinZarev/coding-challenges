@@ -69,3 +69,4 @@ fn ceil(a: i32, b: i32) -> i32 {
 ### Related Problems
 
 * [875. Koko Eating Bananas](/leetcode/800%20-%20899/875%20-%20Koko%20Eating%20Bananas.md)
+* [1870. Minimum Speed to Arrive on Time](/leetcode/1800%20-%201899/1870%20-%20Minimum%20Speed%20to%20Arrive%20on%20Time.md)
