@@ -2,13 +2,25 @@
 
 ## Problem
 
+### Description
+
 Write an efficient algorithm that searches for a target value in an `m x n`
 integer matrix. The matrix has the following properties:
 
 * Integers in each row are sorted in ascending from left to right.
 * Integers in each column are sorted in ascending from top to bottom.
 
-#### Examples
+### Constraints
+
+* `m == matrix.length`
+* `n == matrix[i].length`
+* `1 <= n, m <= 300`
+* `-10^9 <= matrix[i][j] <= 10^9`
+* `-10^9 <= target <= 10^9`
+* All the integers in each row are sorted in ascending order.
+* All the integers in each column are sorted in ascending order.
+
+### Examples
 
 ```text
 Input: matrix = [
@@ -32,22 +44,12 @@ Input: matrix = [
 Output: false
 ```
 
-#### Constraints
-
-* `m == matrix.length`
-* `n == matrix[i].length`
-* `1 <= n, m <= 300`
-* `-10^9 <= matrix[i][j] <= 10^9`
-* `-10^9 <= target <= 10^9`
-* All the integers in each row are sorted in ascending order.
-* All the integers in each column are sorted in ascending order.
-
 ## Solutions
 
 ### Iteration + binary search
 
 We iterate over the rows and check if the target value is between the smallest
-an the largest element of the row. We then do a regular binary search:
+and the largest element of the row. We then do a regular binary search:
 
 ```rust
 pub fn search_matrix(matrix: Vec<Vec<i32>>, target: i32) -> bool {
