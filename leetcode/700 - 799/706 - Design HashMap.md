@@ -134,3 +134,7 @@ impl MyHashMap {
  * obj.remove(key);
  */
 ```
+
+## Related Problems
+
+* [705. Design HashSet](705%20-%20Design%20HashSet.md)
