@@ -30,8 +30,8 @@ first and last indexes where the values differ:
 
 * Time: 4ms
 * Memory: 2.1MB
-* Time complexity: O(log n)
-* Space complexity: O(n)
+* Time complexity: `O(n log n)`
+* Space complexity: `O(n)`
 
 ```rust
 pub fn find_unsorted_subarray(nums: Vec<i32>) -> i32 {
