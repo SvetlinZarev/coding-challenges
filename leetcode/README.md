@@ -50,6 +50,7 @@
 ### Stack
 
 * [173. Binary Search Tree Iterator](100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
+* [1209. Remove All Adjacent Duplicates in String II](1200%20-%201299/1209%20-%20Remove%20All%20Adjacent%20Duplicates%20in%20String%20II.md)
 
 ### Monotonic Stack
 
