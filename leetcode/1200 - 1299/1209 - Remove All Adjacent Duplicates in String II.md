@@ -80,3 +80,7 @@ pub fn remove_duplicates<S: AsRef<str>>(s: S, k: i32) -> String {
     answer
 }
 ```
+
+## Related Problems
+
+* [1047. Remove All Adjacent Duplicates In String](/leetcode/1000%20-%201099/1047%20-%20Remove%20All%20Adjacent%20Duplicates%20In%20String.md)
