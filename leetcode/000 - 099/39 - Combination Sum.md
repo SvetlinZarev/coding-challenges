@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given an array of distinct integers `candidates` and a target integer `target`,
 return a list of all unique combinations of `candidates` where the chosen
 numbers sum to `target`. You may return the combinations in any order.
@@ -13,14 +15,14 @@ numbers is different.
 It is guaranteed that the number of unique combinations that sum up to `target`
 is less than 150 combinations for the given input.
 
-#### Constraints
+### Constraints
 
 * `1 <= candidates.length <= 30`
 * `1 <= candidates[i] <= 200`
 * All elements of `candidates` are distinct.
 * `1 <= target <= 500`
 
-#### Examples
+### Examples
 
 ```text
 Input: candidates = [2,3,6,7], target = 7
@@ -90,3 +92,4 @@ fn backtrack(nums: &[i32], result: &mut Vec<Vec<i32>>, combination: &mut Vec<i32
 ## Related Problems
 
 * [40. Combination Sum II](40%20-%20Combination%20Sum%20II.md)
+* [216. Combination Sum III](/leetcode/200%20-%20299/216%20-%20Combination%20Sum%20III.md)
