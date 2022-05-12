@@ -27,7 +27,7 @@ Output: [[0,1],[1,0]]
 
 ## Solutions
 
-### Backtracking
+### Backtracking #1
 
 ```rust
 pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
@@ -56,6 +56,45 @@ fn recurse(solution: &mut Vec<Vec<i32>>, permutation: Vec<i32>, remaining: &[i32
         permutation.push(v);
 
         recurse(solution, permutation, &remaining);
+    }
+}
+```
+
+### Backtracking #2
+
+Instead of copying the list of remaining numbers on every iteration we can use
+bitmask to track which numbers have been used. This is possible because the
+number of elements is low (in this case - at most 6)
+
+```rust
+pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
+    assert!(nums.len() >= 1);
+    assert!(nums.len() <= 6);
+
+    let mut answer = vec![];
+    let mut permutation = vec![];
+    backtrack(&mut answer, &mut permutation, &nums, 0);
+
+    answer
+}
+
+fn backtrack(answer: &mut Vec<Vec<i32>>, permutation: &mut Vec<i32>, nums: &[i32], mut used: u32) {
+    if permutation.len() == nums.len() {
+        answer.push(permutation.clone());
+        return;
+    }
+
+    for i in 0..nums.len() {
+        // Skip used numbers
+        if used & 1 << i != 0 {
+            continue;
+        }
+
+        used |= 1 << i;
+        permutation.push(nums[i]);
+        backtrack(answer, permutation, nums, used);
+        permutation.pop();
+        used ^= 1 << i;
     }
 }
 ```
