@@ -2,15 +2,17 @@
 
 ## Problem
 
+### Description
+
 Given a collection of numbers, `nums`, that might contain duplicates, return all
 possible unique permutations in any order
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 8`
 * `-10 <= nums[i] <= 10`
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [1,1,2]
@@ -27,7 +29,9 @@ Input: nums = [1,2,3]
 Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 ```
 
-## Solution
+## Solutions
+
+### Backtracking
 
 ```rust
 use std::collections::HashSet;
@@ -61,3 +65,7 @@ fn recurse(solution: &mut HashSet<Vec<i32>>, permutation: Vec<i32>, remaining: &
     }
 }
 ```
+
+## Related Problems
+
+* [46. Permutations](46%20-%20Permutations.md)

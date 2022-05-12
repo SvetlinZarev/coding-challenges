@@ -2,16 +2,18 @@
 
 ## Problem
 
+### Description
+
 Given an array `nums` of distinct integers, return all the possible
 permutations. You can return the answer in any order.
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 6`
 * `-10 <= nums[i] <= 10`
 * All the integers of `nums` are unique.
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [1,2,3]
@@ -23,7 +25,9 @@ Input: nums = [0,1]
 Output: [[0,1],[1,0]]
 ```
 
-## Solution
+## Solutions
+
+### Backtracking
 
 ```rust
 pub fn permute(nums: Vec<i32>) -> Vec<Vec<i32>> {
@@ -55,3 +59,7 @@ fn recurse(solution: &mut Vec<Vec<i32>>, permutation: Vec<i32>, remaining: &[i32
     }
 }
 ```
+
+## Related Problems
+
+* [47. Permutations II](47%20-%20Permutations%20II.md)
