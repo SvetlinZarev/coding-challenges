@@ -227,3 +227,7 @@ pub fn network_delay_time(times: Vec<Vec<i32>>, n: i32, k: i32) -> i32 {
         .unwrap_or(0)
 }
 ```
+
+## Related Problems
+
+* [787. Cheapest Flights Within K Stops](787%20-%20Cheapest%20Flights%20Within%20K%20Stops.md)
