@@ -178,22 +178,38 @@ pub fn network_delay_time(times: Vec<Vec<i32>>, n: i32, k: i32) -> i32 {
 
     while let Some(Reverse((delay, node))) = queue.pop() {
         match delays[node] {
+            // This node has not been visited before
             None => {
                 delays[node] = Some(delay);
                 visited += 1;
+
+                // Because we always take the nodes with smallest delay first,
+                // once we process all nodes at least once we can stop, because
+                // all other delays in the queue will be larger than the the
+                // current one
+                if visited == n as usize {
+                    break;
+                }
             }
 
-            Some(d) => {
-                if d <= delay {
-                    continue;
-                }
+            // This node has already been visited via path with smaller delay
+            Some(d) if d <= delay => {
+                continue;
+            }
 
+            // This node has already been visited via path with larger delay,
+            // so we update it to use the smaller one
+            Some(d) => {
                 delays[node] = Some(delay);
             }
         }
 
         for (edge, weight) in graph[node].iter().copied() {
-            queue.push(Reverse((delay + weight, edge)));
+            // This IF statement is optional. In some cases it can reduce the number of nodes
+            // we push to the queue, but the algorithm should work fine without it.
+            if delays[edge].is_none() || delays[edge] > Some(delay + weight) {
+                queue.push(Reverse((delay + weight, edge)));
+            }
         }
     }
 
