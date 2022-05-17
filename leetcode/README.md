@@ -39,15 +39,12 @@
 * [304. Range Sum Query 2D - Immutable](300%20-%20399/304%20-%20Range%20Sum%20Query%202D%20-%20Immutable.md)
 * [538. Convert BST to Greater Tree](500%20-%20599/538%20-%20Convert%20BST%20to%20Greater%20Tree.md)
 
-### BFS / DFS (on a graph/matrix)
+### BFS / DFS
 
 * [127. Word Ladder](100%20-%20199/127%20-%20Word%20Ladder.md)
 * [200. Number of Islands](200%20-%20299/200%20-%20Number%20of%20Islands.md)
-* [365. Water and Jug Problem](300%20-%20399/365%20-%20Water%20and%20Jug%20Problem.md)
 * [417. Pacific Atlantic Water Flow](400%20-%20499/417%20-%20Pacific%20Atlantic%20Water%20Flow.md)
-* [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
-* [752. Open the Lock](700%20-%20799/752%20-%20Open%20the%20Lock.md)
-* [1306. Jump Game III](1300%20-%201399/1306%20-%20Jump%20Game%20III.md)
+* [994. Rotting Oranges](900%20-%20999/994%20-%20Rotting%20Oranges.md)
 
 ### Stack
 
@@ -78,3 +75,14 @@
 ### Topological sorting
 
 * [210. Course Schedule II](200%20-%20299/210%20-%20Course%20Schedule%20II.md)
+
+### Path Finding
+
+* [365. Water and Jug Problem](300%20-%20399/365%20-%20Water%20and%20Jug%20Problem.md)
+* [752. Open the Lock](700%20-%20799/752%20-%20Open%20the%20Lock.md)
+* [1306. Jump Game III](1300%20-%201399/1306%20-%20Jump%20Game%20III.md)
+
+### Misc
+
+* [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
+
