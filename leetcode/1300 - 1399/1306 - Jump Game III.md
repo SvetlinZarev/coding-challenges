@@ -46,8 +46,8 @@ Explanation: There is no way to reach at index 1 with value 0.
 
 ### BFS
 
-We can treat the array like a graph and do a BFS to check if can reach any node
-with a value of 0.
+We can treat the array like a graph and do a BFS to check if we can reach any
+node with a value of 0.
 
 ```rust
 use std::collections::VecDeque;
