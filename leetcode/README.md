@@ -1,6 +1,8 @@
-# Interesting Problems
+# Problems by topic
 
-## Datastructures & Algorithms
+### Arrays
+
+* [867. Transpose Matrix](800%20-%20899/867%20-%20Transpose%20Matrix.md)
 
 ### Binary Search
 
