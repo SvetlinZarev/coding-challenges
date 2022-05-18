@@ -83,6 +83,7 @@
 * [365. Water and Jug Problem](300%20-%20399/365%20-%20Water%20and%20Jug%20Problem.md)
 * [752. Open the Lock](700%20-%20799/752%20-%20Open%20the%20Lock.md)
 * [1306. Jump Game III](1300%20-%201399/1306%20-%20Jump%20Game%20III.md)
+* [1514. Path with Maximum Probability](1500%20-%201599/1514%20-%20Path%20with%20Maximum%20Probability.md)
 
 ### Misc
 
