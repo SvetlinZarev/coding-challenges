@@ -87,4 +87,5 @@
 ### Misc
 
 * [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
+* [1192. Critical Connections in a Network](1100%20-%201199/1192%20-%20Critical%20Connections%20in%20a%20Network.md)
 
