@@ -61,16 +61,28 @@ Explanation: There is no path between 0 and 2.
 
 ### Dijkstra
 
+In general the Dijkstra algorithm is applicable when:
+
+* there are no negative weights
+* we are interested in finding the **minimal** cost (the algorithm does not work
+  for maximal cost)
+
+But here we are searching for the "maximal probability". So why does dijkstra
+work here ? The reason is that the Dijkstra algorithm requires the cost to get "
+monotonically worse". And because all probabilities are between 0 and 1, every
+multiplication reduces the probability. Or said in other words - in this case,
+just as in the general case, the routes get more expensive as we go.
+
 ```rust
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
 
 #[derive(Debug, PartialEq, Copy, Clone, PartialOrd)]
-struct F(f64);
+struct NonInfNan(f64);
 
-impl Eq for F {}
+impl Eq for NonInfNan {}
 
-impl Ord for F {
+impl Ord for NonInfNan {
     fn cmp(&self, other: &Self) -> Ordering {
         self.partial_cmp(other).unwrap()
     }
@@ -97,9 +109,9 @@ pub fn max_probability(
     }
 
     let mut pq = BinaryHeap::new();
-    pq.push((F(1.0), start as usize));
+    pq.push((NonInfNan(0.0), start as usize));
 
-    while let Some((F(probability), node)) = pq.pop() {
+    while let Some((NonInfNan(probability), node)) = pq.pop() {
         if node == end as usize {
             return probability;
         }
@@ -114,7 +126,83 @@ pub fn max_probability(
                 continue;
             }
 
-            pq.push((F(probability * p), next));
+            pq.push((NonInfNan(probability * p), next));
+        }
+    }
+
+    0.0
+}
+```
+
+### Dijkstra + logarithms
+
+```rust
+use std::cmp::{Ordering, Reverse};
+use std::collections::BinaryHeap;
+
+#[derive(Debug, PartialEq, Copy, Clone, PartialOrd)]
+struct NonInfNan(f64);
+
+impl Eq for NonInfNan {}
+
+impl Ord for NonInfNan {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.partial_cmp(other).unwrap()
+    }
+}
+
+pub fn max_probability(
+    n: i32,
+    edges: Vec<Vec<i32>>,
+    succ_prob: Vec<f64>,
+    start: i32,
+    end: i32,
+) -> f64 {
+    assert!(n > 0);
+    assert!(start >= 0);
+    assert!(end >= 0);
+
+    let mut visited = vec![false; n as usize];
+    let mut graph = vec![vec![]; n as usize];
+
+    for idx in 0..edges.len() {
+        let edge = &edges[idx];
+        // Because Dijkstra is used for finding the "shortest" path, we can convert
+        // the probabilities from the [0.0..1.0] domain to the log domain. Because
+        // all probabilities are <= 1, the log of probabilities will be negative.
+        //
+        // Thus if we negate them,the higher probability will ead to smaller cost,
+        // and the smaller probability will lead to higher cost:
+        // * log10(0.1) = -1 => cost=1
+        // * log10(0.9) = −0,04.. => cost=0.04..
+        //
+        // In the probabilities domain we multiply the probabilities, but in the
+        // logarithms domain we have to sum it because log(A*B) = log(A) + log(B)
+        let log_cost = -succ_prob[idx].log10();
+        graph[edge[0] as usize].push((edge[1] as usize, log_cost));
+        graph[edge[1] as usize].push((edge[0] as usize, log_cost));
+    }
+
+    let mut pq = BinaryHeap::new();
+    pq.push((Reverse(NonInfNan(0.0)), start as usize));
+
+    while let Some((Reverse(NonInfNan(cost)), node)) = pq.pop() {
+        if node == end as usize {
+            // Transition from the logarithms domain to the probabilities domain
+            return 10.0f64.powf(-cost);
+        }
+
+        if visited[node] {
+            continue;
+        }
+        visited[node] = true;
+
+        for (next, c) in graph[node].iter().copied() {
+            if visited[next] {
+                continue;
+            }
+
+            pq.push((Reverse(NonInfNan(cost + c)), next));
         }
     }
 
