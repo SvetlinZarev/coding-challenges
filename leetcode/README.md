@@ -68,6 +68,10 @@
 * [142. Linked List Cycle II](100%20-%20199/142%20-%20Linked%20List%20Cycle%20II.md)
 * [287. Find the Duplicate Number](200%20-%20299/287%20-%20Find%20the%20Duplicate%20Number.md)
 
+### Memoization
+
+* [329. Longest Increasing Path in a Matrix](300%20-%20399/329%20-%20Longest%20Increasing%20Path%20in%20a%20Matrix.md)
+
 ## Algorithms on graphs
 
 ### Cycle detection
