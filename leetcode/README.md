@@ -16,6 +16,10 @@
 * [11. Container With Most Water](000%20-%20099/11%20-%20Container%20With%20Most%20Water.md)
 * [633. Sum of Square Numbers](600%20-%20699/633%20-%20Sum%20of%20Square%20Numbers.md)
 
+### Sliding window
+
+* [438. Find All Anagrams in a String](400%20-%20499/438%20-%20Find%20All%20Anagrams%20in%20a%20String.md)
+
 ### Priority Queue
 
 * [23. Merge k Sorted Lists](000%20-%20099/23%20-%20Merge%20k%20Sorted%20Lists.md)
@@ -67,6 +71,17 @@
 
 * [142. Linked List Cycle II](100%20-%20199/142%20-%20Linked%20List%20Cycle%20II.md)
 * [287. Find the Duplicate Number](200%20-%20299/287%20-%20Find%20the%20Duplicate%20Number.md)
+
+### Character frequencies in string
+
+* [49. Group Anagrams](000%20-%20099/49%20-%20Group%20Anagrams.md)
+* [242. Valid Anagram](200%20-%20299/242%20-%20Valid%20Anagram.md)
+* [387. First Unique Character in a String](300%20-%20399/387%20-%20First%20Unique%20Character%20in%20a%20String.md)
+* [389. Find the Difference](300%20-%20399/389%20-%20Find%20the%20Difference.md)
+* [438. Find All Anagrams in a String](400%20-%20499/438%20-%20Find%20All%20Anagrams%20in%20a%20String.md)
+* [567. Permutation in String](500%20-%20599/567%20-%20Permutation%20in%20String.md)
+* [1160. Find Words That Can Be Formed by Characters](1100%20-%201199/1160%20-%20Find%20Words%20That%20Can%20Be%20Formed%20by%20Characters.md)
+* [2135. Count Words Obtained After Adding a Letter](2100%20-%202199/2135%20-%20Count%20Words%20Obtained%20After%20Adding%20a%20Letter.md)
 
 ### Memoization
 
