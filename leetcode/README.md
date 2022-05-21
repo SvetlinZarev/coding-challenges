@@ -50,6 +50,7 @@
 * [127. Word Ladder](100%20-%20199/127%20-%20Word%20Ladder.md)
 * [200. Number of Islands](200%20-%20299/200%20-%20Number%20of%20Islands.md)
 * [417. Pacific Atlantic Water Flow](400%20-%20499/417%20-%20Pacific%20Atlantic%20Water%20Flow.md)
+* [695. Max Area of Island](600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
 * [994. Rotting Oranges](900%20-%20999/994%20-%20Rotting%20Oranges.md)
 
 ### Stack
@@ -85,6 +86,7 @@
 
 ### Memoization
 
+* [322. Coin Change](300%20-%20399/322%20-%20Coin%20Change.md)
 * [329. Longest Increasing Path in a Matrix](300%20-%20399/329%20-%20Longest%20Increasing%20Path%20in%20a%20Matrix.md)
 
 ## Algorithms on graphs
@@ -99,6 +101,7 @@
 
 ### Path Finding
 
+* [322. Coin Change](300%20-%20399/322%20-%20Coin%20Change.md)
 * [365. Water and Jug Problem](300%20-%20399/365%20-%20Water%20and%20Jug%20Problem.md)
 * [752. Open the Lock](700%20-%20799/752%20-%20Open%20the%20Lock.md)
 * [1306. Jump Game III](1300%20-%201399/1306%20-%20Jump%20Game%20III.md)
