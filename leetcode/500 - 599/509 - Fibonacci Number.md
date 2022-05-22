@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 The Fibonacci numbers, commonly denoted `F(n)` form a sequence, called the
 Fibonacci sequence, such that each number is the sum of the two preceding ones,
 starting from `0` and `1`. That is,
@@ -11,11 +13,11 @@ starting from `0` and `1`. That is,
 
 Given `n`, calculate `F(n)`.
 
-#### Constraints
+### Constraints
 
 * `0 <= n <= 30`
 
-#### Examples
+### Examples
 
 ```text
 Input: n = 2

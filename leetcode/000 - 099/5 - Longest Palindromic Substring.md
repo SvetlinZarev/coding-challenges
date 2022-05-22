@@ -93,4 +93,5 @@ fn expand_palindrome(s: &[u8], l: usize, r: usize) -> (usize, usize) {
 
 ## Related Problems
 
+* [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
 * [647. Palindromic Substrings](/leetcode/600%20-%20699/647%20-%20Palindromic%20Substrings.md)
