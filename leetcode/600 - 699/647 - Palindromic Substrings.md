@@ -68,3 +68,7 @@ fn extend_palindrome(s: &[u8], left: usize, right: usize) -> i32 {
     count
 }
 ```
+
+## Related Problems
+
+* [5. Longest Palindromic Substring](/leetcode/000%20-%20099/5%20-%20Longest%20Palindromic%20Substring.md)

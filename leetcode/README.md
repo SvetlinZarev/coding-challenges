@@ -86,6 +86,7 @@
 
 ### Misc string problems
 
+* [5. Longest Palindromic Substring](000%20-%20099/5%20-%20Longest%20Palindromic%20Substring.md)
 * [647. Palindromic Substrings](600%20-%20699/647%20-%20Palindromic%20Substrings.md)
 
 ### Memoization
