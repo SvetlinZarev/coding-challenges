@@ -2,18 +2,18 @@
 
 ## Problem
 
-The Hamming distance between two integers is the number of positions at 
+### Description
+
+The Hamming distance between two integers is the number of positions at
 which the corresponding bits are different.
 
 Given two integers `x` and `y`, return the Hamming distance between them.
 
-
-#### Constraints
+### Constraints
 
 * `0 <= x, y <= 2^31 - 1`
 
-
-#### Examples
+### Examples
 
 ```text
 Input: x = 1, y = 4

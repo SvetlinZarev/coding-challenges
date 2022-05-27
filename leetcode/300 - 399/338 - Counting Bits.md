@@ -2,15 +2,17 @@
 
 ## Problem
 
+### Description
+
 Given an integer `n`, return an array `ans` of length `n + 1` such that for
 each `i` (`0 <= i <= n`), `ans[i]` is the number of 1's in the binary
 representation of `i`.
 
-#### Constraints
+### Constraints
 
 * `0 <= n <= 10^5`
 
-#### Examples
+### Examples
 
 ```text
 Input: n = 2
@@ -40,7 +42,9 @@ Explanation:
 * Can you do it without using any built-in function (i.e.,
   like `__builtin_popcount` in C++)?
 
-## Solution
+## Solutions
+
+### Using `i32::count_ones()`
 
 ```rust
 pub fn count_bits(mut n: i32) -> Vec<i32> {

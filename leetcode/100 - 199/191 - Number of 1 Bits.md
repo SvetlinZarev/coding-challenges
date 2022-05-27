@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Write a function that takes an unsigned integer and returns the number of `1`
 bits it has (also known as the Hamming weight).
 
@@ -15,7 +17,11 @@ bits it has (also known as the Hamming weight).
   notation. Therefore, in Example 3, the input represents the signed integer.
   `-3`.
 
-#### Examples
+### Constraints
+
+* The input must be a binary string of length 32.
+
+### Examples
 
 ```text
 Input: n = 00000000000000000000000000001011
@@ -82,4 +88,3 @@ will yield `1000` , i.e. we've just removed the least significant `1` bit:
     bits as i32
 }
 ```
-

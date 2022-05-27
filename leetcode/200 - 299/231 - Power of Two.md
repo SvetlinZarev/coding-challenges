@@ -2,17 +2,19 @@
 
 ## Problem
 
+### Description
+
 Given an integer `n`, return `true` if it is a power of two. Otherwise,
 return `false`.
 
 An integer `n` is a power of two, if there exists an integer `x` such
 that `n == 2^x`
 
-#### Constraints
+### Constraints
 
 * `-2^31 <= n <= 2^31 - 1`
 
-#### Examples
+### Examples
 
 ```text
 Input: n = 1
@@ -31,7 +33,7 @@ Input: n = 3
 Output: false
 ```
 
-## Solution
+## Solutions
 
 In binary form, a number is a power of two only if it has a single bit set
 to `1`.

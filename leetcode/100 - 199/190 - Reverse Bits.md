@@ -2,9 +2,11 @@
 
 ## Problem
 
+### Description
+
 Reverse bits of a given 32 bits unsigned integer.
 
-#### Examples
+### Examples
 
 ```text
 Input: n = 11111111111111111111111111111101
@@ -22,7 +24,7 @@ Explanation: The input binary string 00000010100101000001111010011100
   its binary representation is 00111001011110000010100101000000.
 ```
 
-## Solution
+## Solutions
 
 ### O(bits)
 
