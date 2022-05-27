@@ -91,3 +91,7 @@ pub fn number_of_steps(num: i32) -> i32 {
     (i32::BITS - num.leading_zeros() - 1 + num.count_ones()) as i32
 }
 ```
+
+## Related Problems
+
+* [2139. Minimum Moves to Reach Target Score](/leetcode/2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)

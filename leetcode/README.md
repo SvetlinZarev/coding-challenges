@@ -96,6 +96,12 @@
 * [329. Longest Increasing Path in a Matrix](300%20-%20399/329%20-%20Longest%20Increasing%20Path%20in%20a%20Matrix.md)
 * [509. Fibonacci Number](/leetcode/500%20-%20599/509%20-%20Fibonacci%20Number.md)
 * [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
+
+### Bitwise operations
+
+* [1342. Number of Steps to Reduce a Number to Zero](1300%20-%201399/1342%20-%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20to%20Zero.md)
+* [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
+
 ## Algorithms on graphs
 
 ### Cycle detection
