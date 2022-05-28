@@ -99,9 +99,11 @@
 
 ### Bitwise operations
 
+* [136. Single Number](100%20-%20199/136%20-%20Single%20Number.md)
 * [190. Reverse Bits](100%20-%20199/190%20-%20Reverse%20Bits.md)
 * [191. Number of 1 Bits](100%20-%20199/191%20-%20Number%20of%201%20Bits.md)
 * [231. Power of Two](200%20-%20299/231%20-%20Power%20of%20Two.md)
+* [268. Missing Number](200%20-%20299/268%20-%20Missing%20Number.md)
 * [338. Counting Bits](300%20-%20399/338%20-%20Counting%20Bits.md)
 * [461. Hamming Distance](400%20-%20499/461%20-%20Hamming%20Distance.md)
 * [1342. Number of Steps to Reduce a Number to Zero](1300%20-%201399/1342%20-%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20to%20Zero.md)
