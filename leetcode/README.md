@@ -100,6 +100,7 @@
 ### Bitwise operations
 
 * [136. Single Number](100%20-%20199/136%20-%20Single%20Number.md)
+* [137. Single Number II](100%20-%20199/137%20-%20Single%20Number%20II.md)
 * [190. Reverse Bits](100%20-%20199/190%20-%20Reverse%20Bits.md)
 * [191. Number of 1 Bits](100%20-%20199/191%20-%20Number%20of%201%20Bits.md)
 * [231. Power of Two](200%20-%20299/231%20-%20Power%20of%20Two.md)
