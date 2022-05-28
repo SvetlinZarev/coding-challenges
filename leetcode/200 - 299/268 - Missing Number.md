@@ -38,6 +38,57 @@ Output: 1
 
 ## Solutions
 
+### Sort + Binary Search
+
+```rust
+pub fn missing_number(mut nums: Vec<i32>) -> i32 {
+    nums.sort_unstable();
+
+    let mut lo = 0;
+    let mut hi = nums.len();
+
+    while lo < hi {
+        let mid = lo + (hi - lo) / 2;
+
+        if nums[mid] > mid as i32 {
+            hi = mid;
+        } else {
+            lo = mid + 1;
+        }
+    }
+
+    hi as i32
+}
+```
+
+### Cyclic Sort
+
+```rust
+pub fn missing_number(mut nums: Vec<i32>) -> i32 {
+    let mut idx = 0;
+
+    // put each number at a position with an index equal to its value
+    while idx < nums.len() {
+        if nums[idx] < idx as i32 && nums[idx] != idx as i32 {
+            let pos = nums[idx] as usize;
+            nums.swap(idx, pos);
+            continue;
+        }
+
+        idx += 1;
+    }
+
+    // find the first position where the index is not the same as the value
+    nums.iter()
+        .copied()
+        .enumerate()
+        .position(|(idx, val)| idx != val as usize)
+        .or(Some(nums.len()))
+        .map(|idx| idx as i32)
+        .unwrap()
+}
+```
+
 ### XOR
 
 We have to loop twice:
