@@ -37,6 +37,7 @@
 
 ### Prefix Tree (Trie)
 
+* [211. Design Add and Search Words Data Structure](200%20-%20299/211%20-%20Design%20Add%20and%20Search%20Words%20Data%20Structure.md)
 * [212. Word Search II](200%20-%20299/212%20-%20Word%20Search%20II.md)
 
 ### Prefix Sum
@@ -116,9 +117,16 @@
 * [1342. Number of Steps to Reduce a Number to Zero](1300%20-%201399/1342%20-%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20to%20Zero.md)
 * [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
 
-### Implementation
+### Implementation / Design
 
 * [146. LRU Cache](100%20-%20199/146%20-%20LRU%20Cache.md)
+* [211. Design Add and Search Words Data Structure](200%20-%20299/211%20-%20Design%20Add%20and%20Search%20Words%20Data%20Structure.md)
+* [622. Design Circular Queue](600%20-%20699/622%20-%20Design%20Circular%20Queue.md)
+* [705. Design HashSet](700%20-%20799/705%20-%20Design%20HashSet.md)
+* [706. Design HashMap](700%20-%20799/706%20-%20Design%20HashMap.md)
+* [707. Design Linked List](700%20-%20799/707%20-%20Design%20Linked%20List.md)
+* [1603. Design Parking System](1600%20-%201699/1603%20-%20Design%20Parking%20System.md)
+* [1797. Design Authentication Manager](1700%20-%201799/1797%20-%20Design%20Authentication%20Manager.md)
 
 ## Algorithms on graphs
 
