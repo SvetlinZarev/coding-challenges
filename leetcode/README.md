@@ -104,6 +104,14 @@
 
 * [140. Word Break II](100%20-%20199/140%20-%20Word%20Break%20II.md)
 
+### Greedy
+
+* [435. Non-overlapping Intervals](400%20-%20499/435%20-%20Non-overlapping%20Intervals.md)
+* [860. Lemonade Change](800%20-%20899/860%20-%20Lemonade%20Change.md)
+* [1029. Two City Scheduling](1000%20-%201099/1029%20-%20Two%20City%20Scheduling.md)
+* [1663. Smallest String With A Given Numeric Value](1600%20-%201699/1663%20-%20Smallest%20String%20With%20A%20Given%20Numeric%20Value.md)
+* [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
+
 ### Bitwise operations
 
 * [136. Single Number](100%20-%20199/136%20-%20Single%20Number.md)
