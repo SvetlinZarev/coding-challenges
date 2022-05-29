@@ -87,11 +87,13 @@
 ### Misc string problems
 
 * [5. Longest Palindromic Substring](000%20-%20099/5%20-%20Longest%20Palindromic%20Substring.md)
+* [139. Word Break](100%20-%20199/139%20-%20Word%20Break.md)
 * [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
 * [647. Palindromic Substrings](600%20-%20699/647%20-%20Palindromic%20Substrings.md)
 
 ### Memoization / DP
 
+* [139. Word Break](100%20-%20199/139%20-%20Word%20Break.md)
 * [322. Coin Change](300%20-%20399/322%20-%20Coin%20Change.md)
 * [329. Longest Increasing Path in a Matrix](300%20-%20399/329%20-%20Longest%20Increasing%20Path%20in%20a%20Matrix.md)
 * [509. Fibonacci Number](/leetcode/500%20-%20599/509%20-%20Fibonacci%20Number.md)
