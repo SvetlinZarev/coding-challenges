@@ -120,6 +120,7 @@
 ### Clever tricks
 
 * [128. Longest Consecutive Sequence](100%20-%20199/128%20-%20Longest%20Consecutive%20Sequence.md)
+* [137. Single Number II](100%20-%20199/137%20-%20Single%20Number%20II.md)
 
 ### Implementation / Design
 
