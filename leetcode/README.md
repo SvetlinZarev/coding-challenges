@@ -116,6 +116,10 @@
 * [1342. Number of Steps to Reduce a Number to Zero](1300%20-%201399/1342%20-%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20to%20Zero.md)
 * [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
 
+### Implementation
+
+* [146. LRU Cache](100%20-%20199/146%20-%20LRU%20Cache.md)
+
 ## Algorithms on graphs
 
 ### Cycle detection
