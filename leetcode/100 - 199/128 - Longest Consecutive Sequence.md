@@ -60,3 +60,40 @@ pub fn longest_consecutive(nums: Vec<i32>) -> i32 {
     longest_sequence
 }
 ```
+
+Or another variant of the same idea:
+
+```rust
+use std::collections::HashSet;
+
+pub fn longest_consecutive(nums: Vec<i32>) -> i32 {
+    let mut numbers = nums.iter().copied().collect::<HashSet<_>>();
+    let mut longest_sequence = 0;
+
+    for n in nums.iter().copied() {
+        if !numbers.remove(&n) {
+            // that number was already processed as part of a sequence
+            continue;
+        }
+
+        let mut smaller = n - 1;
+        while numbers.remove(&smaller) {
+            smaller -= 1;
+        }
+
+        let mut larger = n + 1;
+        while numbers.remove(&larger) {
+            larger += 1;
+        }
+
+        longest_sequence = longest_sequence.max(larger - smaller - 1);
+
+        // in case there are no more numbers in the set, but there are more number in the array
+        if numbers.is_empty() {
+            break;
+        }
+    }
+
+    longest_sequence
+}
+```
