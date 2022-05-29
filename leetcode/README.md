@@ -117,6 +117,10 @@
 * [1342. Number of Steps to Reduce a Number to Zero](1300%20-%201399/1342%20-%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20to%20Zero.md)
 * [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
 
+### Clever tricks
+
+* [128. Longest Consecutive Sequence](100%20-%20199/128%20-%20Longest%20Consecutive%20Sequence.md)
+
 ### Implementation / Design
 
 * [146. LRU Cache](100%20-%20199/146%20-%20LRU%20Cache.md)
