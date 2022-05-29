@@ -57,7 +57,7 @@ fn recurse(s: &str, from: usize, words: &HashSet<String>, cache: &mut Vec<bool>)
         return true;
     }
 
-    for to in from..s.len() + 1 {
+    for to in from + 1..s.len() + 1 {
         if cache[to] {
             continue;
         }
@@ -74,3 +74,7 @@ fn recurse(s: &str, from: usize, words: &HashSet<String>, cache: &mut Vec<bool>)
     false
 }
 ```
+
+## Related Problems
+
+* [140. Word Break II](140%20-%20Word%20Break%20II.md)
