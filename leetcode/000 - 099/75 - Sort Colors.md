@@ -25,7 +25,7 @@ Output: [0,1,2]
 
 ## Solutions
 
-### Using two pointer
+### Using two pointers
 
 The general idea is to put the 0s on the left and the 2s on the right. What's
 left is the 1s in the middle
