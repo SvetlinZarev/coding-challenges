@@ -55,7 +55,7 @@ pub fn has_all_codes<S: AsRef<str>>(s: S, k: i32) -> bool {
         .len();
 
     // the count of binary numbers of length `k` is `2.pow(k)` 
-    // which is equal to `2 << k`
+    // which is equal to `1 << k`
     distinct_substrings == 2usize.pow(k as u32)
 }
 ```
