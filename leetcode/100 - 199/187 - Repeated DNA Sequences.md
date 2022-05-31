@@ -86,7 +86,7 @@ pub fn find_repeated_dna_sequences(s: String) -> Vec<String> {
         visited[hash] = match visited[hash] {
             0 => 1, // we've seen the substring for thr first time
             1 => {
-                // we've seen it for a secondtime, so add it to the answer
+                // we've seen it for a second time, so add it to the answer
                 answer.push(std::str::from_utf8(&s[idx - 9..=idx]).unwrap().to_owned());
                 2
             }
