@@ -120,3 +120,7 @@ pub fn has_all_codes<S: AsRef<str>>(s: S, k: i32) -> bool {
     count == 1 << k
 }
 ```
+
+## Related Problems
+
+* [187. Repeated DNA Sequences](/leetcode/100%20-%20199/187%20-%20Repeated%20DNA%20Sequences.md)]
