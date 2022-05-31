@@ -39,7 +39,7 @@ Explanation: The binary code "00" is of length 2 and does not exist in the array
 
 Time complexity: `O(k*n)`
 
-Runs in 111ms in thr online judge and uses 22 MB at the time of writing
+Runs in 111ms in the online judge and uses 22 MB at the time of writing
 
 ```rust
 use std::collections::HashSet;
@@ -64,7 +64,7 @@ pub fn has_all_codes<S: AsRef<str>>(s: S, k: i32) -> bool {
 
 Time complexity: `O(n)`
 
-Runs in 4ms in thr online judge and uses 3.3 MB at the time of writing
+Runs in 4ms in the online judge and uses 3.3 MB at the time of writing
 
 Instead of computing the hash from scratch for each substring, we can *update*
 it. Because we are working strings representing binary numbers, we can just map
