@@ -39,6 +39,8 @@ Explanation: The binary code "00" is of length 2 and does not exist in the array
 
 Time complexity: `O(k*n)`
 
+Runs in 111ms in thr online judge and uses 22 MB at the time of writing
+
 ```rust
 use std::collections::HashSet;
 
@@ -55,5 +57,66 @@ pub fn has_all_codes<S: AsRef<str>>(s: S, k: i32) -> bool {
     // the count of binary numbers of length `k` is `2.pow(k)` 
     // which is equal to `2 << k`
     distinct_substrings == 2usize.pow(k as u32)
+}
+```
+
+### Rolling Hash
+
+Time complexity: `O(n)`
+
+Runs in 4ms in thr online judge and uses 3.3 MB at the time of writing
+
+Instead of computing the hash from scratch for each substring, we can *update*
+it. Because we are working strings representing binary numbers, we can just map
+the substring to a number, i.e. the string `"1001"` becomes the number `9`. We
+can do that mapping in a *rolling* fashion by using bit-shifts. Just append the
+new bit to the right (LSB) and remove the bit at the left (MSB). Thus we can
+process all substrings in a linear time
+
+```rust
+
+pub fn has_all_codes<S: AsRef<str>>(s: S, k: i32) -> bool {
+    assert!(k >= 1 && k <= 20);
+
+    let s = s.as_ref().as_bytes();
+    if s.len() < k as usize {
+        return false;
+    }
+
+    let mut visited = vec![false; (1 << k) as usize];
+
+    let mut count = 0;
+    let mut hash = 0;
+    let mask = (1 << k) - 1;
+
+    // initialize the hash
+    for idx in 0..k as usize {
+        // roll the hash to the left, making space for the new character
+        hash = hash << 1;
+
+        // set the newly freed bit to 0 or 1 depending of the character value
+        hash |= (s[idx] == b'1') as usize;
+    }
+    visited[hash] = true;
+    count += 1;
+
+    for idx in k as usize..s.len() {
+        // roll the hash to the left, making space for the new character
+        hash = hash << 1;
+
+        // set the newly freed bit to 0 or 1 depending of the character value
+        hash |= (s[idx] == b'1') as usize;
+
+        // clear all bits with positions larger than `k - 1`
+        hash &= mask;
+
+        // Check if we have already processed that substring
+        if !visited[hash] {
+            visited[hash] = true;
+            count += 1;
+        }
+    }
+
+    count == 1 << k
 }
 ```
