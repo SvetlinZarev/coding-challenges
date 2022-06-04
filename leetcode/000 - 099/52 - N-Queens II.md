@@ -1,4 +1,4 @@
-# [51. N-Queens](https://leetcode.com/problems/n-queens/)
+# [52. N-Queens II](https://leetcode.com/problems/n-queens-ii/)
 
 ## Problem
 
@@ -7,12 +7,8 @@
 The n-queens puzzle is the problem of placing `n` queens on an `n x n`
 chessboard such that no two queens attack each other.
 
-Given an integer `n`, return all distinct solutions to the n-queens puzzle. You
-may return the answer in any order.
-
-Each solution contains a distinct board configuration of the n-queens'
-placement, where `Q` and `.` both indicate a queen and an empty space,
-respectively.
+Given an integer `n`, return the number of distinct solutions to the n-queens
+puzzle.
 
 ### Constraints
 
@@ -22,27 +18,27 @@ respectively.
 
 #### Example 1
 
-![image](resources/51/ex1.jpg)
+![image](resources/52/ex1.jpg)
+
+```text
+Input: n = 4
+Output: 2
+Explanation: There are two distinct solutions to the 4-queens puzzle as shown.
+```
 
 #### Example 2
 
 ```text
 Input: n = 1
-Output: [["Q"]]
-```
-
-```text
-Input: n = 4
-Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
-Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+Output: 1
 ```
 
 ## Solutions
 
-### Precomputing all valid positions using bitmasks
+### Backtracking
 
 ```rust
-pub fn solve_n_queens(n: i32) -> Vec<Vec<String>> {
+pub fn total_n_queens(n: i32) -> i32 {
     assert!(n >= 1 && n <= 9);
     let n: usize = n.try_into().unwrap();
 
@@ -118,41 +114,32 @@ pub fn solve_n_queens(n: i32) -> Vec<Vec<String>> {
         }
     }
 
-    let mut answer = vec![];
     backtrack(
-        &mut answer,
         &mut vec![vec![b'.'; n]; n],
         &allowed_positions,
         all_board_bits,
         n,
         0,
-    );
-    answer
+    )
 }
 
 fn backtrack(
-    answer: &mut Vec<Vec<String>>,
     variation: &mut Vec<Vec<u8>>,
     allowed_positions: &[u128],
     allowed: u128,
     size: usize,
     row: usize,
-) {
+) -> i32 {
     if row == size {
-        let board = variation
-            .iter()
-            // SAFETY: the array can contain only b'.' and b'Q' which is valid UTF-8
-            .map(|x| unsafe { std::str::from_utf8_unchecked(&x) })
-            .map(|x| x.to_owned())
-            .collect();
-        answer.push(board);
-        return;
+        return 1;
     }
 
     if allowed == 0 {
         // we don't have any valid positions left
-        return;
+        return 0;
     }
+
+    let mut answer = 0;
 
     for col in 0..size {
         // skip forbidden position
@@ -162,12 +149,14 @@ fn backtrack(
 
         variation[row][col] = b'Q';
         let allowed = allowed & allowed_positions[row * size + col];
-        backtrack(answer, variation, allowed_positions, allowed, size, row + 1);
+        answer += backtrack(variation, allowed_positions, allowed, size, row + 1);
         variation[row][col] = b'.';
     }
+
+    answer
 }
 ```
 
 ## Related Problems
 
-* [52. N-Queens II](52%20-%20N-Queens%20II.md)
+* [51. N-Queens](51%20-%20N-Queens.md)

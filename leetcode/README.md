@@ -111,6 +111,7 @@
 ### Backtracking
 
 * [51. N-Queens](000%20-%20099/51%20-%20N-Queens.md)
+* [52. N-Queens II](000%20-%20099/52%20-%20N-Queens%20II.md)
 * [140. Word Break II](100%20-%20199/140%20-%20Word%20Break%20II.md)
 
 ### Greedy
