@@ -42,6 +42,77 @@ pub fn total_n_queens(n: i32) -> i32 {
     assert!(n >= 1 && n <= 9);
     let n: usize = n.try_into().unwrap();
 
+    backtrack(&mut vec![vec![b'.'; n]; n], 0)
+}
+
+fn backtrack(board: &mut Vec<Vec<u8>>, row: usize) -> i32 {
+    if row == board.len() {
+        return 1;
+    }
+
+    let mut answer = 0;
+
+    for col in 0..board.len() {
+        if is_allowed(board, row, col) {
+            board[row][col] = b'Q';
+            answer += backtrack(board, row + 1);
+            board[row][col] = b'.';
+        }
+    }
+
+    answer
+}
+
+// check if placing a queen at <row, col> violates the queen positioning rules
+fn is_allowed(board: &[Vec<u8>], row: usize, col: usize) -> bool {
+    let n = board.len();
+
+    for r in 0..n {
+        if board[r][col] == b'Q' {
+            return false;
+        }
+    }
+
+    // Check top-left diagonal
+    let mut r = row;
+    let mut c = col;
+    while r > 0 && c > 0 {
+        r -= 1;
+        c -= 1;
+
+        if board[r][c] == b'Q' {
+            return false;
+        }
+    }
+
+    // Check top-right diagonal
+    r = row;
+    c = col;
+    while r > 0 && c < n - 1 {
+        r -= 1;
+        c += 1;
+
+        if board[r][c] == b'Q' {
+            return false;
+        }
+    }
+
+
+    // There is no need to check the bottom left & right diagonals, because 
+    // we are moving from top to bottom - i.e. there ar eno queens placed below 
+    // the current row, so this method cannot return false in that case
+
+    true
+}
+```
+
+### Backtracking + precomputing all valid positions after single queen placement
+
+```rust
+pub fn total_n_queens(n: i32) -> i32 {
+    assert!(n >= 1 && n <= 9);
+    let n: usize = n.try_into().unwrap();
+
     // set all N*N positions of the board to 1
     let all_board_bits = (1 << (n * n)) - 1;
 
@@ -118,19 +189,17 @@ pub fn total_n_queens(n: i32) -> i32 {
         &mut vec![vec![b'.'; n]; n],
         &allowed_positions,
         all_board_bits,
-        n,
         0,
     )
 }
 
 fn backtrack(
-    variation: &mut Vec<Vec<u8>>,
+    board: &mut Vec<Vec<u8>>,
     allowed_positions: &[u128],
     allowed: u128,
-    size: usize,
     row: usize,
 ) -> i32 {
-    if row == size {
+    if row == board.len() {
         return 1;
     }
 
@@ -141,20 +210,28 @@ fn backtrack(
 
     let mut answer = 0;
 
-    for col in 0..size {
+    for col in 0..board.len() {
         // skip forbidden position
-        if allowed & ((1 << col) << (row * size)) == 0 {
+        if allowed & ((1 << col) << (row * board.len())) == 0 {
             continue;
         }
 
-        variation[row][col] = b'Q';
-        let allowed = allowed & allowed_positions[row * size + col];
-        answer += backtrack(variation, allowed_positions, allowed, size, row + 1);
-        variation[row][col] = b'.';
+        board[row][col] = b'Q';
+        let allowed = allowed & allowed_positions[row * board.len() + col];
+        answer += backtrack(board, allowed_positions, allowed, row + 1);
+        board[row][col] = b'.';
     }
 
     answer
 }
+```
+
+Running a criterion benchmark on both solutions reveals that the one
+precomputing the allowed positions is around 3x faster:
+
+```text
+V1:    time:   [1.0089 ms 1.0101 ms 1.0115 ms]               
+V2:    time:   [367.87 us 369.13 us 370.50 us]              
 ```
 
 ## Related Problems
