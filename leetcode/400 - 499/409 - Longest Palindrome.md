@@ -47,7 +47,7 @@ A palindrome can be made up of either even, or odd number of characters.
   occurs only once (i.e. in the center)
 
 Thus in order to find out the length of the palindrome, we have to find out
-how many times each character occurs in the input string. Thgen the length is
+how many times each character occurs in the input string. Then the length is
 the sum of the even number of characters plus 0 or 1, depending on whether there
 are single character that do not appear in a pair.
 
