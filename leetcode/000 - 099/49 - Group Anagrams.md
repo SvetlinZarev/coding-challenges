@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given an array of strings `strs`, group the anagrams together. You can return
 the answer in any order.
 
@@ -20,13 +22,11 @@ Output:
 [["bat"],["nat","tan"],["ate","eat","tea"]]
 ```
 
-#### Constraints:
+### Constraints:
 
-```text
-1 <= strs.length <= 10^4
-0 <= strs[i].length <= 100
-strs[i] consists of lowercase English letters.
-```
+* `1 <= strs.length <= 10^4`
+* `0 <= strs[i].length <= 100`
+* `strs[i]` consists of lowercase English letters.
 
 ## Solutions
 
@@ -104,8 +104,7 @@ for ch in characters.iter().copied(){
 ```
 
 Thus, each anagram will have the same hash, because the multiplication is
-commutative (
-i.e. `a*b == b*a`).
+commutative (i.e. `a*b == b*a`).
 
 Unfortunately this solution is not applicable to the current problem, because
 the hashes quickly overflow the available integer types:
