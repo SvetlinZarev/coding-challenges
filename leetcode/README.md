@@ -142,6 +142,7 @@
 
 ### Misc Problems
 
+* [160. Intersection of Two Linked Lists](100%20-%20199/160%20-%20Intersection%20of%20Two%20Linked%20Lists.md)
 * [334. Increasing Triplet Subsequence](300%20-%20399/334%20-%20Increasing%20Triplet%20Subsequence.md)
 * [409. Longest Palindrome](400%20-%20499/409%20-%20Longest%20Palindrome.md)
 
