@@ -140,6 +140,10 @@
 * [128. Longest Consecutive Sequence](100%20-%20199/128%20-%20Longest%20Consecutive%20Sequence.md)
 * [137. Single Number II](100%20-%20199/137%20-%20Single%20Number%20II.md)
 
+### Misleading / Stupid
+
+* [1332. Remove Palindromic Subsequences](1300%20-%201399/1332%20-%20Remove%20Palindromic%20Subsequences.md)
+
 ### Misc Problems
 
 * [160. Intersection of Two Linked Lists](100%20-%20199/160%20-%20Intersection%20of%20Two%20Linked%20Lists.md)
