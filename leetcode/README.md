@@ -135,6 +135,10 @@
 * [1342. Number of Steps to Reduce a Number to Zero](1300%20-%201399/1342%20-%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20to%20Zero.md)
 * [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
 
+### Math
+
+* [1610. Maximum Number of Visible Points](1600%20-%201699/1610%20-%20Maximum%20Number%20of%20Visible%20Points.md)
+
 ### Clever tricks
 
 * [128. Longest Consecutive Sequence](100%20-%20199/128%20-%20Longest%20Consecutive%20Sequence.md)
