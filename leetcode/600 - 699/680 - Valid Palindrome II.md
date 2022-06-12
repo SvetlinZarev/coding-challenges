@@ -71,4 +71,4 @@ fn is_palindrome(s: &[u8]) -> bool {
 
 ## Related Problems
 
-* [125. Valid Palindrome](/leetcode/100%20-%20199/125.%20Valid%20Palindrome.md)
+* [125. Valid Palindrome](/leetcode/100%20-%20199/125%20-%20Valid%20Palindrome.md)
