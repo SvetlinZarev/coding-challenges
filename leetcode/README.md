@@ -23,6 +23,7 @@
 
 * [438. Find All Anagrams in a String](400%20-%20499/438%20-%20Find%20All%20Anagrams%20in%20a%20String.md)
 * [1658. Minimum Operations to Reduce X to Zero](1600%20-%201699/1658%20-%20Minimum%20Operations%20to%20Reduce%20X%20to%20Zero.md)
+* [1695. Maximum Erasure Value](1600%20-%201699/1695%20-%20Maximum%20Erasure%20Value.md)
 
 ### Priority Queue
 
