@@ -82,3 +82,7 @@ pub fn sorted_array_to_bst(nums: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
     })))
 }
 ```
+
+## Related Problems
+
+* [109. Convert Sorted List to Binary Search Tree](109%20-%20Convert%20Sorted%20List%20to%20Binary%20Search%20Tree.md)
