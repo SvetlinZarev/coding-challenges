@@ -2,11 +2,13 @@
 
 ## Problem
 
+### Description
+
 Given two integer arrays `inorder` and `postorder` where `inorder` is the
 inorder traversal of a binary tree and `postorder` is the postorder traversal of
 the same tree, construct and return the binary tree.
 
-#### Constraints
+### Constraints
 
 * `1 <= inorder.length <= 3000`
 * `postorder.length == inorder.length`
@@ -16,7 +18,7 @@ the same tree, construct and return the binary tree.
 * `inorder` is guaranteed to be the inorder traversal of the tree.
 * `postorder` is guaranteed to be the postorder traversal of the tree.
 
-#### Examples
+### Examples
 
 ```text
 Input: 

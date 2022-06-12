@@ -2,11 +2,13 @@
 
 ## Problem
 
+### Description
+
 Given two integer arrays preorder and inorder where preorder is the preorder
 traversal of a binary tree and inorder is the inorder traversal of the same
 tree, construct and return the binary tree.
 
-#### Constraints
+### Constraints
 
 * `1 <= preorder.length <= 3000`
 * `inorder.length == preorder.length`
@@ -16,7 +18,7 @@ tree, construct and return the binary tree.
 * `preorder` is guaranteed to be the preorder traversal of the tree.
 * `inorder` is guaranteed to be the inorder traversal of the tree.
 
-#### Examples
+### Examples
 
 ```text
 Input: 

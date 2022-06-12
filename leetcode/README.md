@@ -15,7 +15,9 @@
 
 * [11. Container With Most Water](000%20-%20099/11%20-%20Container%20With%20Most%20Water.md)
 * [75. Sort Colors](000%20-%20099/75%20-%20Sort%20Colors.md)
+* [125. Valid Palindrome](100%20-%20199/125%20-%20Valid%20Palindrome.md)
 * [633. Sum of Square Numbers](600%20-%20699/633%20-%20Sum%20of%20Square%20Numbers.md)
+* [680. Valid Palindrome II](600%20-%20699/680%20-%20Valid%20Palindrome%20II.md)
 
 ### Sliding window
 
@@ -31,6 +33,13 @@
 ### Trees
 
 * [94. Binary Tree Inorder Traversal](000%20-%20099/94%20-%20Binary%20Tree%20Inorder%20Traversal.md)
+* [101. Symmetric Tree](100%20-%20199/101%20-%20Symmetric%20Tree.md)
+* [102. Binary Tree Level Order Traversal](100%20-%20199/102%20-%20Binary%20Tree%20Level%20Order%20Traversal.md)
+* [103. Binary Tree Zigzag Level Order Traversal](100%20-%20199/103%20-%20Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.md)
+* [104. Maximum Depth of Binary Tree](100%20-%20199/104%20-%20Maximum%20Depth%20of%20Binary%20Tree.md)
+* [105. Construct Binary Tree from Preorder and Inorder Traversal](100%20-%20199/105%20-%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.md)
+* [106. Construct Binary Tree from Inorder and Postorder Traversal](100%20-%20199/106%20-%20Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder%20Traversal.md)
+* [110. Balanced Binary Tree](100%20-%20199/110%20-%20Balanced%20Binary%20Tree.md)
 * [144. Binary Tree Preorder Traversal](100%20-%20199/144%20-%20Binary%20Tree%20Preorder%20Traversal.md)
 * [145. Binary Tree Postorder Traversal](100%20-%20199/145%20-%20Binary%20Tree%20Postorder%20Traversal.md)
 * [173. Binary Search Tree Iterator](/leetcode/100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
