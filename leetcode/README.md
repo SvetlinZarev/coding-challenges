@@ -44,9 +44,12 @@
 * [108. Convert Sorted Array to Binary Search Tree](100%20-%20199/108%20-%20Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree.md)
 * [109. Convert Sorted List to Binary Search Tree](100%20-%20199/109%20-%20Convert%20Sorted%20List%20to%20Binary%20Search%20Tree.md)
 * [110. Balanced Binary Tree](100%20-%20199/110%20-%20Balanced%20Binary%20Tree.md)
+* [113. Path Sum II](100%20-%20199/113%20-%20Path%20Sum%20II.md)
 * [144. Binary Tree Preorder Traversal](100%20-%20199/144%20-%20Binary%20Tree%20Preorder%20Traversal.md)
 * [145. Binary Tree Postorder Traversal](100%20-%20199/145%20-%20Binary%20Tree%20Postorder%20Traversal.md)
-* [173. Binary Search Tree Iterator](/leetcode/100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
+* [173. Binary Search Tree Iterator](100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
+* [199. Binary Tree Right Side View](100%20-%20199/199%20-%20Binary%20Tree%20Right%20Side%20View.md)
+* [450. Delete Node in a BST](400%20-%20499/450%20-%20Delete%20Node%20in%20a%20BST.md)
 * [1302. Deepest Leaves Sum](1300%20-%201399/1302%20-%20Deepest%20Leaves%20Sum.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
 
