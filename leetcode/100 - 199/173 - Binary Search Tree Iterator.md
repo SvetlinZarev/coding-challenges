@@ -118,4 +118,5 @@ impl BSTIterator {
 
 ## Related Problems
 
+* [230. Kth Smallest Element in a BST](/leetcode/200%20-%20299/230%20-%20Kth%20Smallest%20Element%20in%20a%20BST.md)
 * [897. Increasing Order Search Tree](/leetcode/800%20-%20899/897%20-%20Increasing%20Order%20Search%20Tree.md)
