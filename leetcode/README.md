@@ -49,6 +49,7 @@
 * [145. Binary Tree Postorder Traversal](100%20-%20199/145%20-%20Binary%20Tree%20Postorder%20Traversal.md)
 * [173. Binary Search Tree Iterator](100%20-%20199/173%20-%20Binary%20Search%20Tree%20Iterator.md)
 * [199. Binary Tree Right Side View](100%20-%20199/199%20-%20Binary%20Tree%20Right%20Side%20View.md)
+* [230. Kth Smallest Element in a BST](200%20-%20299/230%20-%20Kth%20Smallest%20Element%20in%20a%20BST.md)
 * [450. Delete Node in a BST](400%20-%20499/450%20-%20Delete%20Node%20in%20a%20BST.md)
 * [1302. Deepest Leaves Sum](1300%20-%201399/1302%20-%20Deepest%20Leaves%20Sum.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
@@ -124,6 +125,8 @@
 * [329. Longest Increasing Path in a Matrix](300%20-%20399/329%20-%20Longest%20Increasing%20Path%20in%20a%20Matrix.md)
 * [509. Fibonacci Number](/leetcode/500%20-%20599/509%20-%20Fibonacci%20Number.md)
 * [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
+* [583. Delete Operation for Two Strings](500%20-%20599/583%20-%20Delete%20Operation%20for%20Two%20Strings.md)
+* [1143. Longest Common Subsequence](1100%20-%201199/1143%20-%20Longest%20Common%20Subsequence.md)
 
 ### Backtracking
 
