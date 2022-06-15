@@ -123,9 +123,10 @@
 * [139. Word Break](100%20-%20199/139%20-%20Word%20Break.md)
 * [322. Coin Change](300%20-%20399/322%20-%20Coin%20Change.md)
 * [329. Longest Increasing Path in a Matrix](300%20-%20399/329%20-%20Longest%20Increasing%20Path%20in%20a%20Matrix.md)
-* [509. Fibonacci Number](/leetcode/500%20-%20599/509%20-%20Fibonacci%20Number.md)
+* [509. Fibonacci Number](500%20-%20599/509%20-%20Fibonacci%20Number.md)
 * [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
 * [583. Delete Operation for Two Strings](500%20-%20599/583%20-%20Delete%20Operation%20for%20Two%20Strings.md)
+* [1048. Longest String Chain](1000%20-%201099/1048%20-%20Longest%20String%20Chain.md)
 * [1143. Longest Common Subsequence](1100%20-%201199/1143%20-%20Longest%20Common%20Subsequence.md)
 
 ### Backtracking

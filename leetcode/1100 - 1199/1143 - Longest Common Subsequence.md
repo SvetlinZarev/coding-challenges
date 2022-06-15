@@ -130,3 +130,4 @@ fn lcs(a: &[u8], b: &[u8]) -> usize {
 ## Related Problems
 
 * [583. Delete Operation for Two Strings](/leetcode/500%20-%20599/583%20-%20Delete%20Operation%20for%20Two%20Strings.md)
+* [1048. Longest String Chain](/leetcode/1000%20-%201099/1048%20-%20Longest%20String%20Chain.md)
