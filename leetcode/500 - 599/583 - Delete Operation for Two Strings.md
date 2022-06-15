@@ -63,6 +63,47 @@ fn longest_common_subsequence(a: &[u8], b: &[u8]) -> usize {
 }
 ```
 
+### Directly computing the characters to delete
+
+```rust
+pub fn min_distance(word1: impl AsRef<str>, word2: impl AsRef<str>) -> i32 {
+    let a = word1.as_ref().as_bytes();
+    let b = word2.as_ref().as_bytes();
+
+    characters_to_delete(a, b) as i32
+}
+
+fn characters_to_delete(a: &[u8], b: &[u8]) -> usize {
+    let mut dp = vec![vec![0; b.len() + 1]; a.len() + 1];
+
+    for i in 0..=a.len() {
+        for j in 0..=b.len() {
+            if i == 0 || j == 0 {
+                // Instead of initializing the 0th row/col of the 2D matrix 
+                // with a separate loops like that:
+                // ```
+                //  |_ A B C D
+                // _|0 1 2 3 4
+                // A|1 0 0 0 0
+                // B|2 0 0 0 0
+                // C|3 0 0 0 0
+                // D|4 0 0 0 0
+                //```
+                // we can do it on the fly like that `dp[i][j] = i + j` because the
+                // 0th row/column does not correspond to any letter
+                dp[i][j] = i + j;
+            } else if a[i - 1] == b[j - 1] {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = 1 + dp[i - 1][j].min(dp[i][j - 1]);
+            }
+        }
+    }
+
+    dp[a.len()][b.len()]
+}
+```
+
 ## Related Problems
 
 * [1143. Longest Common Subsequence](/leetcode/1100%20-%201199/1143%20-%20Longest%20Common%20Subsequence.md)
