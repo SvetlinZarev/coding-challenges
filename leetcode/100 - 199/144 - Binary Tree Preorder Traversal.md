@@ -73,3 +73,5 @@ fn preorder(root: Option<Rc<RefCell<TreeNode>>>, nodes: &mut Vec<i32>) {
 
 * [94. Binary Tree Inorder Traversal](/leetcode/000%20-%20099/94%20-%20Binary%20Tree%20Inorder%20Traversal.md)
 * [145. Binary Tree Postorder Traversal](/leetcode/100%20-%20199/145%20-%20Binary%20Tree%20Postorder%20Traversal.md)
+* [297. Serialize and Deserialize Binary Tree](/leetcode/200%20-%20299/297%20-%20Serialize%20and%20Deserialize%20Binary%20Tree.md)
+
