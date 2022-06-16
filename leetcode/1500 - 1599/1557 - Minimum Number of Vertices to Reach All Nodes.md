@@ -43,7 +43,22 @@ node, so we must include them. Also any of these vertices can reach nodes 1 and 
 
 ## Solutions
 
-### Find the nodes with that don't have incoming edges
+### DFS
+
+We can run DFS starting from each node and count how many times we have reached
+any node. Then the minimal set is the set of nodes which have a count of 1
+
+### Find the nodes that don't have any incoming edges
+
+Observations:
+
+* If a node has an incoming edge, that it's reachable from another node, thus
+  it's not part of the answer
+* If a node does not have any incoming edges, that means it's NOT reachable from
+  any other node, thus it is part of the answer
+
+This means that the smallest set of nodes from which we can reach all other
+nodes is the set of nodes with indegree of 0
 
 ```rust
 pub fn find_smallest_set_of_vertices(n: usize, edges: Vec<Vec<i32>>) -> Vec<i32> {
