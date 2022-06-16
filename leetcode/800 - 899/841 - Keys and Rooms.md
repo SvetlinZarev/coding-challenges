@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 There are `n` rooms labeled from `0` to `n - 1` and all the rooms are locked
 except for room `0`. Your goal is to visit all the rooms. However, you cannot
 enter a locked room without having its key.
@@ -14,7 +16,7 @@ Given an array rooms where `rooms[i]` is the set of keys that you can obtain if
 you visited room `i`, return `true` if you can visit all the rooms, or `false`
 otherwise.
 
-#### Constraints
+### Constraints
 
 * `n == rooms.length`
 * `2 <= n <= 1000`
@@ -23,7 +25,7 @@ otherwise.
 * `0 <= rooms[i][j] < n`
 * All the values of `rooms[i]` are unique.
 
-#### Examples
+### Examples
 
 ```text
 Input: rooms = [[1],[2],[3],[]]
@@ -42,23 +44,27 @@ Output: false
 Explanation: We can not enter room number 2 since the only key that unlocks it is in that room.
 ```
 
-## Solution
+## Solutions
+
+### Iterative DFS/BFS
 
 ```rust
 pub fn can_visit_all_rooms(rooms: Vec<Vec<i32>>) -> bool {
     let mut visited = vec![false; rooms.len()];
     let mut to_visit = vec![0];
+    let mut unvisited = rooms.len();
 
     while let Some(key) = to_visit.pop() {
         if visited[key as usize] {
             continue;
         }
         visited[key as usize] = true;
+        unvisited -= 1;
 
         let keys = &rooms[key as usize];
         to_visit.extend_from_slice(keys);
     }
 
-    visited.iter().copied().filter(|&v| !v).count() == 0
+    unvisited == 0
 }
 ```
