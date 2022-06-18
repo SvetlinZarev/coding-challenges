@@ -81,7 +81,12 @@ impl TreeNode {
 We can collect the list to a vector/array and apply the solution
 from [108. Convert Sorted Array to Binary Search Tree](108%20-%20Convert%20Sorted%20Array%20to%20Binary%20Search%20Tree.md)
 
-### Recursive
+### Recursive pre-order
+
+Although this approach works great for arrays, we can do better with a
+linked-list. THe issue with this approach is that we cannot find the middle of
+the list in `O(1)` time, thus we have to always skip half of the list
+in `split_list()`. THus the time complexity should be `O(n log n)`
 
 ```rust
 // Calculate the list length only once at the beginning. If we pass 
@@ -92,7 +97,7 @@ pub fn sorted_list_to_bst(head: Option<Box<ListNode>>) -> Option<Rc<RefCell<Tree
     sorted_list_with_len_to_bst(head, length)
 }
 
-pub fn sorted_list_with_len_to_bst(
+fn sorted_list_with_len_to_bst(
     head: Option<Box<ListNode>>,
     length: usize,
 ) -> Option<Rc<RefCell<TreeNode>>> {
@@ -143,6 +148,62 @@ fn split_list(
     let right = mid.next.take();
 
     (left, mid, right)
+}
+```
+
+### Recursive in-order
+
+With this approach we traverse the linked list only once, thus the time
+complexity is `O(n)`
+
+```rust
+
+pub fn sorted_list_to_bst(mut head: Option<Box<ListNode>>) -> Option<Rc<RefCell<TreeNode>>> {
+    let length = list_length(head.as_ref());
+    list_to_bst(&mut head, 0, length)
+}
+
+pub fn list_to_bst(
+    head: &mut Option<Box<ListNode>>,
+    start: usize,
+    end: usize,
+) -> Option<Rc<RefCell<TreeNode>>> {
+    if start >= end {
+        return None;
+    }
+
+    let mid = start + (end - start) / 2;
+
+    // build the left sub-tree
+    let left = list_to_bst(head, start, mid);
+
+    // The current head will give us the value og the current node.
+    // Take the current head and replace it with the next node, in
+    // order to be able to build the right sub-tree later
+
+    let mut current = head.take().unwrap();
+    *head = current.next.take();
+
+    // build the left sub-tree
+    let right = list_to_bst(head, mid + 1, end);
+
+    Some(Rc::new(RefCell::new(TreeNode {
+        val: current.val,
+        left,
+        right,
+    })))
+}
+
+fn list_length(head: Option<&Box<ListNode>>) -> usize {
+    let mut node = head;
+    let mut length = 0;
+
+    while let Some(n) = node {
+        node = n.next.as_ref();
+        length += 1;
+    }
+
+    length
 }
 ```
 
