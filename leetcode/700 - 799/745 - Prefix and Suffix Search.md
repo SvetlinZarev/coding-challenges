@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Design a special dictionary with some words that searches the words in it by
 a `prefix` and a `suffix`.
 
@@ -14,7 +16,7 @@ Implement the `WordFilter` class:
   more than one valid index, return the largest of them. If there is no such
   word in the dictionary, return `-1`.
 
-#### Constraints
+### Constraints
 
 * `1 <= words.length <= 15000`
 * `1 <= words[i].length <= 10`
@@ -22,7 +24,7 @@ Implement the `WordFilter` class:
 * `words[i]`, `prefix` and `suffix` consist of lower-case English letters only.
 * At most 15000 calls will be made to the function `f`.
 
-#### Examples
+### Examples
 
 ```text
 Input
@@ -112,9 +114,15 @@ impl WordFilter {
     fn f(&self, prefix: String, suffix: String) -> i32 {
         if let Some(node) = self.trie.find(&prefix) {
             let mut words = node.collect();
+            // Sort the words by their index, because we need to return the 
+            // largest index in case of multiple words
             words.sort_unstable();
 
+            // Iterate backwards, because we are interested in the largest index
             for word_idx in words.iter().copied().rev() {
+                // Because the array is sorted, and we iterate from largest 
+                // to smallest, out answer is the first word that ends with 
+                // the suffix
                 if self.words[word_idx].ends_with(&suffix) {
                     return word_idx as i32;
                 }
@@ -232,6 +240,16 @@ impl WordFilter {
 ```
 
 ### Trie of suffix-wrapped words
+
+**From leetcode:**
+
+> Consider the word `apple`. For each suffix of the word, we could insert that
+> suffix, followed by `#`, followed by the word, all into the trie.
+>
+> For example, we will insert `#apple`, `e#apple`, `le#apple`, `ple#apple`
+> , `pple#apple`, `apple#apple` into the trie. Then for a query
+> like `prefix = "ap"`, `suffix = "le"`, we can find it by querying our trie
+> for `le#ap`.
 
 ```rust
 use std::collections::HashMap;

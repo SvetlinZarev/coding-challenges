@@ -61,6 +61,7 @@
 
 * [211. Design Add and Search Words Data Structure](200%20-%20299/211%20-%20Design%20Add%20and%20Search%20Words%20Data%20Structure.md)
 * [212. Word Search II](200%20-%20299/212%20-%20Word%20Search%20II.md)
+* [745. Prefix and Suffix Search](700%20-%20799/745%20-%20Prefix%20and%20Suffix%20Search.md)
 
 ### Prefix Sum
 
