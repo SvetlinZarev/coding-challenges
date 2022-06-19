@@ -10,6 +10,7 @@
 * [74. Search a 2D Matrix](000%20-%20099/74%20-%20Search%20a%202D%20Matrix.md)
 * [852. Peak Index in a Mountain Array](800%20-%20899/852%20-%20Peak%20Index%20in%20a%20Mountain%20Array.md)
 * [875. Koko Eating Bananas](800%20-%20899/875%20-%20Koko%20Eating%20Bananas.md)
+* [1268. Search Suggestions System](1200%20-%201299/1268%20-%20Search%20Suggestions%20System.md)
 
 ### Two Pointers
 
@@ -62,6 +63,7 @@
 * [211. Design Add and Search Words Data Structure](200%20-%20299/211%20-%20Design%20Add%20and%20Search%20Words%20Data%20Structure.md)
 * [212. Word Search II](200%20-%20299/212%20-%20Word%20Search%20II.md)
 * [745. Prefix and Suffix Search](700%20-%20799/745%20-%20Prefix%20and%20Suffix%20Search.md)
+* [1268. Search Suggestions System](1200%20-%201299/1268%20-%20Search%20Suggestions%20System.md)
 
 ### Prefix Sum
 

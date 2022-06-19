@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 You are given an array of strings `products` and a string `searchWord`.
 
 Design a system that suggests at most three product names from `products` after
@@ -12,7 +14,7 @@ prefix return the three lexicographically minimums products.
 Return a list of lists of the suggested products after each character
 of `searchWord` is typed.
 
-#### Constraints
+### Constraints
 
 * `1 <= products.length <= 1000`
 * `1 <= products[i].length <= 3000`
@@ -22,7 +24,7 @@ of `searchWord` is typed.
 * `1 <= searchWord.length <= 1000`
 * `searchWord` consists of lowercase English letters.
 
-#### Examples
+### Examples
 
 ```text
 Input: products = ["mobile","mouse","moneypot","monitor","mousepad"], searchWord = "mouse"
@@ -73,82 +75,30 @@ pub fn suggested_products(mut products: Vec<String>, search_word: String) -> Vec
 ### Using binary search
 
 ```rust
-use std::cmp::Ordering;
-
 pub fn suggested_products(mut products: Vec<String>, search_word: String) -> Vec<Vec<String>> {
     products.sort_unstable();
 
-    let mut suggestions = Vec::with_capacity(search_word.len());
-    for prefix_len in 1..=search_word.len() {
-        let prefix = &search_word[..prefix_len];
+    let mut answer = Vec::with_capacity(search_word.len());
 
-        let mut lo = 0;
-        let mut hi = products.len() - 1;
-        let mut found = 0;
+    for len in 0..search_word.len() {
+        let mut suggestions = Vec::with_capacity(3);
+        let search_prefix = &search_word[0..=len];
+        let start_from = products
+            .binary_search_by(|x| x.as_str().cmp(search_prefix))
+            .unwrap_or_else(|e| e);
 
-        while lo <= hi {
-            let mid = (hi - lo) / 2 + lo;
-
-            match compare(&products[mid], prefix) {
-                Ordering::Less => {
-                    if mid == 0 {
-                        break;
-                    }
-                    hi = mid - 1;
-                }
-
-                Ordering::Equal => {
-                    found = mid;
-
-                    if mid == 0 {
-                        break;
-                    }
-                    hi = mid - 1;
-                }
-
-                Ordering::Greater => {
-                    lo = mid + 1;
-                }
-            }
-        }
-
-        let mut words = Vec::with_capacity(3);
-        let end_idx = products.len().min(found + 3);
-
-        for idx in found..end_idx {
-            if !products[idx].starts_with(prefix) {
+        for idx in start_from..products.len().min(start_from + 3) {
+            if !products[idx].starts_with(search_prefix) {
                 break;
             }
 
-            words.push(products[idx].to_owned());
+            suggestions.push(products[idx].clone())
         }
 
-        suggestions.push(words);
+        answer.push(suggestions);
     }
 
-    suggestions
-}
-
-fn compare(word: &str, prefix: &str) -> Ordering {
-    let word = word.as_bytes();
-    let prefix = prefix.as_bytes();
-    let len = word.len().min(prefix.len());
-
-    for idx in 0..len {
-        if prefix[idx] > word[idx] {
-            return Ordering::Greater;
-        }
-
-        if prefix[idx] < word[idx] {
-            return Ordering::Less;
-        }
-    }
-
-    if prefix.len() > word.len() {
-        return Ordering::Greater;
-    }
-
-    Ordering::Equal
+    answer
 }
 ```
 
