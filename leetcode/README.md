@@ -72,7 +72,9 @@
 * [304. Range Sum Query 2D - Immutable](300%20-%20399/304%20-%20Range%20Sum%20Query%202D%20-%20Immutable.md)
 * [538. Convert BST to Greater Tree](500%20-%20599/538%20-%20Convert%20BST%20to%20Greater%20Tree.md)
 * [560. Subarray Sum Equals K](500%20-%20599/560%20-%20Subarray%20Sum%20Equals%20K.md)
+* [724. Find Pivot Index](700%20-%20799/724%20-%20Find%20Pivot%20Index.md)
 * [1480. Running Sum of 1d Array](1400%20-%201499/1480%20-%20Running%20Sum%20of%201d%20Array.md)
+* [1991. Find the Middle Index in Array](1900%20-%201999/1991%20-%20Find%20the%20Middle%20Index%20in%20Array.md)
 
 ### BFS / DFS (not on trees)
 
