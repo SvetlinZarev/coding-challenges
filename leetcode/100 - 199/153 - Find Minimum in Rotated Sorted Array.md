@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Suppose an array of length `n` sorted in ascending order is rotated between `1`
 and `n` times. For example, the array `nums = [0,1,2,4,5,6,7]` might become:
 
@@ -16,7 +18,7 @@ element of this array.
 
 You must write an algorithm that runs in `O(log n)` time.
 
-#### Constraints
+### Constraints
 
 * `n == nums.length`
 * `1 <= n <= 5000`
@@ -24,7 +26,7 @@ You must write an algorithm that runs in `O(log n)` time.
 * All the integers of `nums` are unique.
 * `nums` is sorted and rotated between `1` and `n` times.
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [4,5,6,7,0,1,2]
@@ -32,7 +34,9 @@ Output: 0
 Explanation: The original array was [0,1,2,4,5,6,7] and it was rotated 4 times.
 ```
 
-## Solution
+## Solutions
+
+### Binary search
 
 ```rust
 pub fn find_min(nums: Vec<i32>) -> i32 {

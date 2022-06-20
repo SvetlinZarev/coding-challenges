@@ -6,8 +6,11 @@
 
 ### Binary Search
 
+* [34. Find First and Last Position of Element in Sorted Array](000%20-%20099/34%20-%20Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.md)
 * [69. Sqrt(x)](000%20-%20099/69%20-%20Sqrt(x).md)
 * [74. Search a 2D Matrix](000%20-%20099/74%20-%20Search%20a%202D%20Matrix.md)
+* [153. Find Minimum in Rotated Sorted Array](100%20-%20199/153%20-%20Find%20Minimum%20in%20Rotated%20Sorted%20Array.md)
+* [162. Find Peak Element](100%20-%20199/162%20-%20Find%20Peak%20Element.md)
 * [852. Peak Index in a Mountain Array](800%20-%20899/852%20-%20Peak%20Index%20in%20a%20Mountain%20Array.md)
 * [875. Koko Eating Bananas](800%20-%20899/875%20-%20Koko%20Eating%20Bananas.md)
 * [1268. Search Suggestions System](1200%20-%201299/1268%20-%20Search%20Suggestions%20System.md)
