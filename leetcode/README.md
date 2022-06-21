@@ -124,6 +124,7 @@
 
 * [5. Longest Palindromic Substring](000%20-%20099/5%20-%20Longest%20Palindromic%20Substring.md)
 * [139. Word Break](100%20-%20199/139%20-%20Word%20Break.md)
+* [205. Isomorphic Strings](200%20-%20299/205%20-%20Isomorphic%20Strings.md)
 * [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
 * [647. Palindromic Substrings](600%20-%20699/647%20-%20Palindromic%20Substrings.md)
 
