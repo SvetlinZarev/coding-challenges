@@ -33,6 +33,7 @@
 
 * [23. Merge k Sorted Lists](000%20-%20099/23%20-%20Merge%20k%20Sorted%20Lists.md)
 * [313. Super Ugly Number](300%20-%20399/313%20-%20Super%20Ugly%20Number.md)
+* [1642. Furthest Building You Can Reach](1600%20-%201699/1642%20-%20Furthest%20Building%20You%20Can%20Reach.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
 
 ### Trees
@@ -153,6 +154,7 @@
 * [435. Non-overlapping Intervals](400%20-%20499/435%20-%20Non-overlapping%20Intervals.md)
 * [860. Lemonade Change](800%20-%20899/860%20-%20Lemonade%20Change.md)
 * [1029. Two City Scheduling](1000%20-%201099/1029%20-%20Two%20City%20Scheduling.md)
+* [1642. Furthest Building You Can Reach](1600%20-%201699/1642%20-%20Furthest%20Building%20You%20Can%20Reach.md)
 * [1663. Smallest String With A Given Numeric Value](1600%20-%201699/1663%20-%20Smallest%20String%20With%20A%20Given%20Numeric%20Value.md)
 * [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
 
