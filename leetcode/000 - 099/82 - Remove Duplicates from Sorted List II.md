@@ -2,17 +2,19 @@
 
 ## Problem
 
+### Description
+
 Given the head of a sorted linked list, delete all nodes that have duplicate
 numbers, leaving only distinct numbers from the original list. Return the linked
 list sorted as well.
 
-#### Constraints
+### Constraints
 
 * The number of nodes in the list is in the range `[0, 300]`.
 * `-100 <= Node.val <= 100`
 * The list is guaranteed to be sorted in ascending order.
 
-#### Examples
+### Examples
 
 ```text
 Input: head = [1,2,3,3,4,4,5]

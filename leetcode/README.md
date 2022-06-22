@@ -32,6 +32,7 @@
 ### Priority Queue
 
 * [23. Merge k Sorted Lists](000%20-%20099/23%20-%20Merge%20k%20Sorted%20Lists.md)
+* [215. Kth Largest Element in an Array](200%20-%20299/215%20-%20Kth%20Largest%20Element%20in%20an%20Array.md)
 * [313. Super Ugly Number](300%20-%20399/313%20-%20Super%20Ugly%20Number.md)
 * [1642. Furthest Building You Can Reach](1600%20-%201699/1642%20-%20Furthest%20Building%20You%20Can%20Reach.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
@@ -101,7 +102,11 @@
 
 ### Linked List
 
+* [21. Merge Two Sorted Lists](000%20-%20099/21%20-%20Merge%20Two%20Sorted%20Lists.md)
+* [82. Remove Duplicates from Sorted List II](000%20-%20099/82%20-%20Remove%20Duplicates%20from%20Sorted%20List%20II.md)
 * [142. Linked List Cycle II](100%20-%20199/142%20-%20Linked%20List%20Cycle%20II.md)
+* [160. Intersection of Two Linked Lists](100%20-%20199/160%20-%20Intersection%20of%20Two%20Linked%20Lists.md)
+* [206. Reverse Linked List](200%20-%20299/206%20-%20Reverse%20Linked%20List.md)
 * [234. Palindrome Linked List](200%20-%20299/234%20-%20Palindrome%20Linked%20List.md)
 
 ### Floyd's algorithm
@@ -187,7 +192,7 @@
 
 ### Misc Problems
 
-* [160. Intersection of Two Linked Lists](100%20-%20199/160%20-%20Intersection%20of%20Two%20Linked%20Lists.md)
+* [15. 3Sum](000%20-%20099/15%20-%203Sum.md)
 * [334. Increasing Triplet Subsequence](300%20-%20399/334%20-%20Increasing%20Triplet%20Subsequence.md)
 * [409. Longest Palindrome](400%20-%20499/409%20-%20Longest%20Palindrome.md)
 * [1823. Find the Winner of the Circular Game](1800%20-%201899/1823%20-%20Find%20the%20Winner%20of%20the%20Circular%20Game.md)
