@@ -115,3 +115,7 @@ pub fn furthest_building<H: AsRef<[i32]>>(heights: H, bricks: i32, ladders: i32)
     (heights.len() - 1) as i32
 }
 ```
+
+## Related Problems
+
+* [630. Course Schedule III](/leetcode/600%20-%20699/630%20-%20Course%20Schedule%20III.md)
