@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 You are given an array prices where `prices[i]` is the price of a given stock on
 the ith day.
 
@@ -11,7 +13,12 @@ choosing a different day in the future to sell that stock.
 Return the maximum profit you can achieve from this transaction. If you cannot
 achieve any profit, return 0.
 
-#### Examples
+### Constraints
+
+* `1 <= prices.length <= 10^5`
+* `0 <= prices[i] <= 10^4`
+
+### Examples
 
 ```text
 Input: prices = [7,1,5,3,6,4]
@@ -26,7 +33,12 @@ Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
 ```
 
-## Solution
+## Solutions
+
+### Finding maximum difference
+
+Because we are buying and selling at most 1 stock, we have to find the largest
+difference between an element `x` and any other element that comes after it.
 
 ```rust
 pub fn max_profit(prices: Vec<i32>) -> i32 {
@@ -34,7 +46,10 @@ pub fn max_profit(prices: Vec<i32>) -> i32 {
     let mut min_price = i32::MAX;
 
     for price in prices {
+        // the minimum price found so far
         min_price = min_price.min(price);
+
+        // the maximum difference found so far
         max_profit = max_profit.max(price - min_price);
     }
 

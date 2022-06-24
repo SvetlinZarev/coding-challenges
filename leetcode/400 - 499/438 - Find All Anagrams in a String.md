@@ -2,18 +2,20 @@
 
 ## Problem
 
+### Description
+
 Given two strings `s` and `p`, return an array of all the start indices of `p`'s
 anagrams in `s`. You may return the answer in any order.
 
 An Anagram is a word or phrase formed by rearranging the letters of a different
 word or phrase, typically using all the original letters exactly once.
 
-#### Constraints
+### Constraints
 
 * `1 <= s.length, p.length <= 3 * 10^4`
 * `s` and `p` consist of lowercase English letters.
 
-#### Examples
+### Examples
 
 ```text
 Input: s = "cbaebabacd", p = "abc"
@@ -32,7 +34,9 @@ The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 ```
 
-## Solution
+## Solutions
+
+### Sliding Window
 
 ```rust
 pub fn find_anagrams(s: String, p: String) -> Vec<i32> {

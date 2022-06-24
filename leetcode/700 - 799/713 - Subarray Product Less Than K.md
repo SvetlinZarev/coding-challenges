@@ -2,17 +2,19 @@
 
 ## Problem
 
+### Description
+
 Given an array of integers `nums` and an integer `k`, return the number of
 contiguous subarrays where the product of all the elements in the subarray is
 strictly less than `k`.
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 3 * 10^4`
 * `1 <= nums[i] <= 1000`
 * `0 <= k <= 1066`
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [10,5,2,6], k = 100
@@ -28,7 +30,9 @@ Input: nums = [1,2,3], k = 0
 Output: 0
 ```
 
-## Solution
+## Solutions
+
+### Sliding Window
 
 ```rust
 pub fn num_subarray_product_less_than_k(nums: Vec<i32>, k: i32) -> i32 {

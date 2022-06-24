@@ -35,38 +35,30 @@ Output: 0
 
 ## Solutions
 
-### Binary Search
-
-TODO
-
-### Two Pointers
+### Sliding Window
 
 ```rust
 pub fn min_sub_array_len(target: i32, nums: Vec<i32>) -> i32 {
-    let mut best = usize::MAX;
+    assert!(target > 0);
 
+    let mut answer = usize::MAX;
     let mut sum = 0;
-    let mut from = 0;
-    let mut to = 0;
+    let mut start = 0;
 
-    while to < nums.len() {
-        sum += nums[to];
-        to += 1;
+    for end in 0..nums.len() {
+        sum += nums[end];
 
         while sum >= target {
-            if sum - nums[from] >= target {
-                sum -= nums[from];
-                from += 1;
-            } else {
-                best = best.min(to - from);
-                break;
-            }
+            answer = answer.min(end - start + 1);
+            sum -= nums[start];
+            start += 1;
         }
     }
 
-    if best == usize::MAX {
-        best = 0;
+    if answer == usize::MAX {
+        answer = 0;
     }
-    best as i32
+
+    answer as i32
 }
 ```
