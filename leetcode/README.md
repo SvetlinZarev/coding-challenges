@@ -35,6 +35,7 @@
 * [215. Kth Largest Element in an Array](200%20-%20299/215%20-%20Kth%20Largest%20Element%20in%20an%20Array.md)
 * [313. Super Ugly Number](300%20-%20399/313%20-%20Super%20Ugly%20Number.md)
 * [630. Course Schedule III](600%20-%20699/630%20-%20Course%20Schedule%20III.md)
+* [1354. Construct Target Array With Multiple Sums](1300%20-%201399/1354%20-%20Construct%20Target%20Array%20With%20Multiple%20Sums.md)
 * [1642. Furthest Building You Can Reach](1600%20-%201699/1642%20-%20Furthest%20Building%20You%20Can%20Reach.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
 
