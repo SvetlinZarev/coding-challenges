@@ -64,6 +64,7 @@
 * [230. Kth Smallest Element in a BST](200%20-%20299/230%20-%20Kth%20Smallest%20Element%20in%20a%20BST.md)
 * [236. Lowest Common Ancestor of a Binary Tree](200%20-%20299/236%20-%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.md)
 * [450. Delete Node in a BST](400%20-%20499/450%20-%20Delete%20Node%20in%20a%20BST.md)
+* [589. N-ary Tree Preorder Traversal](500%20-%20599/589%20-%20N-ary%20Tree%20Preorder%20Traversal.md)
 * [968. Binary Tree Cameras](900%20-%20999/968%20-%20Binary%20Tree%20Cameras.md)
 * [1302. Deepest Leaves Sum](1300%20-%201399/1302%20-%20Deepest%20Leaves%20Sum.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
@@ -235,6 +236,7 @@
 
 ### Misc
 
+* [547. Number of Provinces](500%20-%20599/547%20-%20Number%20of%20Provinces.md)
 * [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
 * [1192. Critical Connections in a Network](1100%20-%201199/1192%20-%20Critical%20Connections%20in%20a%20Network.md)
 * [1557. Minimum Number of Vertices to Reach All Nodes](1500%20-%201599/1557%20-%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes.md)

@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 There are `n` cities. Some of them are connected, while some are not. If
 city `a` is connected directly with city `b`, and city `b` is connected directly
 with city `c`, then city `a` is connected indirectly with city `c`.
@@ -15,7 +17,7 @@ and `isConnected[i][j] = 0` otherwise.
 
 Return the total number of provinces.
 
-#### Constraints
+### Constraints
 
 * `1 <= n <= 200`
 * `n == isConnected.length`
@@ -24,7 +26,7 @@ Return the total number of provinces.
 * `isConnected[i][i] == 1`
 * `isConnected[i][j] == isConnected[j][i]`
 
-#### Examples
+### Examples
 
 ```text
 Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
@@ -36,7 +38,13 @@ Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
 Output: 3
 ```
 
-## Solution
+## Solutions
+
+### Mark connected nodes
+
+1. Traverse the adjacency matrix and start a DFS from each connected nodes
+    * disconnect all reachable nodes
+2. increment the counter each time we start a DFS from the matrix traversal loop
 
 ```rust
 pub fn find_circle_num(mut grid: Vec<Vec<i32>>) -> i32 {
