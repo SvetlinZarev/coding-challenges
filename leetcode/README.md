@@ -2,6 +2,7 @@
 
 ### Arrays
 
+* [665. Non-decreasing Array](600%20-%20699/665%20-Non-decreasing%20Array.md)
 * [867. Transpose Matrix](800%20-%20899/867%20-%20Transpose%20Matrix.md)
 
 ### Binary Search
