@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given a binary tree:
 
 ```c 
@@ -24,9 +26,14 @@ Initially, all `next` pointers are set to `NULL`.
 * The recursive approach is fine. You may assume implicit stack space does not
   count as extra space for this problem.
 
-#### Examples
+### Constraints
 
-![tree diagram](resources/117/117_sample.png)
+* The number of nodes in the tree is in the range `[0, 6000]`.
+* `-100 <= Node.val <= 100`
+
+### Examples
+
+![tree diagram](resources/117/ex1.png)
 
 ```text
 Input: root = [1,2,3,4,5,null,7]
