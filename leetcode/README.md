@@ -245,4 +245,5 @@
 * [547. Number of Provinces](500%20-%20599/547%20-%20Number%20of%20Provinces.md)
 * [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
 * [1192. Critical Connections in a Network](1100%20-%201199/1192%20-%20Critical%20Connections%20in%20a%20Network.md)
+* [1436. Destination City](1400%20-%201499/1436%20-%20Destination%20City.md)
 * [1557. Minimum Number of Vertices to Reach All Nodes](1500%20-%201599/1557%20-%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes.md)
