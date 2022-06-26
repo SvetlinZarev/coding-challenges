@@ -114,3 +114,7 @@ pub fn min_operations<A: AsRef<[i32]>>(nums: A, x: i32) -> i32 {
     NO_SOLUTION
 }
 ```
+
+## Related Problems
+
+* [1423. Maximum Points You Can Obtain from Cards](/leetcode/1400%20-%201499/1423%20-%20Maximum%20Points%20You%20Can%20Obtain%20from%20Cards.md)

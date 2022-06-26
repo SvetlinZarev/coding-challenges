@@ -29,6 +29,7 @@
 * [209. Minimum Size Subarray Sum](200%20-%20299/209%20-%20Minimum%20Size%20Subarray%20Sum.md)
 * [438. Find All Anagrams in a String](400%20-%20499/438%20-%20Find%20All%20Anagrams%20in%20a%20String.md)
 * [713. Subarray Product Less Than K](700%20-%20799/713%20-%20Subarray%20Product%20Less%20Than%20K.md)
+* [1423. Maximum Points You Can Obtain from Cards](1400%20-%201499/1423%20-%20Maximum%20Points%20You%20Can%20Obtain%20from%20Cards.md)
 * [1658. Minimum Operations to Reduce X to Zero](1600%20-%201699/1658%20-%20Minimum%20Operations%20to%20Reduce%20X%20to%20Zero.md)
 * [1695. Maximum Erasure Value](1600%20-%201699/1695%20-%20Maximum%20Erasure%20Value.md)
 
