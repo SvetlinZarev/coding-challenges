@@ -190,6 +190,10 @@
 * [1342. Number of Steps to Reduce a Number to Zero](1300%20-%201399/1342%20-%20Number%20of%20Steps%20to%20Reduce%20a%20Number%20to%20Zero.md)
 * [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
 
+### Union-Find
+
+* [1202. Smallest String With Swaps](1200%20-%201299/1202%20-%20Smallest%20String%20With%20Swaps.md)
+
 ### Math
 
 * [149. Max Points on a Line](100%20-%20199/149%20-%20Max%20Points%20on%20a%20Line.md)
@@ -245,5 +249,6 @@
 * [547. Number of Provinces](500%20-%20599/547%20-%20Number%20of%20Provinces.md)
 * [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
 * [1192. Critical Connections in a Network](1100%20-%201199/1192%20-%20Critical%20Connections%20in%20a%20Network.md)
+* [1202. Smallest String With Swaps](1200%20-%201299/1202%20-%20Smallest%20String%20With%20Swaps.md)
 * [1436. Destination City](1400%20-%201499/1436%20-%20Destination%20City.md)
 * [1557. Minimum Number of Vertices to Reach All Nodes](1500%20-%201599/1557%20-%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes.md)
