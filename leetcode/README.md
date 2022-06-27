@@ -48,6 +48,7 @@
 ### Trees
 
 * [94. Binary Tree Inorder Traversal](000%20-%20099/94%20-%20Binary%20Tree%20Inorder%20Traversal.md)
+* [98. Validate Binary Search Tree](000%20-%20099/98%20-%20Validate%20Binary%20Search%20Tree.md)
 * [100. Same Tree](100%20-%20199/100%20-%20Same%20Tree.md)
 * [101. Symmetric Tree](100%20-%20199/101%20-%20Symmetric%20Tree.md)
 * [102. Binary Tree Level Order Traversal](100%20-%20199/102%20-%20Binary%20Tree%20Level%20Order%20Traversal.md)
@@ -67,6 +68,7 @@
 * [199. Binary Tree Right Side View](100%20-%20199/199%20-%20Binary%20Tree%20Right%20Side%20View.md)
 * [297. Serialize and Deserialize Binary Tree](200%20-%20299/297%20-%20Serialize%20and%20Deserialize%20Binary%20Tree.md)
 * [230. Kth Smallest Element in a BST](200%20-%20299/230%20-%20Kth%20Smallest%20Element%20in%20a%20BST.md)
+* [235. Lowest Common Ancestor of a Binary Search Tree](200%20-%20299/235%20-%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree.md)
 * [236. Lowest Common Ancestor of a Binary Tree](200%20-%20299/236%20-%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.md)
 * [450. Delete Node in a BST](400%20-%20499/450%20-%20Delete%20Node%20in%20a%20BST.md)
 * [572. Subtree of Another Tree](500%20-%20599/572%20-%20Subtree%20of%20Another%20Tree.md)
@@ -92,15 +94,6 @@
 * [724. Find Pivot Index](700%20-%20799/724%20-%20Find%20Pivot%20Index.md)
 * [1480. Running Sum of 1d Array](1400%20-%201499/1480%20-%20Running%20Sum%20of%201d%20Array.md)
 * [1991. Find the Middle Index in Array](1900%20-%201999/1991%20-%20Find%20the%20Middle%20Index%20in%20Array.md)
-
-### BFS / DFS (not on trees)
-
-* [127. Word Ladder](100%20-%20199/127%20-%20Word%20Ladder.md)
-* [200. Number of Islands](200%20-%20299/200%20-%20Number%20of%20Islands.md)
-* [417. Pacific Atlantic Water Flow](400%20-%20499/417%20-%20Pacific%20Atlantic%20Water%20Flow.md)
-* [695. Max Area of Island](600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
-* [841. Keys and Rooms](800%20-%20899/841%20-%20Keys%20and%20Rooms.md)
-* [994. Rotting Oranges](900%20-%20999/994%20-%20Rotting%20Oranges.md)
 
 ### Stack
 
@@ -241,14 +234,24 @@
 * [322. Coin Change](300%20-%20399/322%20-%20Coin%20Change.md)
 * [365. Water and Jug Problem](300%20-%20399/365%20-%20Water%20and%20Jug%20Problem.md)
 * [752. Open the Lock](700%20-%20799/752%20-%20Open%20the%20Lock.md)
+* [797. All Paths From Source to Target](700%20-%20799/797%20-%20All%20Paths%20From%20Source%20to%20Target.md)
+* [1091. Shortest Path in Binary Matrix](1000%20-%201099/1091%20-%20Shortest%20Path%20in%20Binary%20Matrix.md)
 * [1306. Jump Game III](1300%20-%201399/1306%20-%20Jump%20Game%20III.md)
 * [1514. Path with Maximum Probability](1500%20-%201599/1514%20-%20Path%20with%20Maximum%20Probability.md)
 
 ### Misc
 
+* [127. Word Ladder](100%20-%20199/127%20-%20Word%20Ladder.md)
+* [130. Surrounded Regions](100%20-%20199/130%20-%20Surrounded%20Regions.md)
+* [200. Number of Islands](200%20-%20299/200%20-%20Number%20of%20Islands.md)
+* [417. Pacific Atlantic Water Flow](400%20-%20499/417%20-%20Pacific%20Atlantic%20Water%20Flow.md)
 * [547. Number of Provinces](500%20-%20599/547%20-%20Number%20of%20Provinces.md)
+* [695. Max Area of Island](600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
 * [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
+* [841. Keys and Rooms](800%20-%20899/841%20-%20Keys%20and%20Rooms.md)
+* [994. Rotting Oranges](900%20-%20999/994%20-%20Rotting%20Oranges.md)
 * [1192. Critical Connections in a Network](1100%20-%201199/1192%20-%20Critical%20Connections%20in%20a%20Network.md)
 * [1202. Smallest String With Swaps](1200%20-%201299/1202%20-%20Smallest%20String%20With%20Swaps.md)
 * [1436. Destination City](1400%20-%201499/1436%20-%20Destination%20City.md)
 * [1557. Minimum Number of Vertices to Reach All Nodes](1500%20-%201599/1557%20-%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes.md)
+

@@ -2,19 +2,25 @@
 
 ## Problem
 
+### Description
+
 Given an `m x n` matrix board containing `X` and `O`, capture all regions that
 are 4-directionally surrounded by  `X`.
 
 A region is captured by flipping all `O`s into `X`s in that surrounded region.
 
-#### Constraints
+### Constraints
 
 * `m == board.length`
 * `n == board[i].length`
 * `1 <= m, n <= 200`
 * `board[i][j]` is `X` or `O`
 
-#### Examples
+### Examples
+
+#### Example 1
+
+![image](resources/130/ex1.jpg)
 
 ```text
 Input: board = [["X","X","X","X"],["X","O","O","X"],["X","X","O","X"],["X","O","X","X"]]
@@ -26,7 +32,9 @@ the border and it is not connected to an 'O' on the border will be flipped to
 or vertically.
 ```
 
-## Solution
+## Solutions
+
+### Mark connected cells
 
 The only "islands" of `O` that will not be converted to `X`s will be those that
 touch the border the of grid. Thus, we can iterate over the first/last rows and

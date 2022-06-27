@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given the root of a binary tree, determine if it is a valid binary search tree
 (BST).
 
@@ -13,12 +15,12 @@ A valid BST is defined as follows:
   node's key.
 * Both the left and right subtrees must also be binary search trees.
 
-#### Constraints
+### Constraints
 
 * The number of nodes in the tree is in the range `[1, 10^4]`.
 * `-2^31 <= Node.val <= 2^31 - 1`
 
-#### Example
+### Examples
 
 ```text
 Input: root = [5,1,4,null,null,3,6]
@@ -26,7 +28,9 @@ Output: false
 Explanation: The root node's value is 5 but its right child's value is 4.
 ```
 
-## Solution
+## Solutions
+
+### Inorder traversal
 
 In inorder traversal of a valid BST will yield the node's values in a sorted
 order. Therefore, we can do an inorder traversal of the tree and check if the

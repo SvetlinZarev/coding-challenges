@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given an `n x n` binary matrix grid, return the length of the shortest clear
 path in the matrix. If there is no clear path, return `-1`.
 
@@ -14,31 +16,43 @@ i.e., `(0, 0)`) to the bottom-right cell (i.e., `(n - 1, n - 1)`) such that:
 
 The length of a clear path is the number of visited cells of this path.
 
-#### Constraints
+### Constraints
 
 * `n == grid.length`
 * `n == grid[i].length`
 * `1 <= n <= 100`
 * `grid[i][j]` is `0` or `1`
 
-#### Examples
+### Examples
+
+#### Example 1
+
+![image](resources/1091/ex1.png)
 
 ```text
 Input: grid = [[0,1],[1,0]]
 Output: 2
 ```
 
+#### Example 2
+
+![image](resources/1091/ex2.png)
+
 ```text
 Input: grid = [[0,0,0],[1,1,0],[1,1,0]]
 Output: 4
 ```
+
+#### Example 3
 
 ```text
 Input: grid = [[1,0,0],[1,1,0],[1,1,0]]
 Output: -1
 ```
 
-## Solution
+## Solutions
+
+### A* algorithm
 
 The easiest solution is to use the Dijkstra algorithm. It's essentially the same
 as A*, but with a heuristic that always returns 0.
@@ -127,5 +141,8 @@ fn heuristic(grid: &Vec<Vec<i32>>, r: usize, c: usize) -> i32 {
 
     (D1 * (dx + dy) + (D2 - 2 * D1) * dx.min(dy)) as i32
 }
-
 ```
+
+## Resources
+
+* [Heuristics for grid maps - Stanford](http://theory.stanford.edu/~amitp/GameProgramming/Heuristics.html#heuristics-for-grid-maps)

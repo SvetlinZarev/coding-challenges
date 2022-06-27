@@ -130,3 +130,7 @@ fn dfs(root: &Rc<RefCell<TreeNode>>, p: i32, q: i32) -> Option<Rc<RefCell<TreeNo
     left.or(right)
 }
 ```
+
+## Related Problems
+
+* [235. Lowest Common Ancestor of a Binary Search Tree](235%20-%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Search%20Tree.md)

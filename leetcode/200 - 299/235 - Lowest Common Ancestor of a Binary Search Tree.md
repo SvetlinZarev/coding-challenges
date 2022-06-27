@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 Given a binary search tree (BST), find the lowest common ancestor (LCA) of two
 given nodes in the BST.
 
@@ -9,7 +11,49 @@ According to the definition of LCA on Wikipedia: “The lowest common ancestor i
 defined between two nodes `p` and `q` as the lowest node in T that has both `p`
 and `q` as descendants (where we allow a node to be a descendant of itself).”
 
-## Solution
+### Constraints
+
+* `The number of nodes in the tree is in the range [2, 105].`
+* `-10^9 <= Node.val <= 10^9`
+* All `Node.val` are unique.
+* `p != q`
+* `p` and `q` will exist in the BST.
+
+### Examples
+
+#### Example 1
+
+![image](resources/235/ex1.png)
+
+```text
+Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+Output: 6
+Explanation: The LCA of nodes 2 and 8 is 6.
+```
+
+#### Example 2
+
+![image](resources/235/ex2.png)
+
+```text
+Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+Output: 2
+Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.
+```
+
+#### Example 3
+
+```text
+Input: root = [2,1], p = 2, q = 1
+Output: 2
+```
+
+## Solutions
+
+### Take advantage of the BST properties
+
+We can take advantage of the BST properties - the left children are smaller than
+the parent node, and the right children are larger
 
 ```rust
 // Definition for a binary tree node.
@@ -66,3 +110,7 @@ fn pq(p: Option<Rc<RefCell<TreeNode>>>, q: Option<Rc<RefCell<TreeNode>>>) -> (i3
     (pv.min(qv), pv.max(qv))
 }
 ```
+
+## Related Problems
+
+* [236. Lowest Common Ancestor of a Binary Tree](236%20-%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.md)
