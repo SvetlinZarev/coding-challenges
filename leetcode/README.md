@@ -200,6 +200,7 @@
 ### Misleading / Stupid
 
 * [1332. Remove Palindromic Subsequences](1300%20-%201399/1332%20-%20Remove%20Palindromic%20Subsequences.md)
+* [1689. Partitioning Into Minimum Number Of Deci-Binary Numbers](1600%20-%201699/1689%20-%20Partitioning%20Into%20Minimum%20Number%20Of%20Deci-Binary%20Numbers.md)
 
 ### Misc Problems
 
