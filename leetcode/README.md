@@ -43,6 +43,7 @@
 * [630. Course Schedule III](600%20-%20699/630%20-%20Course%20Schedule%20III.md)
 * [1354. Construct Target Array With Multiple Sums](1300%20-%201399/1354%20-%20Construct%20Target%20Array%20With%20Multiple%20Sums.md)
 * [1642. Furthest Building You Can Reach](1600%20-%201699/1642%20-%20Furthest%20Building%20You%20Can%20Reach.md)
+* [1647. Minimum Deletions to Make Character Frequencies Unique](1600%20-%201699/1647%20-%20Minimum%20Deletions%20to%20Make%20Character%20Frequencies%20Unique.md)
 * [1845. Seat Reservation Manager](1800%20-%201899/1845%20-%20Seat%20Reservation%20Manager.md)
 
 ### Trees
