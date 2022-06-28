@@ -2,19 +2,21 @@
 
 ## Problem
 
+### Description
+
 Given an integer array `nums` of unique elements, return all possible subsets (
 the power set).
 
 The solution set must not contain duplicate subsets. Return the solution in any
 order.
 
-#### Constraints
+### Constraints
 
 * All the numbers of `nums` are unique.
 * `1 <= nums.length <= 10`
 * `-10 <= nums[i] <= 10`
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [1,2,3]
@@ -26,7 +28,9 @@ Input: nums = [0]
 Output: [[],[0]]
 ```
 
-## Solution
+## Solutions
+
+### Using bitmasks
 
 ```rust
 pub fn subsets(nums: Vec<i32>) -> Vec<Vec<i32>> {

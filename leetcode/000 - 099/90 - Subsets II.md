@@ -2,18 +2,20 @@
 
 ## Problem
 
+### Description
+
 Given an integer array `nums` that may contain duplicates, return all possible
 subsets (the power set).
 
 The solution set must not contain duplicate subsets. Return the solution in any
 order.
 
-#### Constraints
+### Constraints
 
 * `1 <= nums.length <= 10`
 * `-10 <= nums[i] <= 10`
 
-#### Examples
+### Examples
 
 ```text
 Input: nums = [0]
@@ -25,7 +27,9 @@ Input: nums = [1,2,2]
 Output: [[],[1],[1,2],[1,2,2],[2],[2,2]]
 ```
 
-## Solution
+## Solutions
+
+### Using bitmasks
 
 ```rust
 pub fn subsets_with_dup(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
@@ -52,4 +56,5 @@ pub fn subsets_with_dup(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
 ```
 
 ## Related Problems
+
 * [78. Subsets](78%20-%20Subsets.md)

@@ -173,6 +173,8 @@
 
 ### Bitwise operations
 
+* [78. Subsets](000%20-%20099/78%20-%20Subsets.md)
+* [90. Subsets II](000%20-%20099/90%20-%20Subsets%20II.md)
 * [136. Single Number](100%20-%20199/136%20-%20Single%20Number.md)
 * [137. Single Number II](100%20-%20199/137%20-%20Single%20Number%20II.md)
 * [190. Reverse Bits](100%20-%20199/190%20-%20Reverse%20Bits.md)
@@ -221,6 +223,16 @@
 * [1603. Design Parking System](1600%20-%201699/1603%20-%20Design%20Parking%20System.md)
 * [1797. Design Authentication Manager](1700%20-%201799/1797%20-%20Design%20Authentication%20Manager.md)
 
+### Graph-like problems on matrices (mostly BFS/DFS)
+
+* [130. Surrounded Regions](100%20-%20199/130%20-%20Surrounded%20Regions.md)
+* [200. Number of Islands](200%20-%20299/200%20-%20Number%20of%20Islands.md)
+* [286. Walls and Gates](200%20-%20299/286%20-%20Walls%20and%20Gates.md)
+* [417. Pacific Atlantic Water Flow](400%20-%20499/417%20-%20Pacific%20Atlantic%20Water%20Flow.md)
+* [695. Max Area of Island](600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
+* [733. Flood Fill](700%20-%20799/733%20-%20Flood%20Fill.md)
+* [1091. Shortest Path in Binary Matrix](1000%20-%201099/1091%20-%20Shortest%20Path%20in%20Binary%20Matrix.md)
+
 ## Algorithms on graphs
 
 ### Cycle detection
@@ -230,6 +242,10 @@
 ### Topological sorting
 
 * [210. Course Schedule II](200%20-%20299/210%20-%20Course%20Schedule%20II.md)
+
+### Tarjan's bridge-finding algorithm
+
+* [1192. Critical Connections in a Network](1100%20-%201199/1192%20-%20Critical%20Connections%20in%20a%20Network.md)
 
 ### Path Finding
 
@@ -244,15 +260,10 @@
 ### Misc
 
 * [127. Word Ladder](100%20-%20199/127%20-%20Word%20Ladder.md)
-* [130. Surrounded Regions](100%20-%20199/130%20-%20Surrounded%20Regions.md)
-* [200. Number of Islands](200%20-%20299/200%20-%20Number%20of%20Islands.md)
-* [417. Pacific Atlantic Water Flow](400%20-%20499/417%20-%20Pacific%20Atlantic%20Water%20Flow.md)
 * [547. Number of Provinces](500%20-%20599/547%20-%20Number%20of%20Provinces.md)
-* [695. Max Area of Island](600%20-%20699/695%20-%20Max%20Area%20of%20Island.md)
 * [743. Network Delay Time](700%20-%20799/743%20-%20Network%20Delay%20Time.md)
 * [841. Keys and Rooms](800%20-%20899/841%20-%20Keys%20and%20Rooms.md)
 * [994. Rotting Oranges](900%20-%20999/994%20-%20Rotting%20Oranges.md)
-* [1192. Critical Connections in a Network](1100%20-%201199/1192%20-%20Critical%20Connections%20in%20a%20Network.md)
 * [1202. Smallest String With Swaps](1200%20-%201299/1202%20-%20Smallest%20String%20With%20Swaps.md)
 * [1436. Destination City](1400%20-%201499/1436%20-%20Destination%20City.md)
 * [1557. Minimum Number of Vertices to Reach All Nodes](1500%20-%201599/1557%20-%20Minimum%20Number%20of%20Vertices%20to%20Reach%20All%20Nodes.md)
