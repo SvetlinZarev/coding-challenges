@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 You are given an integer array `cost` where `cost[i]` is the cost of `i`th step
 on a staircase. Once you pay the cost, you can either climb one or two steps.
 
@@ -9,12 +11,12 @@ You can either start from the step with index `0`, or the step with index `1`.
 
 Return the minimum cost to reach the top of the floor.
 
-#### Constraints
+### Constraints
 
 * `2 <= cost.length <= 1000`
 * `0 <= cost[i] <= 999`
 
-#### Examples
+### Examples
 
 ```text
 Input: cost = [10,15,20]
@@ -37,7 +39,9 @@ Explanation: You will start at index 0.
 The total cost is 6.
 ```
 
-## Solution
+## Solutions
+
+### Dynamic Programming
 
 ```rust
 pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {
@@ -57,3 +61,7 @@ pub fn min_cost_climbing_stairs(cost: Vec<i32>) -> i32 {
     dp[dp.len() - 1]
 }
 ```
+
+## Related Problems
+
+* [70. Climbing Stairs](/leetcode/000%20-%20099/70%20-%20Climbing%20Stairs.md)

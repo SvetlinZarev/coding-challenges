@@ -2,14 +2,16 @@
 
 ## Problem
 
+### Description
+
 Given `n` pairs of parentheses, write a function to generate all combinations of
 well-formed parentheses.
 
-#### Constraints
+### Constraints
 
 * `1 <= n <= 8`
 
-#### Examples
+### Examples
 
 ```text
 Input: n = 3
@@ -21,7 +23,9 @@ Input: n = 1
 Output: ["()"]
 ```
 
-## Solution
+## Solutions
+
+### Backtracking
 
 ```rust
 pub fn generate_parenthesis(n: i32) -> Vec<String> {

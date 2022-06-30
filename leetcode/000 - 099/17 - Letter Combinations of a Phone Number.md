@@ -1,6 +1,8 @@
 # [17. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
-# Problem
+## Problem
+
+### Description
 
 Given a string containing digits from 2-9 inclusive, return all possible letter
 combinations that the number could represent. Return the answer in any order.
@@ -20,12 +22,12 @@ below. Note that 1 does not map to any letters.
 9 => wxyz
 ```
 
-#### Constraints
+### Constraints
 
 * `0 <= digits.length <= 4`
 * `digits[i]` is a digit in the range `['2', '9']`
 
-#### Examples
+### Examples
 
 ```text
 Input: digits = ""

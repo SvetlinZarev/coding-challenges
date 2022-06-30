@@ -80,6 +80,7 @@
 
 ### Prefix Tree (Trie)
 
+* [79. Word Search](000%20-%20099/79%20-%20Word%20Search.md)
 * [211. Design Add and Search Words Data Structure](200%20-%20299/211%20-%20Design%20Add%20and%20Search%20Words%20Data%20Structure.md)
 * [212. Word Search II](200%20-%20299/212%20-%20Word%20Search%20II.md)
 * [745. Prefix and Suffix Search](700%20-%20799/745%20-%20Prefix%20and%20Suffix%20Search.md)
@@ -144,8 +145,10 @@
 * [187. Repeated DNA Sequences](100%20-%20199/187%20-%20Repeated%20DNA%20Sequences.md)
 * [1461. Check If a String Contains All Binary Codes of Size K](1400%20-%201499/1461%20-%20Check%20If%20a%20String%20Contains%20All%20Binary%20Codes%20of%20Size%20K.md)
 
-### Memoization / DP
+### Memoization / Dynamic Programming
 
+* [62. Unique Paths](000%20-%20099/62%20-%20Unique%20Paths.md)
+* [70. Climbing Stairs](000%20-%20099/70%20-%20Climbing%20Stairs.md)
 * [121. Best Time to Buy and Sell Stock](100%20-%20199/121%20-%20Best%20Time%20to%20Buy%20and%20Sell%20Stock.md)
 * [139. Word Break](100%20-%20199/139%20-%20Word%20Break.md)
 * [322. Coin Change](300%20-%20399/322%20-%20Coin%20Change.md)
@@ -153,14 +156,27 @@
 * [509. Fibonacci Number](500%20-%20599/509%20-%20Fibonacci%20Number.md)
 * [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
 * [583. Delete Operation for Two Strings](500%20-%20599/583%20-%20Delete%20Operation%20for%20Two%20Strings.md)
+* [746. Min Cost Climbing Stairs](700%20-%20799/746%20-%20Min%20Cost%20Climbing%20Stairs.md)
 * [1048. Longest String Chain](1000%20-%201099/1048%20-%20Longest%20String%20Chain.md)
 * [1143. Longest Common Subsequence](1100%20-%201199/1143%20-%20Longest%20Common%20Subsequence.md)
 
 ### Backtracking
 
+* [17. Letter Combinations of a Phone Number](000%20-%20099/17%20-%20Letter%20Combinations%20of%20a%20Phone%20Number.md)
+* [22. Generate Parentheses](000%20-%20099/22%20-%20Generate%20Parentheses.md)
+* [39. Combination Sum](000%20-%20099/39%20-%20Combination%20Sum.md)
+* [40. Combination Sum II](000%20-%20099/40%20-%20Combination%20Sum%20II.md)
+* [47. Permutations II](000%20-%20099/47%20-%20Permutations%20II.md)
 * [51. N-Queens](000%20-%20099/51%20-%20N-Queens.md)
 * [52. N-Queens II](000%20-%20099/52%20-%20N-Queens%20II.md)
+* [78. Subsets](000%20-%20099/78%20-%20Subsets.md)
+* [79. Word Search](000%20-%20099/79%20-%20Word%20Search.md)
+* [90. Subsets II](000%20-%20099/90%20-%20Subsets%20II.md)
 * [140. Word Break II](100%20-%20199/140%20-%20Word%20Break%20II.md)
+
+### Misc recursion / bfs / dfs / backtracking
+
+* [79. Word Search](000%20-%20099/79%20-%20Word%20Search.md)
 
 ### Greedy
 

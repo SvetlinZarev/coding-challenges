@@ -2,6 +2,8 @@
 
 ## Problem
 
+### Description
+
 A robot is located at the top-left corner (`[0][0]`) of a `m x n` grid.
 
 The robot can only move either down or right at any point in time. The robot is
@@ -9,12 +11,12 @@ trying to reach the bottom-right corner (`[m-1][n-1]`) of the grid.
 
 How many possible unique paths are there?
 
-#### Constraints
+### Constraints
 
 * `1 <= m, n <= 100`
 * It's guaranteed that the answer will be less than or equal to `2 * 10^9`.
 
-#### Examples
+### Examples
 
 ```text
 Input: m = 3, n = 2
@@ -36,7 +38,9 @@ Input: m = 3, n = 3
 Output: 6
 ```
 
-## Solution
+## Solutions
+
+### Dynamic Programming
 
 ```rust
 pub fn unique_paths(m: i32, n: i32) -> i32 {
