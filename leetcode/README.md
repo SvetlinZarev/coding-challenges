@@ -173,6 +173,7 @@
 * [79. Word Search](000%20-%20099/79%20-%20Word%20Search.md)
 * [90. Subsets II](000%20-%20099/90%20-%20Subsets%20II.md)
 * [140. Word Break II](100%20-%20199/140%20-%20Word%20Break%20II.md)
+* [473. Matchsticks to Square](400%20-%20499/473%20-%20Matchsticks%20to%20Square.md)
 
 ### Misc recursion / bfs / dfs / backtracking
 
