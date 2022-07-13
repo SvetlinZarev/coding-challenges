@@ -2,6 +2,12 @@
 
 ## Problem
 
+### Notes
+
+This is the same problem
+as [698. Partition to K Equal Sum Subsets](/leetcode/600%20-%20699/698%20-%20Partition%20to%20K%20Equal%20Sum%20Subsets.md)
+and can be solved with the same solution.
+
 ### Description
 
 You are given an integer array `matchsticks` where `matchsticks[i]` is the
@@ -51,6 +57,10 @@ Output: false
 
 ### DFS
 
+Note: See the solution
+for [698. Partition to K Equal Sum Subsets](/leetcode/600%20-%20699/698%20-%20Partition%20to%20K%20Equal%20Sum%20Subsets.md)
+because it contains more optimizations and is a lot faster!
+
 ```rust
 pub fn makesquare(matchsticks: &mut [i32]) -> bool {
     const SIDES: i32 = 4;
@@ -64,7 +74,7 @@ pub fn makesquare(matchsticks: &mut [i32]) -> bool {
 
     let perimeter = matchsticks.iter().sum::<i32>();
     let side = perimeter / SIDES;
-    if perimeter % SIDES != 0 || matchsticks[matchsticks.len() - 1] > side {
+    if perimeter % SIDES != 0 || matchsticks[0] > side {
         return false;
     }
 
@@ -80,6 +90,8 @@ fn dfs<const N: usize>(sticks: &[i32], target: i32, sums: &mut [i32; N], index: 
         if sums[i] + sticks[index] > target {
             continue;
         }
+
+        // Not implemented optimisation: skip over sums of equal value
 
         sums[i] += sticks[index];
         if dfs(sticks, target, sums, index + 1) {
@@ -166,3 +178,7 @@ fn backtrack(
     false
 }
 ```
+
+## Related Problems
+
+* [698. Partition to K Equal Sum Subsets](/leetcode/600%20-%20699/698%20-%20Partition%20to%20K%20Equal%20Sum%20Subsets.md)

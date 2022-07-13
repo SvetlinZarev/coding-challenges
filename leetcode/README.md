@@ -174,6 +174,7 @@
 * [90. Subsets II](000%20-%20099/90%20-%20Subsets%20II.md)
 * [140. Word Break II](100%20-%20199/140%20-%20Word%20Break%20II.md)
 * [473. Matchsticks to Square](400%20-%20499/473%20-%20Matchsticks%20to%20Square.md)
+* [698. Partition to K Equal Sum Subsets](600%20-%20699/698%20-%20Partition%20to%20K%20Equal%20Sum%20Subsets.md)
 
 ### Misc recursion / bfs / dfs / backtracking
 
