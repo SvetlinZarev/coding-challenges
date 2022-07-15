@@ -66,3 +66,4 @@ pub fn contains_nearby_duplicate(nums: Vec<i32>, k: i32) -> bool {
 ## Related Problems
 
 * [217. Contains Duplicate](217%20-%20Contains%20Duplicate.md)
+* [220. Contains Duplicate III](220%20-%20Contains%20Duplicate%20III.md)

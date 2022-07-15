@@ -45,3 +45,4 @@ pub fn contains_duplicate(mut nums: Vec<i32>) -> bool {
 ## Related Problems
 
 * [219. Contains Duplicate II](219%20-%20Contains%20Duplicate%20II.md)
+* [220. Contains Duplicate III](220%20-%20Contains%20Duplicate%20III.md)
