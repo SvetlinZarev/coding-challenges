@@ -155,6 +155,7 @@
 * [329. Longest Increasing Path in a Matrix](300%20-%20399/329%20-%20Longest%20Increasing%20Path%20in%20a%20Matrix.md)
 * [509. Fibonacci Number](500%20-%20599/509%20-%20Fibonacci%20Number.md)
 * [516. Longest Palindromic Subsequence](/leetcode/500%20-%20599/516%20-%20Longest%20Palindromic%20Subsequence.md)
+* [576. Out of Boundary Paths](500%20-%20599/576%20-%20Out%20of%20Boundary%20Paths.md)
 * [583. Delete Operation for Two Strings](500%20-%20599/583%20-%20Delete%20Operation%20for%20Two%20Strings.md)
 * [746. Min Cost Climbing Stairs](700%20-%20799/746%20-%20Min%20Cost%20Climbing%20Stairs.md)
 * [1048. Longest String Chain](1000%20-%201099/1048%20-%20Longest%20String%20Chain.md)
