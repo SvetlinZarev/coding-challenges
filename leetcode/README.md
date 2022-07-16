@@ -229,6 +229,7 @@
 ### Misc Problems
 
 * [15. 3Sum](000%20-%20099/15%20-%203Sum.md)
+* [65. Valid Number](000%20-%20099/65%20-%20Valid%20Number.md)
 * [217. Contains Duplicate](200%20-%20299/217%20-%20Contains%20Duplicate.md)
 * [219. Contains Duplicate II](200%20-%20299/219%20-%20Contains%20Duplicate%20II.md)
 * [220. Contains Duplicate III](200%20-%20299/220%20-%20Contains%20Duplicate%20III.md)
