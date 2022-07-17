@@ -177,17 +177,14 @@
 * [473. Matchsticks to Square](400%20-%20499/473%20-%20Matchsticks%20to%20Square.md)
 * [698. Partition to K Equal Sum Subsets](600%20-%20699/698%20-%20Partition%20to%20K%20Equal%20Sum%20Subsets.md)
 
-### Misc recursion / bfs / dfs / backtracking
-
-* [79. Word Search](000%20-%20099/79%20-%20Word%20Search.md)
-
 ### Greedy
 
 * [435. Non-overlapping Intervals](400%20-%20499/435%20-%20Non-overlapping%20Intervals.md)
 * [630. Course Schedule III](600%20-%20699/630%20-%20Course%20Schedule%20III.md)
 * [860. Lemonade Change](800%20-%20899/860%20-%20Lemonade%20Change.md)
 * [1029. Two City Scheduling](1000%20-%201099/1029%20-%20Two%20City%20Scheduling.md)
-* [1642. Furthest Building You Can Reach](1600%20-%201699/1642%20-%20Furthest%20Building%20You%20Can%20Reach.md)* [1663. Smallest String With A Given Numeric Value](1600%20-%201699/1663%20-%20Smallest%20String%20With%20A%20Given%20Numeric%20Value.md)
+* [1642. Furthest Building You Can Reach](1600%20-%201699/1642%20-%20Furthest%20Building%20You%20Can%20Reach.md)
+* [1663. Smallest String With A Given Numeric Value](1600%20-%201699/1663%20-%20Smallest%20String%20With%20A%20Given%20Numeric%20Value.md)
 * [1710. Maximum Units on a Truck](1700%20-%201799/1710%20-%20Maximum%20Units%20on%20a%20Truck.md)
 * [2139. Minimum Moves to Reach Target Score](2100%20-%202199/2139%20-%20Minimum%20Moves%20to%20Reach%20Target%20Score.md)
 
