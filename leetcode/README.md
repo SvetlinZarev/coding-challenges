@@ -14,6 +14,7 @@
 * [162. Find Peak Element](100%20-%20199/162%20-%20Find%20Peak%20Element.md)
 * [278. First Bad Version](200%20-%20299/278%20-%20First%20Bad%20Version.md)
 * [704. Binary Search](700%20-%20799/704%20-%20Binary%20Search.md)
+* [792. Number of Matching Subsequences](700%20-%20799/792%20-%20Number%20of%20Matching%20Subsequences.md)
 * [852. Peak Index in a Mountain Array](800%20-%20899/852%20-%20Peak%20Index%20in%20a%20Mountain%20Array.md)
 * [875. Koko Eating Bananas](800%20-%20899/875%20-%20Koko%20Eating%20Bananas.md)
 * [1268. Search Suggestions System](1200%20-%201299/1268%20-%20Search%20Suggestions%20System.md)
